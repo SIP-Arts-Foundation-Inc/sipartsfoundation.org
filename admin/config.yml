@@ -1,0 +1,77 @@
+# Decap CMS configuration — SIP Arts Foundation
+#
+# Ashlee and Michelle sign in at /admin with their own GitHub account.
+# Saving opens a pull request; nothing reaches the live site until
+# Shauna approves and merges it.
+
+backend:
+  name: github
+  repo: SIP-Arts-Foundation-Inc/sipartsfoundation.org
+  branch: main
+  base_url: https://sip-decap-oauth.sipartsfoundation.workers.dev
+  auth_endpoint: auth
+  commit_messages:
+    create: 'Add {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Remove {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload {{path}}'
+    deleteMedia: 'Delete {{path}}'
+
+# Every save becomes a pull request for review.
+publish_mode: editorial_workflow
+
+# Where uploaded images go.
+media_folder: 'uploads'
+public_folder: '/uploads'
+
+locale: 'en'
+
+collections:
+  - name: 'pages'
+    label: 'Website pages'
+    label_singular: 'page'
+    description: >-
+      Edit the text on a page. Changes are submitted for Shauna to
+      approve before they go live.
+    files:
+      - name: 'unmasking'
+        label: 'Unmasking in the MetroEast'
+        file: 'content/unmasking.md'
+        fields:
+          - { name: 'title', label: 'Page title', widget: 'string' }
+          - { name: 'intro', label: 'Opening paragraph', widget: 'text', required: false }
+          - { name: 'body', label: 'Page content', widget: 'markdown' }
+
+      - name: 'survey'
+        label: 'Caregiver survey page'
+        file: 'content/survey.md'
+        fields:
+          - { name: 'title', label: 'Page title', widget: 'string' }
+          - { name: 'intro', label: 'Opening paragraph', widget: 'text', required: false }
+          - { name: 'body', label: 'Page content', widget: 'markdown' }
+
+      - name: 'signin'
+        label: 'Event sign-in page'
+        file: 'content/signin.md'
+        fields:
+          - { name: 'title', label: 'Page title', widget: 'string' }
+          - { name: 'intro', label: 'Opening paragraph', widget: 'text', required: false }
+          - { name: 'body', label: 'Page content', widget: 'markdown' }
+
+  - name: 'events'
+    label: 'Events'
+    label_singular: 'event'
+    folder: 'content/events'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    description: >-
+      Add or update an event. Include the date, time, location and how
+      people register.
+    fields:
+      - { name: 'title', label: 'Event name', widget: 'string' }
+      - { name: 'date', label: 'Date', widget: 'datetime' }
+      - { name: 'location', label: 'Location', widget: 'string', required: false }
+      - { name: 'registration_url', label: 'Registration link', widget: 'string', required: false }
+      - { name: 'image', label: 'Image', widget: 'image', required: false }
+      - { name: 'summary', label: 'Short summary', widget: 'text', required: false }
+      - { name: 'body', label: 'Full description', widget: 'markdown' }
