@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unmasking in the MetroEast | SIP Arts Foundation</title>
+<meta name="description" content="Donate your post-election yard signs. We clean them and give them back to Metro East families, students, and community groups as free art panels. Collection runs November 4 to December 31, 2026.">
+<meta property="og:title" content="Unmasking in the MetroEast">
+<meta property="og:description" content="Your old yard signs become free art panels for Metro East families, students, and community groups.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sipartsfoundation.org/unmasking">
+<meta property="og:image" content="https://sipartsfoundation.org/unmasking/unmasking-flyer.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<style>
+/* Layout: single centered column, cream ground, one paper card for the form.
+   Tokens mirror SIP brand-tokens.css. Do not invent hex values. */
+:root {
+  --navy:      #0B2C5C;
+  --navy-2:    #071F42;
+  --teal:      #0E9AA7;
+  --teal-dk:   #0A7C87;
+  --pink-dk:   #BC004A;
+  --gold:      #FFD126;
+  --cream:     #FAF6EC;
+  --cream-2:   #F3ECDD;
+  --paper:     #FDFBF5;
+  --ink:       #14243D;
+  --muted:     #4C5C74;
+  --line:      #E3DAC7;
+  --field:     #FFFFFF;
+  --sh-1: 0 6px 16px rgba(11,44,92,.10);
+  --font-display: 'Anton', Impact, sans-serif;
+  --font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-script: 'Caveat', cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy: #FFFFFF; --navy-2: #FFFFFF; --teal: #4FD1DC; --teal-dk: #4FD1DC;
+    --pink-dk: #FF5C8F; --cream: #0E1B2E; --cream-2: #15263F; --paper: #15263F;
+    --ink: #EAF0F8; --muted: #AEBFD4; --line: #2A3E5C; --field: #0E1B2E;
+    --sh-1: 0 6px 16px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --navy: #FFFFFF; --navy-2: #FFFFFF; --teal: #4FD1DC; --teal-dk: #4FD1DC;
+  --pink-dk: #FF5C8F; --cream: #0E1B2E; --cream-2: #15263F; --paper: #15263F;
+  --ink: #EAF0F8; --muted: #AEBFD4; --line: #2A3E5C; --field: #0E1B2E;
+  --sh-1: 0 6px 16px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 44rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  padding-block: 3rem 4rem;
+}
+
+.eyebrow {
+  font-family: var(--font-script);
+  font-size: 1.5rem;
+  color: var(--teal-dk);
+  margin: 0 0 .25rem;
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .014em;
+  line-height: 1;
+  font-size: clamp(2.5rem, 9vw, 4rem);
+  color: var(--navy);
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+.lede {
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin: 0 0 2.25rem;
+  max-width: 34rem;
+  text-wrap: pretty;
+}
+.pull {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  line-height: 1.1;
+  color: var(--teal-dk);
+  border-left: 5px solid var(--gold);
+  padding-left: 1rem;
+  margin: 0 0 2.25rem;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  font-size: 1.35rem;
+  color: var(--navy);
+  margin: 2.5rem 0 .75rem;
+}
+p { margin: 0 0 1rem; }
+
+.steps { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: .6rem; }
+.steps li { position: relative; padding-left: 1.45rem; }
+.steps li::before {
+  content: "";
+  position: absolute; left: 0; top: .62rem;
+  width: .7rem; height: .7rem;
+  border-radius: 999px; background: var(--teal);
+}
+.note { color: var(--muted); }
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  font-size: 1.05rem;
+  color: var(--navy);
+  margin: 1.75rem 0 .5rem;
+}
+.ask {
+  background: var(--cream-2);
+  border-left: 5px solid var(--gold);
+  border-radius: 0 12px 12px 0;
+  padding: 1rem 1.25rem;
+  font-size: 1.1rem;
+  margin: 0 0 1.25rem;
+}
+
+/* Concept strip: original line art, three stages of one sign. */
+.concept {
+  list-style: none;
+  margin: 1rem 0 1.25rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 34rem) {
+  .concept { grid-template-columns: 1fr; gap: 1.25rem; max-width: 20rem; margin-inline: auto; }
+}
+.concept li {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: .9rem .9rem 1rem;
+  text-align: center;
+}
+.concept svg { width: 100%; height: auto; display: block; }
+.concept b {
+  display: block;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--navy);
+  margin: .6rem 0 .15rem;
+}
+.concept span { display: block; font-size: .9rem; color: var(--muted); line-height: 1.4; }
+
+/* Real work from our studio programs. */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 1rem 0 .75rem; }
+@media (max-width: 34rem) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  display: block;
+  background: var(--cream-2);
+}
+
+.when {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  margin: 1rem 0 0;
+  display: grid; gap: .3rem;
+}
+.when .date {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  font-size: 1.5rem;
+  color: var(--navy);
+  line-height: 1.1;
+}
+.when .meta { color: var(--muted); font-size: .95rem; }
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--sh-1);
+  padding: 1.75rem;
+  margin-top: 1rem;
+}
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 34rem) { .row { grid-template-columns: 1fr; } }
+.field { display: grid; gap: .35rem; margin-bottom: 1rem; min-width: 0; }
+label { font-weight: 700; font-size: .95rem; color: var(--navy); }
+label .opt { font-weight: 400; color: var(--muted); }
+input[type=text], input[type=email], input[type=tel], select {
+  font: inherit;
+  color: var(--ink);
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: .7rem .8rem;
+  min-height: 44px;
+  width: 100%;
+}
+input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--teal); outline-offset: 2px;
+}
+.check { display: grid; grid-template-columns: auto 1fr; gap: .65rem; align-items: start; margin: .25rem 0 1.25rem; }
+.check input { width: 1.15rem; height: 1.15rem; margin-top: .3rem; }
+.check label { font-weight: 400; color: var(--ink); }
+.hp { position: absolute; left: -9999px; }
+
+button {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1rem;
+  min-height: 48px;
+  padding: .6rem 1.75rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--pink-dk);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { filter: brightness(1.07); transform: translateY(-2px); }
+button:disabled { opacity: .6; cursor: default; }
+@media (prefers-reduced-motion: reduce) { button:hover:not(:disabled) { transform: none; } }
+
+.status { margin-top: 1rem; font-weight: 700; }
+.status.err { color: var(--pink-dk); }
+.status.ok { color: var(--teal-dk); }
+
+.done {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-top: 1rem;
+}
+.done h3 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  color: var(--navy);
+  margin: 0 0 .5rem;
+  font-size: 1.3rem;
+}
+.who { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1.5rem; }
+.lead-row { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.5rem; align-items: start; }
+@media (max-width: 34rem) { .lead-row { grid-template-columns: 1fr; gap: 1rem; } }
+.portrait {
+  width: 8.5rem; height: 8.5rem; max-width: 100%;
+  border-radius: 999px; display: block;
+  object-fit: cover;
+  box-shadow: var(--sh-1);
+}
+.lead-name {
+  font-family: var(--font-script);
+  font-size: 1.75rem;
+  color: var(--teal-dk);
+  margin: 0;
+  line-height: 1.1;
+}
+.lead-role {
+  font-weight: 700;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--muted);
+  margin: .15rem 0 .75rem;
+}
+a { color: var(--teal-dk); }
+.between { border-top: 1px solid var(--line); margin-top: 2.5rem; padding-top: 1.5rem; }
+.fb {
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .5rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid var(--teal-dk);
+  color: var(--teal-dk);
+}
+.fb:hover { background: var(--teal-dk); color: var(--paper); }
+
+.hero-art { background: var(--cream-2); border:1px solid var(--line); border-radius:16px; padding:1.25rem 1.4rem; margin:0 0 2rem; }
+.stat { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.25rem 0 0; }
+@media (max-width:34rem){ .stat{grid-template-columns:1fr;} }
+.stat b { font-family:var(--font-display); font-size:1.7rem; color:var(--navy); display:block; line-height:1; }
+.stat span { font-size:.9rem; color:var(--muted); }
+.flow { list-style:none; margin:1rem 0 0; padding:0; display:grid; gap:1rem; }
+.flow li { background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:1rem 1.2rem; }
+.flow b { display:block; font-family:var(--font-display); text-transform:uppercase; font-style:italic; letter-spacing:.028em; color:var(--teal-dk); font-size:1.05rem; }
+.pills { display:flex; flex-wrap:wrap; gap:.6rem; margin:.25rem 0 1rem; }
+.pills label { display:flex; align-items:center; gap:.5rem; border:1.5px solid var(--line); background:var(--field);
+  border-radius:999px; padding:.55rem 1rem; min-height:44px; font-weight:700; cursor:pointer; }
+.pills input { width:1.1rem; height:1.1rem; }
+.pills label:has(input:checked) { border-color:var(--teal-dk); background:var(--cream-2); }
+textarea { font:inherit; color:var(--ink); background:var(--field); border:1px solid var(--line);
+  border-radius:10px; padding:.7rem .8rem; width:100%; min-height:88px; }
+.hide { display:none; }
+</style>
+<style>
+.um-learn h2{font-family:var(--font-display,Anton,Impact,sans-serif);font-weight:400;text-transform:uppercase;font-style:italic;letter-spacing:.028em;font-size:1.35rem;color:var(--navy,#0B2C5C);margin:2.5rem 0 .75rem}
+.um-path{background:var(--paper,#FDFBF5);border:1px solid var(--line,#E3DAC7);border-radius:16px;box-shadow:var(--sh-1,0 6px 16px rgba(11,44,92,.10));padding:1.5rem;margin-top:1rem}
+.um-path h3{font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--navy,#0B2C5C);margin:0 0 .25rem;font-size:1.2rem}
+.um-path .um-who{color:var(--muted,#4C5C74);font-size:.95rem;margin:0 0 1rem}
+.um-nums{list-style:none;margin:0;padding:0;display:grid;gap:.9rem;counter-reset:umnum}
+.um-nums>li{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
+.um-nums>li::before{counter-increment:umnum;content:counter(umnum);font-family:var(--font-display,Anton,Impact,sans-serif);font-size:1.1rem;line-height:1;color:#fff;background:var(--teal-dk,#0A7C87);width:2rem;height:2rem;border-radius:999px;display:grid;place-items:center}
+.um-nums b{display:block;font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--teal-dk,#0A7C87);font-size:1rem}
+.um-nums p{margin:.15rem 0 0}
+.um-links{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.6rem}
+.um-links a{display:block;background:var(--cream-2,#F3ECDD);border:1px solid var(--line,#E3DAC7);border-radius:12px;padding:.8rem 1rem;text-decoration:none;color:var(--ink,#14243D);font-weight:700}
+.um-links a:hover{border-color:var(--teal,#0E9AA7)}
+.um-links a span{display:block;font-weight:400;font-size:.9rem;color:var(--muted,#4C5C74)}
+.um-go{display:inline-flex;align-items:center;min-height:48px;padding:.6rem 1.75rem;border-radius:999px;background:var(--pink-dk,#BC004A);color:#fff;font-weight:800;text-decoration:none;margin-top:.5rem}
+.um-go:hover{filter:brightness(1.07)}
+.um-go.alt{background:var(--teal-dk,#0A7C87)}
+.um-prompt{background:var(--cream-2,#F3ECDD);border-left:5px solid var(--gold,#FFD126);border-radius:0 12px 12px 0;padding:1rem 1.2rem;margin:.5rem 0 0}
+.um-prompt b{font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--navy,#0B2C5C);display:block;font-size:.95rem}
+.um-note{color:var(--muted,#4C5C74)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .um-links a{color:#EAF0F8}}
+</style></head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow">A community art project</p>
+  <h1>Unmasking in the MetroEast</h1>
+<!-- cms:start unmasking -->
+<p>This page is managed in the website editor. Replace this paragraph with your own wording and it will appear on the live page once approved.</p>
+<!-- cms:end unmasking -->
+
+
+  <p class="lede">After every election, thousands of yard signs come down and go straight to the landfill. We are collecting them instead, cleaning them, and handing them back to our neighbors as free art panels.</p>
+
+  <p class="pull">What divided a yard can decorate a wall.</p>
+
+  <div class="hero-art">
+    <p style="margin:0">Corrugated plastic signs are not accepted in most curbside recycling. They are layered plastic with wire stakes, so they sit in a landfill for decades. Every sign you hand us is one less in the ground and one more blank canvas in a child's hands.</p>
+    <div class="stat">
+      <div><b>Nov 4 – Dec 31</b><span>2026 collection window</span></div>
+      <div><b>Free</b><span>Panels, pickup, and the showcase</span></div>
+      <div><b>April 3, 2027</b><span>Public showcase</span></div>
+    </div>
+  </div>
+
+  <h2>What we are actually doing</h2>
+  <p>A sign that spent the fall telling your neighbors how to vote becomes a blank panel, and then becomes a piece of art about what it costs to hide who you are.</p>
+  <ul class="concept">
+    <li>
+      <svg viewBox="0 0 200 200" role="img" aria-label="A weathered plastic campaign yard sign on a wire stake.">
+        <line x1="12" y1="176" x2="188" y2="176" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M72 120 V174 M128 120 V174 M72 140 H128" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <rect x="24" y="22" width="152" height="100" rx="3" fill="var(--navy)"/>
+        <rect x="24" y="84" width="152" height="15" fill="var(--gold)"/>
+        <rect x="42" y="40" width="104" height="13" rx="2" fill="var(--cream)" opacity=".92"/>
+        <rect x="42" y="61" width="68" height="10" rx="2" fill="var(--cream)" opacity=".7"/>
+        <rect x="42" y="106" width="86" height="8" rx="2" fill="var(--cream)" opacity=".55"/>
+        <path d="M24 60 Q70 70 118 56 T176 66" stroke="var(--cream)" stroke-width="1.5" fill="none" opacity=".28"/>
+      </svg>
+      <b>Step one</b>
+      <span>A sign nobody needs anymore, headed for the landfill.</span>
+    </li>
+    <li>
+      <svg viewBox="0 0 200 200" role="img" aria-label="The same sign washed and primed into a blank white panel.">
+        <line x1="12" y1="176" x2="188" y2="176" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M72 120 V174 M128 120 V174 M72 140 H128" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <rect x="24" y="22" width="152" height="100" rx="3" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+        <rect x="34" y="34" width="132" height="20" rx="10" fill="var(--cream-2)"/>
+        <rect x="34" y="62" width="132" height="20" rx="10" fill="var(--cream-2)"/>
+        <rect x="34" y="90" width="96" height="20" rx="10" fill="var(--cream-2)"/>
+        <rect x="134" y="88" width="34" height="14" rx="7" fill="var(--teal)"/>
+        <path d="M151 102 V112 H162 V126" stroke="var(--teal)" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <b>Step two</b>
+      <span>We wash and prime it. Now it is a free blank panel.</span>
+    </li>
+    <li>
+      <svg viewBox="0 0 200 200" role="img" aria-label="The primed panel painted as a work of art, with a mask lifting away from it.">
+        <line x1="12" y1="176" x2="188" y2="176" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M72 120 V174 M128 120 V174 M72 140 H128" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <rect x="24" y="22" width="152" height="100" rx="3" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+        <path d="M24 100 Q62 62 100 94 T176 78 V119 a3 3 0 0 1-3 3 H27 a3 3 0 0 1-3-3 Z" fill="var(--teal)" opacity=".85"/>
+        <circle cx="62" cy="54" r="17" fill="var(--pink-dk)" opacity=".85"/>
+        <path d="M118 74 L140 34 L162 74 Z" fill="var(--gold)"/>
+        <g transform="rotate(-20 150 26)">
+          <ellipse cx="150" cy="26" rx="27" ry="17" fill="var(--navy)"/>
+          <ellipse cx="141" cy="23" rx="5" ry="3.4" fill="var(--paper)"/>
+          <ellipse cx="159" cy="23" rx="5" ry="3.4" fill="var(--paper)"/>
+        </g>
+        <path d="M112 30 H124 M110 42 H120" stroke="var(--muted)" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+      </svg>
+      <b>Step three</b>
+      <span>You answer the theme on it. The mask comes off.</span>
+    </li>
+  </ul>
+
+  <h2>How it works</h2>
+  <ol class="flow">
+    <li><b>You bring them by</b>Leftover or discarded yard signs, stakes included. Muddy, bent, or faded is fine. Any candidate, any issue, any year.</li>
+    <li><b>We clean and prime</b>Signs are washed, dried, and primed into blank panels ready to paint.</li>
+    <li><b>The community creates</b>Families, students, classrooms, church groups, and community organizations take panels for free and make art about what it costs to hide who you are, and what it feels like to stop.</li>
+    <li><b>We show the work</b>Every panel comes back together for a free public showcase on April 3, 2027.</li>
+  </ol>
+
+  <div class="um-learn">
+<h2 id="learn">Learn what masking is</h2>
+<p>Every panel starts with learning. Take the short survey first, then pick one thing to read or watch, then make your art. The survey takes about two minutes and is how we know whether this project actually taught the community something.</p>
+
+<div class="um-path">
+  <h3>On your own</h3>
+  <p class="um-who">For individuals, families, and artists of any age.</p>
+  <ol class="um-nums">
+    <li><div><b>Take the first survey</b>
+      <p>Answer before you read anything. It is fine, and useful, to say you have never heard the word. That is the starting point we measure from. You will get a participant code to keep.</p>
+      <a class="um-go" href="/um/pre">Start the survey</a></div></li>
+    <li><div><b>Pick one and learn</b>
+      <p>Choose whichever fits you best. One is enough.</p>
+      <ul class="um-links">
+        <li><a href="https://www.autism.org.uk/advice-and-guidance/behaviour/masking" target="_blank" rel="noopener">Masking, National Autistic Society<span>Short and plain language. Start here if you want the quickest explanation.</span></a></li>
+        <li><a href="https://aane.org/autism-info-faqs/library/masking-a-guide/" target="_blank" rel="noopener">Masking: A Guide, AANE<span>Written by and for autistic adults. Best on what unmasking actually feels like.</span></a></li>
+        <li><a href="https://neurodivergentinsights.com/what-is-masking-in-autism/" target="_blank" rel="noopener">Autistic Masking Explained, Neurodivergent Insights<span>More visual, with diagrams. Good if you want a little more depth.</span></a></li>
+      </ul></div></li>
+    <li><div><b>Make your panel</b>
+      <div class="um-prompt"><b>Your prompt</b>What does unmasking in the Metro East look like to you?</div>
+      <p>Paint, draw, collage, write, or stick things on. There is no wrong answer and no skill level required.</p></div></li>
+    <li><div><b>Bring it back with the second survey</b>
+      <p>Artwork is due March 15, 2027. The second survey comes back with your panel and uses the same code, so we can see what changed.</p>
+      <a class="um-go alt" href="/um/post">Second survey</a></div></li>
+  </ol>
+</div>
+
+<div class="um-path">
+  <h3>With a group</h3>
+  <p class="um-who">For anyone running this with a group: classroom teachers, scout troop leaders, church and youth leaders, club advisors, day programs, and libraries.</p>
+  <ol class="um-nums">
+    <li><div><b>Request your panels</b>
+      <p>Tell us how many you need and roughly how many people are taking part. We send a group packet with your group code already printed on everything.</p>
+      <a class="um-go" href="#reg">Request panels for a group</a></div></li>
+    <li><div><b>Run it in one session</b>
+      <p>Your packet has a short lesson outline, the three links above, and paper before-and-after half sheets for your group. We collect no names and no personal information about anyone in your group.</p></div></li>
+    <li><div><b>Report once, for everyone</b>
+      <p>You fill out one leader form with your group totals instead of each person filling out two surveys. One form, one group code, done.</p></div></li>
+    <li><div><b>Send the panels back</b>
+      <p>Artwork is due March 15, 2027, and every piece is shown at the free public showcase on April 3, 2027. Your group is invited.</p></div></li>
+  </ol>
+</div>
+
+<p class="um-note">The three links above go to outside organizations. We share them because they explain masking well, and we check them regularly.</p>
+</div><h2>Why &ldquo;unmasking&rdquo;</h2>
+  <p>Masking is what a lot of autistic and disabled people do every day to seem acceptable: holding still, holding back, performing a version of themselves that costs them something to maintain. A yard sign is a mask too. It is the loudest, flattest version of what a person believes, planted on a lawn, speaking for a whole household.</p>
+  <p>We take the flattest thing in the yard and hand it to someone who will put something true on it. Then we put all of it in one room, side by side, and let people look.</p>
+
+  <h2>Why this is education, not decoration</h2>
+  <p>Masking is one of the least understood parts of being autistic, and it is rarely taught anywhere. Every group that takes a panel learns what masking is first, then answers it in their own work. The art is how we know the learning landed.</p>
+  <ul class="steps">
+    <li><strong>The learning goal:</strong> every participant can explain what masking is, why people do it, and what it costs.</li>
+    <li><strong>How we know it worked:</strong> two short questions before participants start and two after they finish, so we can show what changed in people's understanding.</li>
+    <li><strong>Who it reaches:</strong> classrooms, churches, scout troops, libraries, day programs, and families across our nine counties, at no cost to any of them.</li>
+    <li><strong>The environmental piece:</strong> every panel is a plastic yard sign kept out of a Metro East landfill.</li>
+  </ul>
+
+  <h3>What the work can look like</h3>
+  <p class="note">Pieces made by artists in our studio programs. Panels do not have to look like any of these. Paint, marker, collage, fabric, words, anything that sticks.</p>
+  <div class="gallery">
+    <img src="https://sipartsfoundation.org/splat-easel.jpg" alt="Two acrylic portrait paintings on canvas made by artists in a SIP Arts Foundation studio program." loading="lazy">
+    <img src="https://sipartsfoundation.org/art-portrait-unite.jpg" alt="A large collage portrait titled Unite, made by a group in a SIP Arts Foundation studio program." loading="lazy">
+    <img src="https://sipartsfoundation.org/art-earth-day-mural.jpg" alt="A bright collaborative Earth Day mural made by a group in a SIP Arts Foundation studio program." loading="lazy">
+  </div>
+
+  <h2>Who can take part</h2>
+  <ul class="steps">
+    <li>Families and individual artists of any age or skill level</li>
+    <li>Classrooms, art teachers, and school clubs</li>
+    <li>Churches, scout troops, libraries, and community groups</li>
+    <li>Campaigns and political offices with signs to clear out</li>
+    <li>Anyone who has a stack of signs in the garage</li>
+  </ul>
+  <p class="note">No art experience needed. No cost at any step. Accommodations and adapted tools are available, just ask.</p>
+
+  <h2>Donate your signs</h2>
+  <p>Drop-off is the easiest way to get signs to us, and you are welcome during collection hours. If you are clearing out a campaign office or have more than you can carry, we will come get them.</p>
+
+  <div class="when">
+    <span class="date">Drop-off</span>
+    <span class="meta">SIP Arts Foundation, 424 Lebanon Avenue, Belleville, IL 62220</span>
+    <span class="meta">November 4 through December 31, 2026. Signs and stakes both welcome, muddy is fine.</span>
+  </div>
+
+  <div class="card" id="formCard">
+    <form id="reg" novalidate>
+
+      <div class="field">
+        <span id="methodLabel" style="font-weight:700;font-size:.95rem;color:var(--navy)">What works best?</span>
+        <div class="pills" role="radiogroup" aria-labelledby="methodLabel">
+          <label><input type="radio" name="method" value="dropoff" checked> I will drop them off</label>
+          <label><input type="radio" name="method" value="pickup"> I need a pickup</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="firstname">First name</label>
+          <input type="text" id="firstname" name="firstname" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="lastname">Last name <span class="opt">(optional)</span></label>
+          <input type="text" id="lastname" name="lastname" autocomplete="family-name">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="phone">Phone <span class="opt">(optional)</span></label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" autocomplete="address-level2">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="signcount">About how many signs?</label>
+        <select id="signcount" name="signcount">
+          <option value="1 to 10">1 to 10</option>
+          <option value="11 to 50">11 to 50</option>
+          <option value="51 to 200">51 to 200</option>
+          <option value="200 or more">200 or more</option>
+          <option value="Not sure yet">Not sure yet</option>
+        </select>
+      </div>
+
+      <div class="field" id="pickupWrap">
+        <label for="pickup_address">Where should we pick up?</label>
+        <input type="text" id="pickup_address" name="pickup_address" autocomplete="street-address" placeholder="Street, city, ZIP">
+      </div>
+
+      <div class="field">
+        <label for="notes">Anything we should know? <span class="opt">(optional)</span></label>
+        <textarea id="notes" name="notes" placeholder="Best days or times, gate codes, who to ask for, whether you also want panels to make art"></textarea>
+      </div>
+
+      <div class="check">
+        <input type="checkbox" id="newsletter" name="newsletter" checked>
+        <label for="newsletter">Email me about the April 3 showcase and other SIP Arts Foundation news.</label>
+      </div>
+
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFG1zN5i_gHrCd7s" data-size="auto"></div>
+
+      <p><button id="submit" type="submit">Send my signs in</button></p>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+
+  <div class="done" id="done" hidden>
+    <h3>Thank you</h3>
+    <p>We will be in touch within a few days to confirm your drop-off or schedule your pickup. Check your email for the details.</p>
+    <p class="note">Nothing arrived? Write to <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a> or <a href="mailto:neil@sipartsfoundation.org">neil@sipartsfoundation.org</a>.</p>
+  </div>
+
+  <div class="between">
+  <h2>Fund or sponsor this project</h2>
+  <p>Unmasking in the MetroEast is a program of SIP Arts Foundation, a 501(c)(3) nonprofit. Sponsorship covers primer, cleaning supplies, transport, and the public showcase, which is what keeps panels and participation free for every family and classroom. If your organization, church, business, or foundation wants to support it, or wants a copy of the project budget, email <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a>.</p>
+
+    <h2>Questions</h2>
+    <p>Email <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a> or <a href="mailto:neil@sipartsfoundation.org">neil@sipartsfoundation.org</a>. We answer every message.</p>
+    <p class="note">Unmasking in the MetroEast is a program of SIP Arts Foundation, a 501(c)(3) nonprofit serving people with disabilities and their families across Southern Illinois.</p>
+  </div>
+
+</main>
+
+<script>
+(function () {
+  var form = document.getElementById('reg');
+  var statusEl = document.getElementById('status');
+  var btn = document.getElementById('submit');
+  var pickupWrap = document.getElementById('pickupWrap');
+
+  function method() {
+    var r = form.querySelector('input[name="method"]:checked');
+    return r ? r.value : 'dropoff';
+  }
+  function syncPickup() {
+    pickupWrap.classList.toggle('hide', method() !== 'pickup');
+  }
+  Array.prototype.forEach.call(form.querySelectorAll('input[name="method"]'), function (el) {
+    el.addEventListener('change', syncPickup);
+  });
+  syncPickup();
+
+  function say(msg, kind) {
+    statusEl.textContent = msg;
+    statusEl.className = 'status' + (kind ? ' ' + kind : '');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    say('');
+
+    var first = form.firstname.value.trim();
+    var email = form.email.value.trim();
+    if (!first) { say('Please add your first name.', 'err'); form.firstname.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('Please check your email address.', 'err'); form.email.focus(); return; }
+    if (method() === 'pickup' && !form.pickup_address.value.trim()) {
+      say('Please add the address we should pick up from.', 'err'); form.pickup_address.focus(); return;
+    }
+
+    var qs = new URLSearchParams(location.search);
+    var data = {
+      program: 'unmasking',
+      method: method(),
+      firstname: first,
+      lastname: form.lastname.value.trim(),
+      email: email,
+      city: form.city.value.trim(),
+      state: 'IL',
+      phone: form.phone.value.trim(),
+      signcount: form.signcount.value,
+      pickup_address: method() === 'pickup' ? form.pickup_address.value.trim() : '',
+      notes: form.notes.value.trim(),
+      newsletter: form.newsletter.checked ? '1' : '',
+      website: form.website.value,
+      utm_source: qs.get('utm_source') || 'website',
+      utm_medium: qs.get('utm_medium') || 'form',
+      utm_campaign: qs.get('utm_campaign') || 'unmasking-2026'
+    };
+    var t = form.querySelector('[name="cf-turnstile-response"]');
+    data['cf-turnstile-response'] = t ? t.value : '';
+
+    btn.disabled = true;
+    say('Sending...');
+
+    fetch('/api/outreach/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) {
+      return r.json().catch(function () { return { ok: false, error: 'network' }; });
+    }).then(function (res) {
+      if (res && res.ok) {
+        document.getElementById('formCard').hidden = true;
+        document.getElementById('done').hidden = false;
+        document.getElementById('done').scrollIntoView({ block: 'nearest' });
+        return;
+      }
+      btn.disabled = false;
+      if (res && res.error === 'verification') {
+        say('The security check did not go through. Please reload the page and try again.', 'err');
+        if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
+      } else {
+        say('Something went wrong on our end. Please try again, or email info@sipartsfoundation.org.', 'err');
+      }
+    }).catch(function () {
+      btn.disabled = false;
+      say('Could not reach the server. Please check your connection and try again.', 'err');
+    });
+  });
+})();
+</script>
+</body>
+</html>

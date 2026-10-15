@@ -1,0 +1,43 @@
+name: Deploy to InterServer
+
+# Runs only when main changes — that is, after Shauna approves and
+# merges a pull request. Never runs on the pull request itself.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the approved site
+        uses: actions/checkout@v4
+
+      - name: Render CMS content into the pages
+        run: python3 tools/build.py
+
+      - name: Upload changed files over SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+        with:
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USER }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: ${{ secrets.SFTP_PORT }}
+          local_path: './*'
+          remote_path: ${{ secrets.SFTP_REMOTE_PATH }}
+          sftp_only: true
+          # Files on the server that are not in this repo are left alone.
+          # Nothing is ever deleted by this workflow.
+          exclude_file: '.git*,.github,worker,tools,content,_archive,README.md,SETUP.md,.gitignore'
+
+      - name: Summary
+        run: |
+          echo "### Deployed to sipartsfoundation.org" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Commit: \`${GITHUB_SHA::7}\`" >> $GITHUB_STEP_SUMMARY
+          echo "Files on the server not present in this repo were left untouched." >> $GITHUB_STEP_SUMMARY

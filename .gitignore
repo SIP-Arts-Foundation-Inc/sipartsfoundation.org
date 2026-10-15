@@ -1,0 +1,13 @@
+# Server-side secrets — never commit
+.private/
+cgi-bin/
+*.env
+config.json
+
+# Server runtime / stats
+awstats/
+.well-known/acme-challenge/
+
+# OS noise
+.DS_Store
+Thumbs.db
