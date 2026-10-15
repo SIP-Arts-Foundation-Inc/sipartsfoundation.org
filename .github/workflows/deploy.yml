@@ -18,6 +18,9 @@ jobs:
       - name: Check out the approved site
         uses: actions/checkout@v4
 
+      - name: Render CMS content into the pages
+        run: python3 tools/build.py
+
       - name: Upload changed files over SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
@@ -30,7 +33,7 @@ jobs:
           sftp_only: true
           # Files on the server that are not in this repo are left alone.
           # Nothing is ever deleted by this workflow.
-          exclude_file: '.git*,.github,worker,_archive,README.md,.gitignore'
+          exclude_file: '.git*,.github,worker,tools,content,_archive,README.md,SETUP.md,.gitignore'
 
       - name: Summary
         run: |

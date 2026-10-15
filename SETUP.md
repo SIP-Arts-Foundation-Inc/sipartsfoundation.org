@@ -67,6 +67,25 @@ account with two-factor turned on, which the organization requires.
 Write access lets them open pull requests. It does not let them merge,
 because the ruleset still demands your approval.
 
+## How a page edit actually reaches the site
+
+Pages managed by the CMS carry markers in their HTML:
+
+```html
+<!-- cms:start unmasking -->   ...generated...   <!-- cms:end unmasking -->
+```
+
+Editing in the CMS writes `content/unmasking.md`. On deploy,
+`tools/build.py` renders that markdown into the marked region and
+nothing else on the page is touched — design, nav, forms and scripts
+all stay as they are.
+
+To put another page under CMS control:
+
+1. Add the two markers where the editable text should go
+2. Add an entry to `PAGES` in `tools/build.py`
+3. Add a matching file to `admin/config.yml`
+
 ## Recovering an old page
 
 Backups taken off the server are in git history:
