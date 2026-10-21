@@ -1,0 +1,463 @@
+<title>Perfectly Imperfect Arts</title>
+<meta name="description" content="A monthly virtual Show and Tell for people who want to make things, hosted by SIP Arts Foundation.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: single centered column, cream ground, one paper card for the form.
+   Tokens mirror SIP brand-tokens.css. Do not invent hex values. */
+:root {
+  --navy:      #0B2C5C;
+  --navy-2:    #071F42;
+  --teal:      #0E9AA7;
+  --teal-dk:   #0A7C87;
+  --pink-dk:   #BC004A;
+  --gold:      #FFD126;
+  --cream:     #FAF6EC;
+  --cream-2:   #F3ECDD;
+  --paper:     #FDFBF5;
+  --ink:       #14243D;
+  --muted:     #4C5C74;
+  --line:      #E3DAC7;
+  --field:     #FFFFFF;
+  --sh-1: 0 6px 16px rgba(11,44,92,.10);
+  --font-display: 'Anton', Impact, sans-serif;
+  --font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-script: 'Caveat', cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy: #FFFFFF; --navy-2: #FFFFFF; --teal: #4FD1DC; --teal-dk: #4FD1DC;
+    --pink-dk: #FF5C8F; --cream: #0E1B2E; --cream-2: #15263F; --paper: #15263F;
+    --ink: #EAF0F8; --muted: #AEBFD4; --line: #2A3E5C; --field: #0E1B2E;
+    --sh-1: 0 6px 16px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --navy: #FFFFFF; --navy-2: #FFFFFF; --teal: #4FD1DC; --teal-dk: #4FD1DC;
+  --pink-dk: #FF5C8F; --cream: #0E1B2E; --cream-2: #15263F; --paper: #15263F;
+  --ink: #EAF0F8; --muted: #AEBFD4; --line: #2A3E5C; --field: #0E1B2E;
+  --sh-1: 0 6px 16px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 44rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  padding-block: 3rem 4rem;
+}
+
+.eyebrow {
+  font-family: var(--font-script);
+  font-size: 1.5rem;
+  color: var(--teal-dk);
+  margin: 0 0 .25rem;
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .014em;
+  line-height: 1;
+  font-size: clamp(2.5rem, 9vw, 4rem);
+  color: var(--navy);
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+.lede {
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin: 0 0 2.25rem;
+  max-width: 34rem;
+  text-wrap: pretty;
+}
+.pull {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  line-height: 1.1;
+  color: var(--teal-dk);
+  border-left: 5px solid var(--gold);
+  padding-left: 1rem;
+  margin: 0 0 2.25rem;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  font-size: 1.35rem;
+  color: var(--navy);
+  margin: 2.5rem 0 .75rem;
+}
+p { margin: 0 0 1rem; }
+
+.steps { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: .6rem; }
+.steps li { display: grid; grid-template-columns: auto 1fr; gap: .75rem; align-items: start; }
+.steps li::before {
+  content: "";
+  width: .7rem; height: .7rem; margin-top: .55rem;
+  border-radius: 999px; background: var(--teal); flex: none;
+}
+.note { color: var(--muted); }
+
+.when {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  margin: 1rem 0 0;
+  display: grid; gap: .3rem;
+}
+.when .date {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  font-size: 1.5rem;
+  color: var(--navy);
+  line-height: 1.1;
+}
+.when .meta { color: var(--muted); font-size: .95rem; }
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--sh-1);
+  padding: 1.75rem;
+  margin-top: 1rem;
+}
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 34rem) { .row { grid-template-columns: 1fr; } }
+.field { display: grid; gap: .35rem; margin-bottom: 1rem; min-width: 0; }
+label { font-weight: 700; font-size: .95rem; color: var(--navy); }
+label .opt { font-weight: 400; color: var(--muted); }
+input[type=text], input[type=email], input[type=tel], select {
+  font: inherit;
+  color: var(--ink);
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: .7rem .8rem;
+  min-height: 44px;
+  width: 100%;
+}
+input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--teal); outline-offset: 2px;
+}
+.check { display: grid; grid-template-columns: auto 1fr; gap: .65rem; align-items: start; margin: .25rem 0 1.25rem; }
+.check input { width: 1.15rem; height: 1.15rem; margin-top: .3rem; }
+.check label { font-weight: 400; color: var(--ink); }
+.hp { position: absolute; left: -9999px; }
+
+button {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1rem;
+  min-height: 48px;
+  padding: .6rem 1.75rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--pink-dk);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { filter: brightness(1.07); transform: translateY(-2px); }
+button:disabled { opacity: .6; cursor: default; }
+@media (prefers-reduced-motion: reduce) { button:hover:not(:disabled) { transform: none; } }
+
+.status { margin-top: 1rem; font-weight: 700; }
+.status.err { color: var(--pink-dk); }
+.status.ok { color: var(--teal-dk); }
+
+.done {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-top: 1rem;
+}
+.done h3 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  color: var(--navy);
+  margin: 0 0 .5rem;
+  font-size: 1.3rem;
+}
+.who { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1.5rem; }
+.lead-row { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.5rem; align-items: start; }
+@media (max-width: 34rem) { .lead-row { grid-template-columns: 1fr; gap: 1rem; } }
+.portrait {
+  width: 8.5rem; height: 8.5rem; max-width: 100%;
+  border-radius: 999px; display: block;
+  object-fit: cover;
+  box-shadow: var(--sh-1);
+}
+.lead-name {
+  font-family: var(--font-script);
+  font-size: 1.75rem;
+  color: var(--teal-dk);
+  margin: 0;
+  line-height: 1.1;
+}
+.lead-role {
+  font-weight: 700;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--muted);
+  margin: .15rem 0 .75rem;
+}
+a { color: var(--teal-dk); }
+.between { border-top: 1px solid var(--line); margin-top: 2.5rem; padding-top: 1.5rem; }
+.fb {
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .5rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid var(--teal-dk);
+  color: var(--teal-dk);
+}
+.fb:hover { background: var(--teal-dk); color: var(--paper); }
+</style>
+
+<div class="wrap">
+
+  <p class="eyebrow">A program of SIP Arts Foundation</p>
+  <h1>Perfectly Imperfect Arts</h1>
+
+  <p class="lede">A monthly Show and Tell on Zoom for people who want to make things. Bring whatever you have, finished or not, started or only imagined.</p>
+
+  <p class="pull">Some months the hard part isn't knowing what to make. It's starting.</p>
+
+  <p>Perfectly Imperfect Arts is a low-pressure group for people who love making things but run into real barriers getting to the table. Nobody critiques. Nobody ranks. The name is the whole idea.</p>
+
+  <h2>Who it's for</h2>
+  <p>Neurodivergent people, and anyone facing mental health or accessibility barriers, who want a place to explore creativity and connect with others doing the same. Any experience level. If the obstacle is motivation, energy, or the weight of a blank page more often than it is skill, this group is built for you.</p>
+
+  <h2>How a session goes</h2>
+  <ul class="steps">
+    <li>Welcome and check in</li>
+    <li>Show and Tell, where anyone who wants to share their work does</li>
+    <li>Open conversation about what has been getting in the way, and what has been helping</li>
+    <li>Each person sets one simple creative intention for the next month</li>
+    <li>A brief closing reflection, then we confirm the next meeting date</li>
+  </ul>
+  <p class="note">Sharing is always optional. Cameras are always optional. Coming just to listen is a complete way to take part.</p>
+
+  <h2>When we meet</h2>
+  <div class="when">
+    <span class="date" id="whenDate">Once a month, on Zoom</span>
+    <span class="meta" id="whenTimes">About an hour.</span>
+    <span class="meta" id="whenNote">Register below and we will email you the next date and the link.</span>
+  </div>
+
+  <h2>Register</h2>
+  <div class="card" id="formCard">
+    <form id="reg" novalidate>
+      <div class="row">
+        <div class="field">
+          <label for="firstname">First name</label>
+          <input id="firstname" name="firstname" type="text" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="lastname">Last name <span class="opt">(optional)</span></label>
+          <input id="lastname" name="lastname" type="text" autocomplete="family-name">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="city">City <span class="opt">(optional)</span></label>
+          <input id="city" name="city" type="text" autocomplete="address-level2">
+        </div>
+        <div class="field">
+          <label for="state">State <span class="opt">(optional)</span></label>
+          <input id="state" name="state" type="text" autocomplete="address-level1">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone <span class="opt">(optional)</span></label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel">
+      </div>
+
+      <div class="check">
+        <input id="newsletter" name="newsletter" type="checkbox" value="1">
+        <label for="newsletter">Also send me news from SIP Arts Foundation</label>
+      </div>
+
+      <div class="hp"><label for="website">Leave this empty</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFG1zN5i_gHrCd7s" data-theme="auto"></div>
+
+      <p><button id="submit" type="submit">Send me the next date</button></p>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+
+  <div class="done" id="done" hidden>
+    <h3>You're on the list</h3>
+    <p>Check your email for a confirmation. We'll send you the next date and the Zoom link as soon as it's set.</p>
+    <p class="note">Nothing arrived? Write to <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a> and we'll sort it out.</p>
+  </div>
+
+  <div class="who">
+    <h2>Who leads it</h2>
+    <div class="lead-row">
+      <img class="portrait" src="nae.jpg" alt="Nae Perez" width="360" height="360">
+      <div>
+        <p class="lead-name">Nae Perez</p>
+        <p class="lead-role">Neurodivergent artist, mother, and disability advocate</p>
+        <p>Nae Perez is an autistic mother, disability advocate, artist, and community volunteer. Her daughter's diagnosis helped her recognize and understand her own autistic identity.</p>
+        <p>She founded Perfectly Imperfect Arts to create an inclusive, low-pressure community where neurodivergent people, and others facing mental health or accessibility barriers, can explore creativity, connect, and support one another. She now serves as SIP Arts Foundation's peer support artist, and SIP hosts the sessions so the group has a home and room to grow.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="between">
+    <h2>Between sessions</h2>
+    <p>Nae keeps the Perfectly Imperfect Arts community going on Facebook all month: art news, check-ins, adaptive art ideas, and work by artists with disabilities. Not sure about a Saturday yet? Start there.</p>
+    <p><a class="fb" href="https://www.facebook.com/share/g/1DuBdvtbmV/" target="_blank" rel="noopener">Visit the Facebook group</a></p>
+  </div>
+
+</div>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+/* Evergreen by design. This page states that the group meets monthly and sends
+   people to register for the date. Dates are announced by email, not here, so
+   this page never goes stale and never needs editing.
+   SESSIONS stays empty on purpose. */
+var SESSIONS = [];
+
+(function () {
+  var zones = [
+    { tz: 'America/Chicago', label: 'Central' },
+    { tz: 'America/Los_Angeles', label: 'Pacific' },
+    { tz: 'America/New_York', label: 'Eastern' }
+  ];
+  function timeIn(d, tz) {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: tz, hour: 'numeric', minute: '2-digit'
+    }).format(d);
+  }
+  function dateIn(d, tz) {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: tz, weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
+    }).format(d);
+  }
+  try {
+    var now = Date.now();
+    var next = SESSIONS
+      .map(function (s) { return new Date(s); })
+      .filter(function (d) { return !isNaN(d) && d.getTime() > now; })
+      .sort(function (a, b) { return a - b; })[0];
+
+    var elDate = document.getElementById('whenDate');
+    var elTimes = document.getElementById('whenTimes');
+    var elNote = document.getElementById('whenNote');
+
+    if (next) {
+      elDate.textContent = dateIn(next, 'America/Chicago');
+      elTimes.innerHTML = zones.map(function (z) {
+        return timeIn(next, z.tz) + ' ' + z.label;
+      }).join(' &middot; ');
+      elNote.textContent = 'About an hour, on Zoom. Monthly after that. We email the link before each session.';
+      var b = document.getElementById('submit');
+      if (b) b.textContent = 'Save my spot';
+    }
+  } catch (e) { /* leave the written copy in place */ }
+})();
+
+(function () {
+  var form = document.getElementById('reg');
+  var statusEl = document.getElementById('status');
+  var btn = document.getElementById('submit');
+
+  function say(msg, kind) {
+    statusEl.textContent = msg;
+    statusEl.className = 'status' + (kind ? ' ' + kind : '');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    say('');
+
+    var first = form.firstname.value.trim();
+    var email = form.email.value.trim();
+    if (!first) { say('Please add your first name.', 'err'); form.firstname.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('Please check your email address.', 'err'); form.email.focus(); return; }
+
+    var data = {
+      program: 'perfectly-imperfect',
+      firstname: first,
+      lastname: form.lastname.value.trim(),
+      email: email,
+      city: form.city.value.trim(),
+      state: form.state.value.trim(),
+      phone: form.phone.value.trim(),
+      newsletter: form.newsletter.checked ? '1' : '',
+      website: form.website.value,
+      utm_source: new URLSearchParams(location.search).get('utm_source') || 'website',
+      utm_medium: new URLSearchParams(location.search).get('utm_medium') || 'form',
+      utm_campaign: new URLSearchParams(location.search).get('utm_campaign') || 'perfectly-imperfect'
+    };
+    var t = form.querySelector('[name="cf-turnstile-response"]');
+    data['cf-turnstile-response'] = t ? t.value : '';
+
+    btn.disabled = true;
+    say('Saving your spot...');
+
+    fetch('/api/outreach/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) {
+      return r.json().catch(function () { return { ok: false, error: 'network' }; });
+    }).then(function (res) {
+      if (res && res.ok) {
+        document.getElementById('formCard').hidden = true;
+        document.getElementById('done').hidden = false;
+        document.getElementById('done').scrollIntoView({ block: 'nearest' });
+        return;
+      }
+      btn.disabled = false;
+      if (res && res.error === 'verification') {
+        say('The security check did not go through. Please reload the page and try again.', 'err');
+        if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
+      } else if (res && res.error === 'email') {
+        say('Please check your email address.', 'err');
+      } else {
+        say('Something went wrong on our end. Email info@sipartsfoundation.org and we will register you.', 'err');
+      }
+    }).catch(function () {
+      btn.disabled = false;
+      say('Something went wrong on our end. Email info@sipartsfoundation.org and we will register you.', 'err');
+    });
+  });
+})();
+</script>

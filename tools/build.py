@@ -1,0 +1,136 @@
+#!/usr/bin/env python3
+"""
+Render CMS content into the live HTML pages.
+
+Each managed page carries a marked region:
+
+    <!-- cms:start NAME -->  ...anything...  <!-- cms:end NAME -->
+
+This script reads content/NAME.md, converts the body to HTML, and
+replaces whatever sits between those markers. Everything outside the
+markers is left exactly as it was, so page design, scripts, forms and
+navigation are never touched.
+
+Run with --check to verify without writing.
+"""
+import re
+import sys
+import pathlib
+import html as html_mod
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+CONTENT = ROOT / 'content'
+
+# Which markdown file drives which page region.
+PAGES = {
+    'unmasking': ROOT / 'unmasking' / 'index.html',
+    'survey':    ROOT / 'survey' / 'index.html',
+    'signin':    ROOT / 'signin' / 'index.html',
+}
+
+
+def split_front_matter(text):
+    """Return (metadata dict, body string)."""
+    meta, body = {}, text
+    if text.startswith('---'):
+        end = text.find('\n---', 3)
+        if end != -1:
+            raw = text[3:end]
+            body = text[end + 4:].lstrip('\n')
+            for line in raw.splitlines():
+                if ':' in line:
+                    k, v = line.split(':', 1)
+                    meta[k.strip()] = v.strip().strip('"').strip("'")
+    return meta, body
+
+
+def md_to_html(md):
+    """Small, predictable Markdown subset. No surprises in output."""
+    out, lines = [], md.replace('\r\n', '\n').split('\n')
+    i, n = 0, len(lines)
+    para, list_items, in_list = [], [], False
+
+    def flush_para():
+        if para:
+            out.append('<p>' + inline(' '.join(para).strip()) + '</p>')
+            para.clear()
+
+    def flush_list():
+        nonlocal in_list
+        if list_items:
+            out.append('<ul>' + ''.join(f'<li>{inline(x)}</li>' for x in list_items) + '</ul>')
+            list_items.clear()
+        in_list = False
+
+    def inline(t):
+        t = html_mod.escape(t, quote=False)
+        t = re.sub(r'!\[([^\]]*)\]\(([^)\s]+)\)',
+                   lambda m: f'<img src="{html_mod.escape(m.group(2),True)}" alt="{html_mod.escape(m.group(1),True)}">', t)
+        t = re.sub(r'\[([^\]]+)\]\(([^)\s]+)\)',
+                   lambda m: f'<a href="{html_mod.escape(m.group(2),True)}">{m.group(1)}</a>', t)
+        t = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', t)
+        t = re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)', r'<em>\1</em>', t)
+        return t
+
+    while i < n:
+        line = lines[i].rstrip()
+        if not line.strip():
+            flush_para(); flush_list()
+        elif re.match(r'^#{1,6}\s', line):
+            flush_para(); flush_list()
+            lvl = len(line) - len(line.lstrip('#'))
+            out.append(f'<h{lvl}>{inline(line.lstrip("#").strip())}</h{lvl}>')
+        elif re.match(r'^[-*]\s+', line):
+            flush_para()
+            in_list = True
+            list_items.append(re.sub(r'^[-*]\s+', '', line))
+        else:
+            if in_list:
+                flush_list()
+            para.append(line.strip())
+        i += 1
+    flush_para(); flush_list()
+    return '\n'.join(out)
+
+
+def render(name, path, check=False):
+    md_file = CONTENT / f'{name}.md'
+    if not md_file.exists():
+        return f'skip {name}: no content/{name}.md'
+    if not path.exists():
+        return f'SKIP {name}: {path} missing'
+
+    meta, body = split_front_matter(md_file.read_text(encoding='utf-8'))
+    rendered = md_to_html(body)
+    if meta.get('intro'):
+        rendered = f'<p class="lead">{html_mod.escape(meta["intro"])}</p>\n' + rendered
+
+    page = path.read_text(encoding='utf-8', errors='surrogateescape')
+    pattern = re.compile(
+        rf'(<!--\s*cms:start\s+{re.escape(name)}\s*-->)(.*?)(<!--\s*cms:end\s+{re.escape(name)}\s*-->)',
+        re.S)
+    if not pattern.search(page):
+        return f'SKIP {name}: no cms:start/{name} markers in {path.relative_to(ROOT)}'
+
+    updated = pattern.sub(lambda m: m.group(1) + '\n' + rendered + '\n' + m.group(3), page)
+
+    if meta.get('title'):
+        updated = re.sub(r'(<h1\b[^>]*>)(.*?)(</h1>)',
+                         lambda m: m.group(1) + html_mod.escape(meta['title']) + m.group(3),
+                         updated, count=1, flags=re.S)
+
+    if updated == page:
+        return f'ok   {name}: already current'
+    if check:
+        return f'DIFF {name}: would update {path.relative_to(ROOT)}'
+    path.write_text(updated, encoding='utf-8', errors='surrogateescape')
+    return f'ok   {name}: updated {path.relative_to(ROOT)}'
+
+
+if __name__ == '__main__':
+    check = '--check' in sys.argv
+    results = [render(n, p, check) for n, p in PAGES.items()]
+    for r in results:
+        print(r)
+    if any(r.startswith('SKIP') for r in results):
+        sys.exit(1)
