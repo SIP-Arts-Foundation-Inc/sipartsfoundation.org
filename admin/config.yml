@@ -8,7 +8,7 @@ backend:
   name: github
   repo: SIP-Arts-Foundation-Inc/sipartsfoundation.org
   branch: main
-  base_url: https://sip-decap-oauth.sipartsfoundation.workers.dev
+  base_url: https://sip-decap-oauth.shauna-276.workers.dev
   auth_endpoint: auth
   commit_messages:
     create: 'Add {{collection}} "{{slug}}"'
