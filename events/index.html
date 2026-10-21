@@ -783,6 +783,44 @@ function parseISO(s) {
   return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
 }
 
+/* ============================================================
+   PINNED PROGRAMS — always shown, no date in the sheet
+   ============================================================ */
+var PINNED = [{
+  band: ['Monthly', 'Zoom', 'Ongoing'],
+  name: 'Perfectly Imperfect Arts',
+  meta: [
+    ['Time', 'Once a month, about an hour'],
+    ['Location', 'Zoom, link sent after you register']
+  ],
+  note: 'A low-pressure Show and Tell for people who love making things. Nobody critiques. Nobody ranks. Led by Nae Perez.',
+  cta: 'Register &amp; get the next date \u2192',
+  url: 'https://sipartsfoundation.org/perfectly-imperfect/#reg'
+}];
+
+function renderPinned(grid) {
+  PINNED.forEach(function (p) {
+    var card = document.createElement('div');
+    card.className = 'event-card';
+    var meta = p.meta.map(function (m) {
+      return '<div class="event-meta"><strong>' + m[0] + ':</strong> ' + m[1] + '</div>';
+    }).join('');
+    card.innerHTML =
+      '<div class="event-date-band">' +
+        '<span class="event-month">' + p.band[0] + '</span>' +
+        '<span class="event-day">' + p.band[1] + '</span>' +
+        '<span class="event-weekday">' + p.band[2] + '</span>' +
+      '</div>' +
+      '<div class="event-body">' +
+        '<div class="event-name">' + p.name + '</div>' +
+        meta +
+        (p.note ? '<div class="event-note">' + p.note + '</div>' : '') +
+        '<a class="btn btn-teal" href="' + p.url + '">' + p.cta + '</a>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+}
+
 function loadEvents() {
   var grid = document.getElementById('events-grid');
   var select = document.getElementById('f-event');
@@ -795,16 +833,16 @@ function loadEvents() {
   fetch(SCRIPT_URL)
     .then(function (r) { return r.json(); })
     .then(function (data) {
+      grid.innerHTML = '';
+      renderPinned(grid);
       if (!data.ok || !data.events || data.events.length === 0) {
-        grid.innerHTML = '<div class="loading">No upcoming events right now. Check back soon!</div>';
         return;
       }
-      grid.innerHTML = '';
       // Slim calendar, Aug 2026. Only these sessions show publicly while we
       // rebuild the schedule. Art studio dates are intentionally not listed.
       var shown = data.events.filter(function (ev) { return /family day out/i.test(ev.name || ''); });
       if (shown.length === 0) {
-        grid.innerHTML = '<div class="loading"><strong>Family Day Out</strong><br>Saturday, October 24 and Saturday, November 21, 1:00 to 3:00 PM<br>SIP Arts Foundation, 424 Lebanon Ave, Belleville<br>Stop by anytime! Call or text <a href="tel:+16188232423">618-823-2423</a> to save your spot.</div>';
+        grid.insertAdjacentHTML('beforeend', '<div class="loading"><strong>Family Day Out</strong><br>Saturday, October 24 and Saturday, November 21, 1:00 to 3:00 PM<br>SIP Arts Foundation, 424 Lebanon Ave, Belleville<br>Stop by anytime! Call or text <a href="tel:+16188232423">618-823-2423</a> to save your spot.</div>');
         return;
       }
       shown.forEach(function (ev) {
@@ -867,7 +905,9 @@ function loadEvents() {
       });
     })
     .catch(function () {
-      grid.innerHTML = '<div class="load-error">Just a moment, events are taking a bit to load. <a href="" onclick="location.reload();return false;">Tap here to refresh</a>, or email <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a> and we\'ll register you.</div>';
+      grid.innerHTML = '';
+      renderPinned(grid);
+      grid.insertAdjacentHTML('beforeend', '<div class="load-error">Just a moment, events are taking a bit to load. <a href="" onclick="location.reload();return false;">Tap here to refresh</a>, or email <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a> and we\'ll register you.</div>');
     });
 }
 
