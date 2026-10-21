@@ -1,0 +1,5 @@
+# Only these people can approve changes to the SIP website.
+# GitHub requires their approval on every pull request before it
+# can be merged.
+
+* @shauna-gholston
