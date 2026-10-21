@@ -21,7 +21,18 @@ jobs:
       - name: Render CMS content into the pages
         run: python3 tools/build.py
 
+      - name: Check whether the server credentials are set
+        id: creds
+        run: |
+          if [ -n "${{ secrets.SFTP_HOST }}" ]; then
+            echo "ready=true" >> $GITHUB_OUTPUT
+          else
+            echo "ready=false" >> $GITHUB_OUTPUT
+            echo "No SFTP credentials yet, so the upload step is skipped." >> $GITHUB_STEP_SUMMARY
+          fi
+
       - name: Upload changed files over SFTP
+        if: steps.creds.outputs.ready == 'true'
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
           server: ${{ secrets.SFTP_HOST }}

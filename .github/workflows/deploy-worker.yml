@@ -1,0 +1,44 @@
+name: Deploy the login worker
+
+# Run by hand from the Actions tab. Deploys the Decap CMS OAuth worker
+# to Cloudflare and sets its two GitHub OAuth values, so none of this
+# has to be done from a terminal.
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: worker
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Check out the worker
+        uses: actions/checkout@v4
+
+      - name: Stop early if the Cloudflare token is missing
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID under"
+            echo "Settings > Secrets and variables > Actions, then run this again."
+            exit 1
+          fi
+
+      - name: Deploy the worker
+        run: npx --yes wrangler@4 deploy
+
+      - name: Set the GitHub client id
+        run: printf '%s' "${{ secrets.OAUTH_CLIENT_ID }}" | npx --yes wrangler@4 secret put GITHUB_CLIENT_ID
+
+      - name: Set the GitHub client secret
+        run: printf '%s' "${{ secrets.OAUTH_CLIENT_SECRET }}" | npx --yes wrangler@4 secret put GITHUB_CLIENT_SECRET
+
+      - name: Report the worker address
+        run: |
+          echo "### Login worker deployed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check it is alive by opening the /health path on the worker URL printed above." >> $GITHUB_STEP_SUMMARY
+          echo "That URL must match the callback URL on the GitHub OAuth app." >> $GITHUB_STEP_SUMMARY
