@@ -9,21 +9,21 @@
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal: #1F9A9E;
-    --teal-dark: #146E71;
-    --plum: #6B3B5C;
-    --gold: #D4A95C;
-    --cream: #FBF7F2;
-    --ink: #1F1A1D;
-    --pink: #E0457B;
-    --line: #E8E2DA;
+    --teal: #0E9AA7;
+    --teal-dark: #0A7C87;
+    --plum: #0B2C5C;
+    --gold: #FFD126;
+    --cream: #FAF6EC;
+    --ink: #14243D;
+    --pink: #E4005A;
+    --line: #E3DAC7;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Nunito', system-ui, sans-serif;
     color: var(--ink);
     background: #fff;
     line-height: 1.6;
@@ -40,7 +40,7 @@
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
   .brand img { height: 46px; width: auto; }
   .brand-text { line-height: 1.25; }
-  .brand-name { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.05rem; color: var(--ink); }
+  .brand-name { font-family: 'Nunito', system-ui, sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--ink); }
   .brand-sub { font-size: .72rem; color: var(--teal-dark); font-weight: 500; letter-spacing: .04em; }
   .head-link { font-size: .85rem; font-weight: 500; color: var(--teal-dark); text-decoration: none; white-space: nowrap; }
   .head-link:hover { text-decoration: underline; }
@@ -54,7 +54,7 @@
     border-bottom: 1px solid #ece4d9;
   }
   .hero h1 {
-    font-family: 'Fraunces', serif;
+    font-family: 'Nunito', system-ui, sans-serif;
     font-weight: 700;
     font-size: clamp(1.6rem, 4.5vw, 2.3rem);
     max-width: 760px;
@@ -64,7 +64,7 @@
     max-width: 620px;
     margin: 0 auto;
     font-size: 1.02rem;
-    color: #5a534f;
+    color: #4C5C74;
   }
   .photo-band {
     width: 100%;
@@ -113,12 +113,12 @@
     margin-bottom: 8px;
   }
   h2.section-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Nunito', system-ui, sans-serif;
     font-weight: 700;
     font-size: clamp(1.4rem, 3vw, 1.9rem);
     margin-bottom: 8px;
   }
-  .section-lead { color: #5a534f; max-width: 640px; margin-bottom: 28px; }
+  .section-lead { color: #4C5C74; max-width: 640px; margin-bottom: 28px; }
 
   /* ===== Event cards ===== */
   .events-grid {
@@ -135,7 +135,7 @@
     flex-direction: column;
     transition: box-shadow .2s ease, transform .2s ease;
   }
-  .event-card:hover { box-shadow: 0 10px 28px rgba(31,26,29,.10); transform: translateY(-2px); }
+  .event-card:hover { box-shadow: 0 10px 28px rgba(11,44,92,.10); transform: translateY(-2px); }
   .event-date-band {
     background: var(--cream);
     border-bottom: 3px solid var(--teal);
@@ -145,23 +145,29 @@
     gap: 10px;
   }
   .event-month {
-    font-family: 'Fraunces', serif;
+    font-family: 'Nunito', system-ui, sans-serif;
     font-weight: 700;
     font-size: 1rem;
     color: var(--plum);
   }
   .event-day {
-    font-family: 'Fraunces', serif;
+    font-family: 'Nunito', system-ui, sans-serif;
     font-weight: 700;
     font-size: 1.55rem;
     color: var(--teal-dark);
   }
-  .event-weekday { font-size: .78rem; color: #6f6862; font-weight: 500; }
+  .event-weekday { font-size: .78rem; color: #4C5C74; font-weight: 500; }
   .event-body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; }
-  .event-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.04rem; margin-bottom: 8px; }
-  .event-meta { font-size: .85rem; color: #5a534f; margin-bottom: 4px; }
+  .event-name { font-family: 'Nunito', system-ui, sans-serif; font-weight: 800; font-size: 1.04rem; margin-bottom: 8px; }
+  .event-meta { font-size: .85rem; color: #4C5C74; margin-bottom: 4px; }
   .event-meta strong { color: var(--ink); font-weight: 500; }
   .event-note { font-size: .8rem; color: var(--plum); font-style: italic; margin-top: 4px; }
+  .event-lead { display: flex; align-items: center; gap: 12px; margin: 10px 0 4px; }
+  .event-lead img { width: 54px; height: 54px; border-radius: 999px; object-fit: cover; flex: none;
+    box-shadow: 0 2px 10px rgba(11,44,92,.18); }
+  .event-lead-text { font-size: .8rem; line-height: 1.35; }
+  .event-lead-name { font-weight: 800; color: var(--teal-dark); display: block; }
+  .event-lead-role { color: #4C5C74; }
   .event-body .btn { margin-top: auto; }
   .event-card .btn-teal {
     display: block;
@@ -187,7 +193,7 @@
   .btn-teal { background: var(--teal-dark); color: #fff; }
   .btn-teal:hover { background: var(--teal); }
   .btn-gold { background: var(--gold); color: var(--ink); }
-  .btn-gold:hover { background: #c69a4f; }
+  .btn-gold:hover { background: #E6B800; }
   .hero-cta { margin-top: 22px; font-size: 1.05rem; padding: 14px 32px; }
   .btn-outline {
     background: #fff;
@@ -199,11 +205,30 @@
   .loading, .load-error {
     text-align: center;
     padding: 40px 20px;
-    color: #6f6862;
+    color: #4C5C74;
     font-size: .95rem;
   }
   .load-error { color: var(--plum); }
 
+  /* ===== Season at a glance ===== */
+  .season { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; margin-top: 30px; }
+  .season-month { background: #FDFBF5; border: 1px solid var(--line); border-radius: 16px;
+    padding: 20px 20px 14px; box-shadow: 0 8px 30px rgba(11,44,92,.07); }
+  .season-month h3 { font-family: 'Anton', Impact, sans-serif; font-weight: 400; text-transform: uppercase;
+    font-style: italic; letter-spacing: .028em; font-size: 1.3rem; color: var(--teal-dark);
+    margin: 0 0 12px; padding-bottom: 8px; border-bottom: 3px solid var(--gold); }
+  .season-month ul { list-style: none; margin: 0; padding: 0; }
+  .season-month li { display: flex; gap: 12px; align-items: flex-start; padding: 9px 0; border-top: 1px solid var(--line); }
+  .season-month li:first-child { border-top: none; }
+  .sic { width: 34px; height: 34px; flex: none; margin-top: 1px; }
+  .season-month li span { display: block; font-size: .88rem; line-height: 1.4; }
+  .season-month li b { display: block; font-weight: 800; color: var(--ink); }
+  .season-month li i { display: block; font-style: normal; color: #4C5C74; font-size: .82rem; margin-top: 2px; }
+  .season-month li a { color: var(--teal-dark); font-weight: 700; }
+  .season-off { opacity: .55; }
+  .season-big { background: var(--cream); border-radius: 10px; padding: 10px 10px 10px 8px; margin: 6px -8px; border-top: none; }
+  .season-big b { color: var(--plum); }
+  @media print { .season { grid-template-columns: repeat(2, 1fr); gap: 10px; } .season-month { break-inside: avoid; box-shadow: none; } }
   /* ===== Registration form ===== */
   #register { background: var(--cream); }
   .form-card {
@@ -213,7 +238,7 @@
     padding: 32px 28px;
     max-width: 680px;
     margin: 0 auto;
-    box-shadow: 0 8px 30px rgba(31,26,29,.06);
+    box-shadow: 0 8px 30px rgba(11,44,92,.06);
   }
   .form-row { margin-bottom: 18px; }
   .form-row label {
@@ -230,7 +255,7 @@
     padding: 11px 14px;
     border: 1.5px solid var(--line);
     border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Nunito', system-ui, sans-serif;
     font-size: .95rem;
     color: var(--ink);
     background: #fff;
@@ -238,7 +263,7 @@
   .form-row input:focus,
   .form-row select:focus,
   .form-row textarea:focus {
-    outline: 3px solid rgba(31,154,158,.25);
+    outline: 3px solid rgba(14,154,167,.25);
     border-color: var(--teal);
   }
   .form-two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -276,9 +301,9 @@
     padding: 22px 22px 24px;
     background: #fff;
   }
-  .partner-card h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.05rem; margin-bottom: 8px; color: var(--plum); }
-  .partner-card p { font-size: .88rem; color: #5a534f; margin-bottom: 6px; }
-  .partner-note { font-size: .78rem; color: #6f6862; font-style: italic; }
+  .partner-card h3 { font-family: 'Nunito', system-ui, sans-serif; font-weight: 800; font-size: 1.05rem; margin-bottom: 8px; color: var(--plum); }
+  .partner-card p { font-size: .88rem; color: #4C5C74; margin-bottom: 6px; }
+  .partner-note { font-size: .78rem; color: #4C5C74; font-style: italic; }
 
   /* ===== Footer ===== */
   footer {
@@ -290,7 +315,7 @@
   }
   footer a { color: var(--gold); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
-  .foot-org { font-family: 'Fraunces', serif; font-weight: 600; color: #fff; font-size: 1rem; margin-bottom: 6px; }
+  .foot-org { font-family: 'Nunito', system-ui, sans-serif; font-weight: 800; color: #fff; font-size: 1rem; margin-bottom: 6px; }
 
   @media (prefers-reduced-motion: reduce) {
     .event-card, .btn, .submit-btn { transition: none; }
@@ -378,26 +403,26 @@
 <!-- ============= FEATURED: SUSO + SELF-ADVOCACY COHORT ============= -->
 <section class="feat-band" aria-label="Featured opportunities">
   <style>
-    .feat-band{padding:3.5rem 1.5rem;background:#FBF7F2;}
+    .feat-band{padding:3.5rem 1.5rem;background:#FAF6EC;}
     .feat-wrap{max-width:1280px;margin:0 auto;}
-    .feat-eyebrow{font-family:'DM Sans',system-ui,sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#146E71;text-align:center;margin:0 0 1.4rem;}
+    .feat-eyebrow{font-family:'Nunito',system-ui,sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0A7C87;text-align:center;margin:0 0 1.4rem;}
     .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;}
-    .feat-card{background:#fff;border:1px solid #E8E2DA;border-radius:18px;padding:1.8rem;display:flex;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.05);}
-    .feat-card.suso{border-top:5px solid #146E71;}
-    .feat-card.cohort{border-top:5px solid #6B3B5C;}
+    .feat-card{background:#fff;border:1px solid #E3DAC7;border-radius:18px;padding:1.8rem;display:flex;flex-direction:column;box-shadow:0 8px 30px rgba(0,0,0,.05);}
+    .feat-card.suso{border-top:5px solid #0A7C87;}
+    .feat-card.cohort{border-top:5px solid #0B2C5C;}
     .feat-card.fallfest{border-top:5px solid #D4737F;}
-    .feat-card.transition{border-top:5px solid #D4A95C;}
+    .feat-card.transition{border-top:5px solid #FFD126;}
     .feat-card.transition .feat-tag{background:rgba(212,169,92,.18);color:#8A6A24;}
     .feat-card.transition .feat-btn{background:#8A6A24;}
     .feat-card.fallfest .feat-tag{background:rgba(212,115,127,.14);color:#B4525F;}
     .feat-card.fallfest .feat-btn{background:#B4525F;}
-    .feat-tag{display:inline-block;align-self:flex-start;font-family:'DM Sans',system-ui,sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:.3rem .8rem;border-radius:100px;margin:0 0 .7rem;background:rgba(31,154,158,.12);color:#146E71;}
-    .feat-card.cohort .feat-tag{background:rgba(107,59,92,.12);color:#6B3B5C;}
-    .feat-card h3{font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:1.5rem;line-height:1.15;color:#1F1A1D;margin:0 0 .5rem;}
-    .feat-deadline{display:inline-block;align-self:flex-start;background:#D4A95C;color:#1F1A1D;font-family:'DM Sans',system-ui,sans-serif;font-weight:700;font-size:.85rem;padding:.32rem .8rem;border-radius:7px;margin:0 0 .7rem;}
-    .feat-card p{font-family:'DM Sans',system-ui,sans-serif;font-size:.95rem;line-height:1.6;color:#5A534F;margin:0 0 1.1rem;}
-    .feat-btn{margin-top:auto;align-self:flex-start;font-family:'DM Sans',system-ui,sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:.72rem 1.5rem;border-radius:100px;background:#146E71;color:#fff;}
-    .feat-card.cohort .feat-btn{background:#6B3B5C;}
+    .feat-tag{display:inline-block;align-self:flex-start;font-family:'Nunito',system-ui,sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:.3rem .8rem;border-radius:100px;margin:0 0 .7rem;background:rgba(14,154,167,.12);color:#0A7C87;}
+    .feat-card.cohort .feat-tag{background:rgba(107,59,92,.12);color:#0B2C5C;}
+    .feat-card h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-style:italic;letter-spacing:.028em;font-size:1.5rem;line-height:1.15;color:#14243D;margin:0 0 .5rem;}
+    .feat-deadline{display:inline-block;align-self:flex-start;background:#FFD126;color:#14243D;font-family:'Nunito',system-ui,sans-serif;font-weight:700;font-size:.85rem;padding:.32rem .8rem;border-radius:7px;margin:0 0 .7rem;}
+    .feat-card p{font-family:'Nunito',system-ui,sans-serif;font-size:.95rem;line-height:1.6;color:#4C5C74;margin:0 0 1.1rem;}
+    .feat-btn{margin-top:auto;align-self:flex-start;font-family:'Nunito',system-ui,sans-serif;font-weight:700;font-size:.9rem;text-decoration:none;padding:.72rem 1.5rem;border-radius:100px;background:#0A7C87;color:#fff;}
+    .feat-card.cohort .feat-btn{background:#0B2C5C;}
     @media(max-width:1240px){.feat-grid{grid-template-columns:1fr 1fr;}}
     @media(max-width:820px){.feat-grid{grid-template-columns:1fr;}}
   </style>
@@ -431,20 +456,20 @@
 
 <section id="arc-events">
   <style>
-    #arc-events{background:#FBF7F2;}
+    #arc-events{background:#FAF6EC;}
     #arc-events .arc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem;}
-    #arc-events .arc-card{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid #E8E2DA;border-left:5px solid #146E71;border-radius:14px;padding:1.1rem 1.2rem;text-decoration:none;transition:transform .15s,box-shadow .2s;}
+    #arc-events .arc-card{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid #E3DAC7;border-left:5px solid #0A7C87;border-radius:14px;padding:1.1rem 1.2rem;text-decoration:none;transition:transform .15s,box-shadow .2s;}
     #arc-events .arc-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.07);}
-    #arc-events .arc-badge{flex-shrink:0;width:56px;text-align:center;background:rgba(31,154,158,.1);border-radius:10px;padding:.5rem 0;}
-    #arc-events .arc-badge-m{display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#146E71;}
-    #arc-events .arc-badge-d{display:block;font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:800;color:#1F1A1D;line-height:1;}
-    #arc-events .arc-name{display:block;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1.02rem;line-height:1.25;color:#1F1A1D;margin-bottom:.25rem;}
-    #arc-events .arc-meta{display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:.85rem;color:#5A534F;line-height:1.4;}
-    #arc-events .arc-link{display:block;font-family:'DM Sans',system-ui,sans-serif;font-size:.8rem;font-weight:700;color:#146E71;margin-top:.45rem;}
-    #arc-events .arc-msg{font-family:'DM Sans',system-ui,sans-serif;color:#5A534F;grid-column:1/-1;}
-    #arc-events .arc-msg a{color:#146E71;font-weight:700;}
+    #arc-events .arc-badge{flex-shrink:0;width:56px;text-align:center;background:rgba(14,154,167,.1);border-radius:10px;padding:.5rem 0;}
+    #arc-events .arc-badge-m{display:block;font-family:'Nunito',system-ui,sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0A7C87;}
+    #arc-events .arc-badge-d{display:block;font-family:'Nunito',system-ui,sans-serif;font-size:1.5rem;font-weight:800;color:#14243D;line-height:1;}
+    #arc-events .arc-name{display:block;font-family:'Nunito',system-ui,sans-serif;font-weight:800;font-size:1.02rem;line-height:1.25;color:#14243D;margin-bottom:.25rem;}
+    #arc-events .arc-meta{display:block;font-family:'Nunito',system-ui,sans-serif;font-size:.85rem;color:#4C5C74;line-height:1.4;}
+    #arc-events .arc-link{display:block;font-family:'Nunito',system-ui,sans-serif;font-size:.8rem;font-weight:700;color:#0A7C87;margin-top:.45rem;}
+    #arc-events .arc-msg{font-family:'Nunito',system-ui,sans-serif;color:#4C5C74;grid-column:1/-1;}
+    #arc-events .arc-msg a{color:#0A7C87;font-weight:700;}
     #arc-events .arc-more{margin-top:1.4rem;}
-    #arc-events .arc-more a{font-family:'DM Sans',system-ui,sans-serif;font-weight:700;color:#146E71;text-decoration:none;}
+    #arc-events .arc-more a{font-family:'Nunito',system-ui,sans-serif;font-weight:700;color:#0A7C87;text-decoration:none;}
     @media(max-width:760px){#arc-events .arc-grid{grid-template-columns:1fr;}}
   </style>
   <div class="wrap">
@@ -517,6 +542,85 @@
   </div>
 </section>
 
+<!-- ===== SEASON AT A GLANCE ===== -->
+<section id="season" style="background:var(--cream);">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center;">October 2026 through April 2027</p>
+    <h2 class="section-title" style="text-align:center;">The season at a glance</h2>
+    <p class="section-lead" style="text-align:center;margin-left:auto;margin-right:auto;">Everything on the books between now and the Unmasking showcase. Unless a different place is listed, we are at our Belleville office, 424 Lebanon Ave. <a href="/calendar.html">Open the printable calendar &rarr;</a></p>
+    <div class="season" id="season-grid"></div>
+  </div>
+</section>
+<script>
+(function(){
+var IC={
+ harvest:['#F58220','<path d="M41.9 24.5C41.4 27.8 39.6 33.1 38.0 35.2C36.3 37.4 35.1 35.6 32.1 37.5C29.1 39.3 22.8 46.8 20.0 46.3C17.1 45.8 16.6 37.7 14.9 34.6C13.3 31.5 11.8 30.3 10.2 27.8C8.6 25.3 5.5 22.7 5.2 19.5C4.9 16.4 5.7 10.6 8.5 8.8C11.4 7.0 18.3 8.6 22.2 8.7C26.2 8.9 28.9 8.8 32.0 10.0C35.1 11.1 39.4 13.2 41.0 15.7C42.7 18.1 42.4 21.3 41.9 24.5Z"/><circle cx="23.1" cy="44.2" r="1.6"/><circle cx="3.2" cy="27.9" r="1.9"/>'],
+ transition:['#0B2C5C','<path d="M40.5 23.8C40.3 26.8 39.0 30.2 37.6 32.6C36.1 35.0 34.5 37.4 31.8 38.1C29.1 38.7 24.4 36.3 21.3 36.5C18.2 36.6 15.9 39.9 13.3 39.1C10.7 38.3 7.1 35.2 5.7 31.7C4.3 28.1 4.4 21.1 5.1 17.7C5.8 14.2 7.3 12.7 9.9 11.1C12.4 9.5 17.0 8.2 20.5 7.9C23.9 7.7 27.3 8.7 30.3 9.8C33.3 11.0 36.8 12.5 38.4 14.8C40.1 17.1 40.6 20.9 40.5 23.8Z"/><circle cx="5.3" cy="29.6" r="1.8"/><circle cx="17.0" cy="3.2" r="2.0"/>'],
+ unmask:['#0B2C5C','<path d="M42.7 22.4C42.8 25.3 39.7 28.2 37.9 31.8C36.2 35.4 34.7 42.2 32.3 44.0C29.8 45.8 26.2 44.6 23.4 42.7C20.7 40.8 17.7 35.2 15.6 32.6C13.4 30.0 11.4 29.5 10.5 27.2C9.7 24.9 10.5 21.6 10.6 18.6C10.7 15.6 9.8 11.2 11.4 9.1C13.0 7.1 17.2 6.2 20.2 6.3C23.2 6.3 26.7 8.2 29.5 9.5C32.3 10.8 34.9 12.2 37.2 14.3C39.4 16.4 42.6 19.4 42.7 22.4Z"/><circle cx="19.8" cy="44.0" r="2.1"/><circle cx="14.1" cy="42.6" r="1.4"/><circle cx="12.7" cy="41.5" r="2.2"/><circle cx="44.8" cy="25.4" r="2.6"/>'],
+ parents:['#0E9AA7','<path d="M39.4 24.3C40.0 26.8 42.0 30.9 40.2 32.9C38.5 34.9 32.0 35.4 29.1 36.3C26.1 37.1 25.0 38.6 22.6 37.9C20.2 37.3 17.0 34.0 14.9 32.3C12.7 30.6 10.4 30.1 9.5 27.9C8.5 25.7 8.1 21.3 9.2 19.0C10.2 16.6 13.5 16.3 15.8 13.8C18.2 11.4 21.4 4.8 23.5 4.3C25.6 3.7 26.2 8.3 28.5 10.5C30.7 12.7 35.1 15.2 36.9 17.5C38.7 19.8 38.9 21.7 39.4 24.3Z"/><circle cx="31.0" cy="5.1" r="1.7"/><circle cx="39.1" cy="36.0" r="2.1"/><circle cx="13.0" cy="43.7" r="1.4"/><circle cx="38.6" cy="9.6" r="2.2"/>'],
+ pi:['#0A7C87','<path d="M41.3 23.9C40.7 26.7 36.1 26.9 34.7 29.6C33.2 32.4 34.8 38.6 32.6 40.4C30.3 42.1 24.5 40.5 21.3 40.2C18.0 40.0 14.8 41.1 13.2 38.8C11.6 36.5 12.8 29.3 11.7 26.3C10.7 23.3 7.2 23.9 6.8 20.8C6.4 17.7 7.1 10.2 9.1 7.6C11.2 5.0 15.7 5.7 19.3 5.3C22.8 4.9 27.3 3.9 30.5 5.2C33.6 6.4 36.5 9.7 38.3 12.8C40.1 15.9 41.9 21.1 41.3 23.9Z"/><circle cx="31.7" cy="6.0" r="2.4"/><circle cx="10.1" cy="40.4" r="2.3"/>'],
+ ausome:['#FFD126','<path d="M41.7 23.8C41.4 26.4 35.8 29.4 33.5 31.4C31.3 33.4 30.1 35.2 28.1 36.0C26.2 36.7 24.4 36.3 21.9 36.1C19.4 36.0 15.4 36.3 13.2 35.3C11.0 34.2 10.0 32.7 8.7 29.9C7.4 27.1 4.4 21.5 5.4 18.5C6.4 15.5 12.4 13.4 14.9 12.0C17.4 10.6 17.7 10.8 20.6 10.1C23.5 9.4 30.0 6.9 32.4 7.9C34.8 8.9 33.5 13.3 35.1 16.0C36.6 18.6 41.9 21.3 41.7 23.8Z"/><circle cx="25.8" cy="3.4" r="2.5"/><circle cx="18.3" cy="5.4" r="1.5"/><circle cx="12.4" cy="5.1" r="2.1"/><circle cx="6.8" cy="38.6" r="1.2"/>'],
+ mlk:['#E4005A','<path d="M40.5 23.8C40.3 26.8 39.0 30.2 37.6 32.6C36.1 35.0 34.5 37.4 31.8 38.1C29.1 38.7 24.4 36.3 21.3 36.5C18.2 36.6 15.9 39.9 13.3 39.1C10.7 38.3 7.1 35.2 5.7 31.7C4.3 28.1 4.4 21.1 5.1 17.7C5.8 14.2 7.3 12.7 9.9 11.1C12.4 9.5 17.0 8.2 20.5 7.9C23.9 7.7 27.3 8.7 30.3 9.8C33.3 11.0 36.8 12.5 38.4 14.8C40.1 17.1 40.6 20.9 40.5 23.8Z"/><circle cx="5.3" cy="29.6" r="1.8"/><circle cx="17.0" cy="3.2" r="2.0"/>'],
+ family:['#E4005A','<path d="M40.3 23.0C40.3 26.5 41.7 32.4 40.6 35.3C39.5 38.1 36.7 38.5 33.7 40.0C30.7 41.4 25.9 44.7 22.4 43.9C18.9 43.1 15.1 37.4 12.7 35.1C10.3 32.8 9.1 32.9 8.1 30.2C7.1 27.5 6.4 21.9 6.8 18.9C7.3 15.8 8.3 12.8 10.8 11.7C13.3 10.5 18.3 12.6 21.7 12.0C25.1 11.3 28.1 7.4 31.3 7.8C34.5 8.2 39.3 11.9 40.8 14.4C42.3 16.9 40.4 19.5 40.3 23.0Z"/><circle cx="36.7" cy="41.9" r="1.7"/><circle cx="38.0" cy="40.4" r="1.2"/>'],
+ showcase:['#071F42','<path d="M41.3 23.9C40.7 26.7 36.1 26.9 34.7 29.6C33.2 32.4 34.8 38.6 32.6 40.4C30.3 42.1 24.5 40.5 21.3 40.2C18.0 40.0 14.8 41.1 13.2 38.8C11.6 36.5 12.8 29.3 11.7 26.3C10.7 23.3 7.2 23.9 6.8 20.8C6.4 17.7 7.1 10.2 9.1 7.6C11.2 5.0 15.7 5.7 19.3 5.3C22.8 4.9 27.3 3.9 30.5 5.2C33.6 6.4 36.5 9.7 38.3 12.8C40.1 15.9 41.9 21.1 41.3 23.9Z"/><circle cx="31.7" cy="6.0" r="2.4"/><circle cx="10.1" cy="40.4" r="2.3"/>'],
+ deadline:['#F58220','<path d="M42.7 22.4C42.8 25.3 39.7 28.2 37.9 31.8C36.2 35.4 34.7 42.2 32.3 44.0C29.8 45.8 26.2 44.6 23.4 42.7C20.7 40.8 17.7 35.2 15.6 32.6C13.4 30.0 11.4 29.5 10.5 27.2C9.7 24.9 10.5 21.6 10.6 18.6C10.7 15.6 9.8 11.2 11.4 9.1C13.0 7.1 17.2 6.2 20.2 6.3C23.2 6.3 26.7 8.2 29.5 9.5C32.3 10.8 34.9 12.2 37.2 14.3C39.4 16.4 42.6 19.4 42.7 22.4Z"/><circle cx="19.8" cy="44.0" r="2.1"/><circle cx="14.1" cy="42.6" r="1.4"/><circle cx="12.7" cy="41.5" r="2.2"/><circle cx="44.8" cy="25.4" r="2.6"/>'],
+ party:['#8CC63F','<path d="M40.3 23.0C40.3 26.5 41.7 32.4 40.6 35.3C39.5 38.1 36.7 38.5 33.7 40.0C30.7 41.4 25.9 44.7 22.4 43.9C18.9 43.1 15.1 37.4 12.7 35.1C10.3 32.8 9.1 32.9 8.1 30.2C7.1 27.5 6.4 21.9 6.8 18.9C7.3 15.8 8.3 12.8 10.8 11.7C13.3 10.5 18.3 12.6 21.7 12.0C25.1 11.3 28.1 7.4 31.3 7.8C34.5 8.2 39.3 11.9 40.8 14.4C42.3 16.9 40.4 19.5 40.3 23.0Z"/><circle cx="36.7" cy="41.9" r="1.7"/><circle cx="38.0" cy="40.4" r="1.2"/>']
+};
+function ico(k){var c=IC[k];return '<svg viewBox="0 0 48 48" class="sic" aria-hidden="true" fill="'+c[0]+'">'+c[1]+'</svg>';}
+var WR='5:00 to 7:00 PM \u00b7 1015 Century Dr, Edwardsville';
+var NOON='12:00 to 3:00 PM';
+var S=[
+['October',[
+ ['harvest','Sat 24 \u00b7 Wonder Harvest prep day','12:00 to 4:00 PM'],
+ ['family','Sat 24 \u00b7 Family Day Out','1:00 to 3:00 PM'],
+ ['harvest','Fri 30 \u00b7 Wonder Harvest festival','4:00 to 9:00 PM']]],
+['November',[
+ ['transition','Tue 3 \u00b7 Transition Planning: Life After High School','6:00 PM \u00b7 Online \u00b7 <a href="https://sipaf.org/transition">register</a>'],
+ ['unmask','Sat 7 \u00b7 Unmasking work session',NOON],
+ ['transition','Thu 12 \u00b7 My Life, My Voice: Charting the LifeCourse','6:00 PM \u00b7 In person \u00b7 <a href="https://sipaf.org/transition">register</a>'],
+ ['unmask','Sat 14 \u00b7 Unmasking work session',NOON],
+ ['parents','Tue 17 \u00b7 We Rock the Spectrum parent group',WR],
+ ['family','Sat 21 \u00b7 Family Day Out','1:00 to 3:00 PM'],
+ ['pi','Sat 21 \u00b7 Perfectly Imperfect Arts','3:30 PM Central \u00b7 On Zoom \u00b7 <a href="/perfectly-imperfect/#reg">register for the link</a>']]],
+['December',[
+ ['unmask','Sat 5 \u00b7 Unmasking work session',NOON],
+ ['party','Sat 5 \u00b7 Winter party','6:00 PM'],
+ ['parents','Tue 15 \u00b7 We Rock the Spectrum parent group',WR]]],
+['January',[
+ ['unmask','Sat 16 \u00b7 Unmasking work session',NOON],
+ ['mlk','Mon 18 \u00b7 MLK Day kids sign painting',NOON+' \u00b7 drop in anytime'],
+ ['parents','Tue 19 \u00b7 We Rock the Spectrum parent group',WR],
+ ['ausome','Sat 23 \u00b7 Ausome Expressions begins',NOON+' \u00b7 Session 1 of 10'],
+ ['ausome','Sat 30 \u00b7 Ausome Expressions',NOON+' \u00b7 Session 2']]],
+['February',[
+ ['ausome','Sat 6 \u00b7 Ausome Expressions',NOON+' \u00b7 Session 3'],
+ ['ausome','Sat 13 \u00b7 Ausome Expressions',NOON+' \u00b7 Session 4'],
+ ['deadline','Mon 15 \u00b7 Free sign requests close','Last day to ask for Unmasking panels'],
+ ['parents','Tue 16 \u00b7 We Rock the Spectrum parent group',WR],
+ ['ausome','Sat 20 \u00b7 Ausome Expressions',NOON+' \u00b7 Session 5'],
+ ['ausome','Sat 27 \u00b7 Ausome Expressions',NOON+' \u00b7 Session 6']]],
+['March',[
+ ['ausome','Sat 6 \u00b7 Ausome Expressions',NOON+' \u00b7 Session 7'],
+ ['ausome','Sat 13 \u00b7 Ausome Expressions',NOON+' \u00b7 Session 8'],
+ ['parents','Tue 16 \u00b7 We Rock the Spectrum parent group',WR],
+ ['ausome','Sat 20 \u00b7 No session','Spring break','off'],
+ ['ausome','Sat 27 \u00b7 Ausome Expressions',NOON+' \u00b7 Session 9']]],
+['April',[
+ ['ausome','Sat 3 \u00b7 Ausome Expressions',NOON+' \u00b7 Session 10, the last one'],
+ ['showcase','Sat 3 \u00b7 Unmasking in the MetroEast showcase','Noon \u00b7 Free and open to everyone \u00b7 <a href="/unmasking/">about the project</a>','big'],
+ ['parents','Tue 20 \u00b7 We Rock the Spectrum parent group',WR]]]];
+var g=document.getElementById('season-grid'),h='';
+S.forEach(function(m){
+  h+='<div class="season-month"><h3>'+m[0]+'</h3><ul>';
+  m[1].forEach(function(e){
+    h+='<li'+(e[3]?' class="season-'+e[3]+'"':'')+'>'+ico(e[0])
+      +'<span><b>'+e[1]+'</b>'+(e[2]?'<i>'+e[2]+'</i>':'')+'</span></li>';
+  });
+  h+='</ul></div>';
+});
+g.innerHTML=h;
+})();
+</script>
 <!-- ===== REGISTRATION FORM ===== -->
 <section id="register">
   <div class="wrap">
@@ -631,7 +735,7 @@
 <section id="partners">
   <style>
     .partner-logo{display:block;width:100%;max-width:260px;height:92px;object-fit:contain;object-position:left center;margin:0 0 .9rem;}
-    .partner-wordmark{display:flex;align-items:center;justify-content:center;height:92px;max-width:260px;margin:0 0 .9rem;padding:0 1.1rem;border:1px solid #E8E2DA;border-radius:12px;background:#FBF7F2;font-family:'Fraunces',Georgia,serif;font-weight:800;font-size:1.25rem;line-height:1.15;color:#6B3B5C;text-align:center;}
+    .partner-wordmark{display:flex;align-items:center;justify-content:center;height:92px;max-width:260px;margin:0 0 .9rem;padding:0 1.1rem;border:1px solid #E3DAC7;border-radius:12px;background:#FAF6EC;font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-style:italic;letter-spacing:.028em;font-size:1.25rem;line-height:1.15;color:#0B2C5C;text-align:center;}
   </style>
   <div class="wrap">
     <p class="eyebrow">Community Partner Programs</p>
@@ -783,6 +887,57 @@ function parseISO(s) {
   return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
 }
 
+/* ============================================================
+   PINNED PROGRAMS - always shown, no date in the sheet
+   ============================================================ */
+var PINNED = [{
+  band: ['Monthly', 'Zoom', 'Ongoing'],
+  name: 'Perfectly Imperfect Arts',
+  meta: [
+    ['Time', 'Once a month, 3:30 PM Central, about an hour'],
+    ['Location', 'Zoom, link sent after you register']
+  ],
+  note: 'A low-pressure Show and Tell for people who love making things. Nobody critiques. Nobody ranks.',
+  lead: {
+    img: 'https://sipartsfoundation.org/perfectly-imperfect/nae.jpg',
+    name: 'Nae Perez',
+    role: 'Peer support artist, SIP Arts Foundation'
+  },
+  cta: 'Register &amp; get the next date \u2192',
+  url: 'https://sipartsfoundation.org/perfectly-imperfect/#reg'
+}];
+
+function renderPinned(grid) {
+  PINNED.forEach(function (p) {
+    var card = document.createElement('div');
+    card.className = 'event-card';
+    var meta = p.meta.map(function (m) {
+      return '<div class="event-meta"><strong>' + m[0] + ':</strong> ' + m[1] + '</div>';
+    }).join('');
+    card.innerHTML =
+      '<div class="event-date-band">' +
+        '<span class="event-month">' + p.band[0] + '</span>' +
+        '<span class="event-day">' + p.band[1] + '</span>' +
+        '<span class="event-weekday">' + p.band[2] + '</span>' +
+      '</div>' +
+      '<div class="event-body">' +
+        '<div class="event-name">' + p.name + '</div>' +
+        meta +
+        (p.note ? '<div class="event-note">' + p.note + '</div>' : '') +
+        (p.lead ?
+          '<div class="event-lead">' +
+            '<img src="' + p.lead.img + '" alt="' + p.lead.name + '" width="54" height="54" loading="lazy">' +
+            '<div class="event-lead-text">' +
+              '<span class="event-lead-name">' + p.lead.name + '</span>' +
+              '<span class="event-lead-role">' + p.lead.role + '</span>' +
+            '</div>' +
+          '</div>' : '') +
+        '<a class="btn btn-teal" href="' + p.url + '">' + p.cta + '</a>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+}
+
 function loadEvents() {
   var grid = document.getElementById('events-grid');
   var select = document.getElementById('f-event');
@@ -795,16 +950,16 @@ function loadEvents() {
   fetch(SCRIPT_URL)
     .then(function (r) { return r.json(); })
     .then(function (data) {
+      grid.innerHTML = '';
+      renderPinned(grid);
       if (!data.ok || !data.events || data.events.length === 0) {
-        grid.innerHTML = '<div class="loading">No upcoming events right now. Check back soon!</div>';
         return;
       }
-      grid.innerHTML = '';
       // Slim calendar, Aug 2026. Only these sessions show publicly while we
       // rebuild the schedule. Art studio dates are intentionally not listed.
       var shown = data.events.filter(function (ev) { return /family day out/i.test(ev.name || ''); });
       if (shown.length === 0) {
-        grid.innerHTML = '<div class="loading"><strong>Family Day Out</strong><br>Saturday, October 24 and Saturday, November 21, 1:00 to 3:00 PM<br>SIP Arts Foundation, 424 Lebanon Ave, Belleville<br>Stop by anytime! Call or text <a href="tel:+16188232423">618-823-2423</a> to save your spot.</div>';
+        grid.insertAdjacentHTML('beforeend', '<div class="loading"><strong>Family Day Out</strong><br>Saturday, October 24 and Saturday, November 21, 1:00 to 3:00 PM<br>SIP Arts Foundation, 424 Lebanon Ave, Belleville<br>Stop by anytime! Call or text <a href="tel:+16188232423">618-823-2423</a> to save your spot.</div>');
         return;
       }
       shown.forEach(function (ev) {
@@ -867,7 +1022,9 @@ function loadEvents() {
       });
     })
     .catch(function () {
-      grid.innerHTML = '<div class="load-error">Just a moment, events are taking a bit to load. <a href="" onclick="location.reload();return false;">Tap here to refresh</a>, or email <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a> and we\'ll register you.</div>';
+      grid.innerHTML = '';
+      renderPinned(grid);
+      grid.insertAdjacentHTML('beforeend', '<div class="load-error">Just a moment, events are taking a bit to load. <a href="" onclick="location.reload();return false;">Tap here to refresh</a>, or email <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a> and we\'ll register you.</div>');
     });
 }
 
@@ -938,12 +1095,6 @@ loadEvents();
 <script src="/sip-donate.js" defer></script>
 <script src="https://sipartsfoundation.org/stay-connected.js?v=0926b" defer></script>
 <style>#sip-review{display:flex;align-items:center;gap:14px;max-width:420px;margin:18px auto;padding:12px 16px;background:#fff;color:#16233f;border:1px solid #16233f26;border-radius:12px;font:500 15px/1.35 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;text-align:left;box-sizing:border-box}
-#sip-review .q{flex:0 0 76px;width:76px;height:76px;display:block}#sip-review .q svg{width:100%;height:100%;display:block}
-#sip-review b{display:block;font-weight:700;font-size:16px;color:#16233f}
-#sip-review a{color:#075a9c;font-weight:700;text-decoration:underline;text-underline-offset:3px}
-#sip-review small{display:block;color:#526078;font-size:12px;margin-top:2px}
-@media (max-width:480px){#sip-review .q{display:none}#sip-review{margin:14px 16px}}</style><div id="sip-review" hidden><span class="q"><svg role="img" aria-label="QR code to leave a Google review" focusable="false" version="1.1" viewBox="0 0 39 39" xmlns="http://www.w3.org/2000/svg"><path d="M1,1H2V2H1zM2,1H3V2H2zM3,1H4V2H3zM4,1H5V2H4zM5,1H6V2H5zM6,1H7V2H6zM7,1H8V2H7zM10,1H11V2H10zM14,1H15V2H14zM16,1H17V2H16zM17,1H18V2H17zM19,1H20V2H19zM24,1H25V2H24zM26,1H27V2H26zM29,1H30V2H29zM31,1H32V2H31zM32,1H33V2H32zM33,1H34V2H33zM34,1H35V2H34zM35,1H36V2H35zM36,1H37V2H36zM37,1H38V2H37zM1,2H2V3H1zM7,2H8V3H7zM14,2H15V3H14zM15,2H16V3H15zM18,2H19V3H18zM22,2H23V3H22zM26,2H27V3H26zM27,2H28V3H27zM28,2H29V3H28zM29,2H30V3H29zM31,2H32V3H31zM37,2H38V3H37zM1,3H2V4H1zM3,3H4V4H3zM4,3H5V4H4zM5,3H6V4H5zM7,3H8V4H7zM9,3H10V4H9zM11,3H12V4H11zM14,3H15V4H14zM15,3H16V4H15zM19,3H20V4H19zM20,3H21V4H20zM22,3H23V4H22zM23,3H24V4H23zM24,3H25V4H24zM29,3H30V4H29zM31,3H32V4H31zM33,3H34V4H33zM34,3H35V4H34zM35,3H36V4H35zM37,3H38V4H37zM1,4H2V5H1zM3,4H4V5H3zM4,4H5V5H4zM5,4H6V5H5zM7,4H8V5H7zM9,4H10V5H9zM10,4H11V5H10zM11,4H12V5H11zM14,4H15V5H14zM16,4H17V5H16zM18,4H19V5H18zM21,4H22V5H21zM23,4H24V5H23zM26,4H27V5H26zM27,4H28V5H27zM31,4H32V5H31zM33,4H34V5H33zM34,4H35V5H34zM35,4H36V5H35zM37,4H38V5H37zM1,5H2V6H1zM3,5H4V6H3zM4,5H5V6H4zM5,5H6V6H5zM7,5H8V6H7zM9,5H10V6H9zM11,5H12V6H11zM13,5H14V6H13zM15,5H16V6H15zM17,5H18V6H17zM18,5H19V6H18zM19,5H20V6H19zM20,5H21V6H20zM21,5H22V6H21zM22,5H23V6H22zM23,5H24V6H23zM24,5H25V6H24zM26,5H27V6H26zM29,5H30V6H29zM31,5H32V6H31zM33,5H34V6H33zM34,5H35V6H34zM35,5H36V6H35zM37,5H38V6H37zM1,6H2V7H1zM7,6H8V7H7zM9,6H10V7H9zM10,6H11V7H10zM12,6H13V7H12zM13,6H14V7H13zM14,6H15V7H14zM15,6H16V7H15zM16,6H17V7H16zM17,6H18V7H17zM18,6H19V7H18zM21,6H22V7H21zM22,6H23V7H22zM23,6H24V7H23zM26,6H27V7H26zM27,6H28V7H27zM28,6H29V7H28zM31,6H32V7H31zM37,6H38V7H37zM1,7H2V8H1zM2,7H3V8H2zM3,7H4V8H3zM4,7H5V8H4zM5,7H6V8H5zM6,7H7V8H6zM7,7H8V8H7zM9,7H10V8H9zM11,7H12V8H11zM13,7H14V8H13zM15,7H16V8H15zM17,7H18V8H17zM19,7H20V8H19zM21,7H22V8H21zM23,7H24V8H23zM25,7H26V8H25zM27,7H28V8H27zM29,7H30V8H29zM31,7H32V8H31zM32,7H33V8H32zM33,7H34V8H33zM34,7H35V8H34zM35,7H36V8H35zM36,7H37V8H36zM37,7H38V8H37zM9,8H10V9H9zM12,8H13V9H12zM13,8H14V9H13zM14,8H15V9H14zM18,8H19V9H18zM19,8H20V9H19zM21,8H22V9H21zM22,8H23V9H22zM23,8H24V9H23zM25,8H26V9H25zM1,9H2V10H1zM3,9H4V10H3zM4,9H5V10H4zM5,9H6V10H5zM6,9H7V10H6zM7,9H8V10H7zM11,9H12V10H11zM17,9H18V10H17zM21,9H22V10H21zM23,9H24V10H23zM26,9H27V10H26zM28,9H29V10H28zM31,9H32V10H31zM32,9H33V10H32zM33,9H34V10H33zM34,9H35V10H34zM35,9H36V10H35zM4,10H5V11H4zM8,10H9V11H8zM11,10H12V11H11zM13,10H14V11H13zM15,10H16V11H15zM16,10H17V11H16zM18,10H19V11H18zM19,10H20V11H19zM20,10H21V11H20zM21,10H22V11H21zM22,10H23V11H22zM24,10H25V11H24zM26,10H27V11H26zM29,10H30V11H29zM30,10H31V11H30zM32,10H33V11H32zM34,10H35V11H34zM36,10H37V11H36zM2,11H3V12H2zM3,11H4V12H3zM4,11H5V12H4zM5,11H6V12H5zM7,11H8V12H7zM9,11H10V12H9zM10,11H11V12H10zM11,11H12V12H11zM13,11H14V12H13zM16,11H17V12H16zM17,11H18V12H17zM19,11H20V12H19zM21,11H22V12H21zM28,11H29V12H28zM29,11H30V12H29zM31,11H32V12H31zM32,11H33V12H32zM33,11H34V12H33zM34,11H35V12H34zM36,11H37V12H36zM37,11H38V12H37zM3,12H4V13H3zM6,12H7V13H6zM8,12H9V13H8zM9,12H10V13H9zM11,12H12V13H11zM13,12H14V13H13zM16,12H17V13H16zM22,12H23V13H22zM23,12H24V13H23zM27,12H28V13H27zM28,12H29V13H28zM30,12H31V13H30zM32,12H33V13H32zM33,12H34V13H33zM37,12H38V13H37zM1,13H2V14H1zM2,13H3V14H2zM3,13H4V14H3zM4,13H5V14H4zM6,13H7V14H6zM7,13H8V14H7zM9,13H10V14H9zM10,13H11V14H10zM11,13H12V14H11zM12,13H13V14H12zM13,13H14V14H13zM14,13H15V14H14zM16,13H17V14H16zM17,13H18V14H17zM18,13H19V14H18zM24,13H25V14H24zM25,13H26V14H25zM26,13H27V14H26zM27,13H28V14H27zM29,13H30V14H29zM30,13H31V14H30zM31,13H32V14H31zM32,13H33V14H32zM33,13H34V14H33zM34,13H35V14H34zM35,13H36V14H35zM36,13H37V14H36zM37,13H38V14H37zM1,14H2V15H1zM6,14H7V15H6zM8,14H9V15H8zM9,14H10V15H9zM11,14H12V15H11zM15,14H16V15H15zM19,14H20V15H19zM20,14H21V15H20zM21,14H22V15H21zM22,14H23V15H22zM24,14H25V15H24zM26,14H27V15H26zM29,14H30V15H29zM32,14H33V15H32zM36,14H37V15H36zM1,15H2V16H1zM3,15H4V16H3zM5,15H6V16H5zM6,15H7V16H6zM7,15H8V16H7zM8,15H9V16H8zM9,15H10V16H9zM10,15H11V16H10zM11,15H12V16H11zM12,15H13V16H12zM13,15H14V16H13zM14,15H15V16H14zM15,15H16V16H15zM16,15H17V16H16zM17,15H18V16H17zM19,15H20V16H19zM26,15H27V16H26zM27,15H28V16H27zM28,15H29V16H28zM29,15H30V16H29zM30,15H31V16H30zM31,15H32V16H31zM32,15H33V16H32zM33,15H34V16H33zM34,15H35V16H34zM36,15H37V16H36zM37,15H38V16H37zM1,16H2V17H1zM2,16H3V17H2zM3,16H4V17H3zM4,16H5V17H4zM5,16H6V17H5zM8,16H9V17H8zM9,16H10V17H9zM11,16H12V17H11zM13,16H14V17H13zM14,16H15V17H14zM15,16H16V17H15zM20,16H21V17H20zM22,16H23V17H22zM24,16H25V17H24zM28,16H29V17H28zM29,16H30V17H29zM30,16H31V17H30zM31,16H32V17H31zM32,16H33V17H32zM33,16H34V17H33zM36,16H37V17H36zM37,16H38V17H37zM1,17H2V18H1zM2,17H3V18H2zM4,17H5V18H4zM5,17H6V18H5zM7,17H8V18H7zM9,17H10V18H9zM15,17H16V18H15zM16,17H17V18H16zM19,17H20V18H19zM21,17H22V18H21zM23,17H24V18H23zM26,17H27V18H26zM27,17H28V18H27zM28,17H29V18H28zM30,17H31V18H30zM31,17H32V18H31zM33,17H34V18H33zM35,17H36V18H35zM4,18H5V19H4zM5,18H6V19H5zM9,18H10V19H9zM12,18H13V19H12zM13,18H14V19H13zM15,18H16V19H15zM16,18H17V19H16zM17,18H18V19H17zM20,18H21V19H20zM21,18H22V19H21zM23,18H24V19H23zM24,18H25V19H24zM25,18H26V19H25zM26,18H27V19H26zM29,18H30V19H29zM32,18H33V19H32zM34,18H35V19H34zM36,18H37V19H36zM1,19H2V20H1zM2,19H3V20H2zM3,19H4V20H3zM4,19H5V20H4zM6,19H7V20H6zM7,19H8V20H7zM9,19H10V20H9zM11,19H12V20H11zM14,19H15V20H14zM15,19H16V20H15zM21,19H22V20H21zM23,19H24V20H23zM27,19H28V20H27zM28,19H29V20H28zM30,19H31V20H30zM33,19H34V20H33zM36,19H37V20H36zM37,19H38V20H37zM1,20H2V21H1zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM5,20H6V21H5zM6,20H7V21H6zM8,20H9V21H8zM9,20H10V21H9zM12,20H13V21H12zM14,20H15V21H14zM15,20H16V21H15zM17,20H18V21H17zM21,20H22V21H21zM22,20H23V21H22zM28,20H29V21H28zM29,20H30V21H29zM30,20H31V21H30zM32,20H33V21H32zM37,20H38V21H37zM3,21H4V22H3zM5,21H6V22H5zM6,21H7V22H6zM7,21H8V22H7zM8,21H9V22H8zM11,21H12V22H11zM12,21H13V22H12zM13,21H14V22H13zM18,21H19V22H18zM20,21H21V22H20zM21,21H22V22H21zM23,21H24V22H23zM24,21H25V22H24zM26,21H27V22H26zM27,21H28V22H27zM28,21H29V22H28zM30,21H31V22H30zM31,21H32V22H31zM33,21H34V22H33zM35,21H36V22H35zM1,22H2V23H1zM4,22H5V23H4zM5,22H6V23H5zM6,22H7V23H6zM8,22H9V23H8zM9,22H10V23H9zM10,22H11V23H10zM13,22H14V23H13zM15,22H16V23H15zM17,22H18V23H17zM18,22H19V23H18zM20,22H21V23H20zM21,22H22V23H21zM22,22H23V23H22zM24,22H25V23H24zM26,22H27V23H26zM27,22H28V23H27zM29,22H30V23H29zM30,22H31V23H30zM34,22H35V23H34zM1,23H2V24H1zM2,23H3V24H2zM4,23H5V24H4zM7,23H8V24H7zM8,23H9V24H8zM9,23H10V24H9zM14,23H15V24H14zM16,23H17V24H16zM18,23H19V24H18zM21,23H22V24H21zM25,23H26V24H25zM26,23H27V24H26zM27,23H28V24H27zM28,23H29V24H28zM30,23H31V24H30zM32,23H33V24H32zM33,23H34V24H33zM34,23H35V24H34zM36,23H37V24H36zM37,23H38V24H37zM2,24H3V25H2zM11,24H12V25H11zM12,24H13V25H12zM15,24H16V25H15zM18,24H19V25H18zM19,24H20V25H19zM20,24H21V25H20zM21,24H22V25H21zM22,24H23V25H22zM23,24H24V25H23zM25,24H26V25H25zM27,24H28V25H27zM28,24H29V25H28zM32,24H33V25H32zM33,24H34V25H33zM36,24H37V25H36zM2,25H3V26H2zM3,25H4V26H3zM4,25H5V26H4zM5,25H6V26H5zM7,25H8V26H7zM8,25H9V26H8zM10,25H11V26H10zM13,25H14V26H13zM15,25H16V26H15zM16,25H17V26H16zM17,25H18V26H17zM20,25H21V26H20zM23,25H24V26H23zM24,25H25V26H24zM25,25H26V26H25zM26,25H27V26H26zM27,25H28V26H27zM29,25H30V26H29zM30,25H31V26H30zM31,25H32V26H31zM33,25H34V26H33zM35,25H36V26H35zM37,25H38V26H37zM1,26H2V27H1zM3,26H4V27H3zM5,26H6V27H5zM8,26H9V27H8zM14,26H15V27H14zM15,26H16V27H15zM16,26H17V27H16zM19,26H20V27H19zM20,26H21V27H20zM22,26H23V27H22zM24,26H25V27H24zM27,26H28V27H27zM29,26H30V27H29zM32,26H33V27H32zM34,26H35V27H34zM1,27H2V28H1zM3,27H4V28H3zM4,27H5V28H4zM6,27H7V28H6zM7,27H8V28H7zM15,27H16V28H15zM16,27H17V28H16zM17,27H18V28H17zM18,27H19V28H18zM21,27H22V28H21zM25,27H26V28H25zM28,27H29V28H28zM29,27H30V28H29zM30,27H31V28H30zM31,27H32V28H31zM32,27H33V28H32zM33,27H34V28H33zM34,27H35V28H34zM35,27H36V28H35zM36,27H37V28H36zM37,27H38V28H37zM1,28H2V29H1zM3,28H4V29H3zM5,28H6V29H5zM9,28H10V29H9zM11,28H12V29H11zM12,28H13V29H12zM13,28H14V29H13zM15,28H16V29H15zM16,28H17V29H16zM21,28H22V29H21zM22,28H23V29H22zM23,28H24V29H23zM24,28H25V29H24zM28,28H29V29H28zM30,28H31V29H30zM31,28H32V29H31zM37,28H38V29H37zM1,29H2V30H1zM3,29H4V30H3zM5,29H6V30H5zM6,29H7V30H6zM7,29H8V30H7zM9,29H10V30H9zM14,29H15V30H14zM16,29H17V30H16zM17,29H18V30H17zM18,29H19V30H18zM19,29H20V30H19zM23,29H24V30H23zM25,29H26V30H25zM26,29H27V30H26zM27,29H28V30H27zM28,29H29V30H28zM29,29H30V30H29zM30,29H31V30H30zM31,29H32V30H31zM32,29H33V30H32zM33,29H34V30H33zM35,29H36V30H35zM36,29H37V30H36zM9,30H10V31H9zM10,30H11V31H10zM11,30H12V31H11zM14,30H15V31H14zM17,30H18V31H17zM20,30H21V31H20zM24,30H25V31H24zM28,30H29V31H28zM29,30H30V31H29zM33,30H34V31H33zM34,30H35V31H34zM36,30H37V31H36zM1,31H2V32H1zM2,31H3V32H2zM3,31H4V32H3zM4,31H5V32H4zM5,31H6V32H5zM6,31H7V32H6zM7,31H8V32H7zM10,31H11V32H10zM11,31H12V32H11zM12,31H13V32H12zM14,31H15V32H14zM15,31H16V32H15zM16,31H17V32H16zM17,31H18V32H17zM19,31H20V32H19zM21,31H22V32H21zM22,31H23V32H22zM25,31H26V32H25zM26,31H27V32H26zM29,31H30V32H29zM31,31H32V32H31zM33,31H34V32H33zM35,31H36V32H35zM36,31H37V32H36zM37,31H38V32H37zM1,32H2V33H1zM7,32H8V33H7zM9,32H10V33H9zM13,32H14V33H13zM14,32H15V33H14zM21,32H22V33H21zM22,32H23V33H22zM23,32H24V33H23zM29,32H30V33H29zM33,32H34V33H33zM34,32H35V33H34zM36,32H37V33H36zM37,32H38V33H37zM1,33H2V34H1zM3,33H4V34H3zM4,33H5V34H4zM5,33H6V34H5zM7,33H8V34H7zM9,33H10V34H9zM10,33H11V34H10zM15,33H16V34H15zM16,33H17V34H16zM19,33H20V34H19zM20,33H21V34H20zM23,33H24V34H23zM25,33H26V34H25zM26,33H27V34H26zM27,33H28V34H27zM28,33H29V34H28zM29,33H30V34H29zM30,33H31V34H30zM31,33H32V34H31zM32,33H33V34H32zM33,33H34V34H33zM35,33H36V34H35zM36,33H37V34H36zM1,34H2V35H1zM3,34H4V35H3zM4,34H5V35H4zM5,34H6V35H5zM7,34H8V35H7zM9,34H10V35H9zM12,34H13V35H12zM14,34H15V35H14zM16,34H17V35H16zM17,34H18V35H17zM18,34H19V35H18zM20,34H21V35H20zM21,34H22V35H21zM23,34H24V35H23zM24,34H25V35H24zM25,34H26V35H25zM28,34H29V35H28zM30,34H31V35H30zM31,34H32V35H31zM33,34H34V35H33zM37,34H38V35H37zM1,35H2V36H1zM3,35H4V36H3zM4,35H5V36H4zM5,35H6V36H5zM7,35H8V36H7zM9,35H10V36H9zM10,35H11V36H10zM11,35H12V36H11zM12,35H13V36H12zM13,35H14V36H13zM14,35H15V36H14zM18,35H19V36H18zM23,35H24V36H23zM30,35H31V36H30zM34,35H35V36H34zM36,35H37V36H36zM37,35H38V36H37zM1,36H2V37H1zM7,36H8V37H7zM11,36H12V37H11zM12,36H13V37H12zM17,36H18V37H17zM21,36H22V37H21zM22,36H23V37H22zM23,36H24V37H23zM24,36H25V37H24zM27,36H28V37H27zM28,36H29V37H28zM29,36H30V37H29zM30,36H31V37H30zM31,36H32V37H31zM33,36H34V37H33zM37,36H38V37H37zM1,37H2V38H1zM2,37H3V38H2zM3,37H4V38H3zM4,37H5V38H4zM5,37H6V38H5zM6,37H7V38H6zM7,37H8V38H7zM9,37H10V38H9zM12,37H13V38H12zM15,37H16V38H15zM17,37H18V38H17zM18,37H19V38H18zM23,37H24V38H23zM26,37H27V38H26zM27,37H28V38H27zM31,37H32V38H31zM33,37H34V38H33zM35,37H36V38H35zM36,37H37V38H36zM37,37H38V38H37z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></span><span><b>Did we help your family?</b><a href="https://southernilpathways.com/review?src=sipartsfoundation.org&m=website-footer" target="_blank" rel="noopener">Leave us a review &rarr;</a><small>southernilpathways.com/review</small></span></div>
-<script>(function(){function place(){var b=document.getElementById("sip-review");if(!b)return;if(document.querySelector(".landing-footer")){b.remove();return;}var fs=document.querySelectorAll("footer");var f=fs.length?fs[fs.length-1]:null;if(f){f.insertBefore(b,f.firstChild);}b.hidden=false;}function later(){var b=document.getElementById("sip-review"),fs=document.querySelectorAll("footer");if(b&&fs.length&&!fs[fs.length-1].contains(b)&&!document.querySelector(".landing-footer")){var f=fs[fs.length-1];f.insertBefore(b,f.firstChild);}}if(document.readyState==="complete")place();else window.addEventListener("load",place);setTimeout(later,1500);setTimeout(later,4000);})();</script><style>#sip-review{display:flex;align-items:center;gap:14px;max-width:420px;margin:18px auto;padding:12px 16px;background:#fff;color:#16233f;border:1px solid #16233f26;border-radius:12px;font:500 15px/1.35 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;text-align:left;box-sizing:border-box}
 #sip-review .q{flex:0 0 76px;width:76px;height:76px;display:block}#sip-review .q svg{width:100%;height:100%;display:block}
 #sip-review b{display:block;font-weight:700;font-size:16px;color:#16233f}
 #sip-review a{color:#075a9c;font-weight:700;text-decoration:underline;text-underline-offset:3px}
