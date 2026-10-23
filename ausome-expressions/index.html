@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ausome Expressions | SIP Arts Foundation</title>
+<meta name="description" content="A free ten-week artist residency for thirty young people in the Metro East. Saturdays, January 23 to March 27, 2027, with about 30 documented service hours. Applications open December 15.">
+<meta property="og:title" content="Ausome Expressions">
+<meta property="og:description" content="A free ten-week artist residency for thirty young people in the Metro East. Applications open December 15, 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sipartsfoundation.org/ausome-expressions">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Layout: single centered column, cream ground, one paper card for the form.
+   Tokens mirror SIP brand-tokens.css. Do not invent hex values. */
+:root {
+  --navy:      #14203A;
+  --navy-2:    #0C1424;
+  --teal:      #12909E;
+  --teal-dk:   #0D7280;
+  --pink-dk:   #E01A76;
+  --gold:      #FFC629;
+  --cream:     #FDFBF7;
+  --cream-2:   #F6F2EA;
+  --paper:     #FFFFFF;
+  --ink:       #1B2333;
+  --muted:     #5C6575;
+  --line:      #E6DFD2;
+  --plum:      #5B2A86;
+  --plum-lt:   #7B3FA0;
+  --orange:    #F0742A;
+  --orange-dk: #C9591A;
+  --lime:      #7DB93C;
+  --lime-dk:   #5F8A22;
+  /* text-safe variants: these clear 4.5:1 on cream, paper and the soft tints.
+     Use these for words. The vivid values above are for borders and fills. */
+  --orange-tx: #B24F17;
+  --lime-tx:   #52781D;
+  --pink-tx:   #C71769;
+  --teal-soft:   #E4F4F5;
+  --plum-soft:   #F2ECFA;
+  --gold-soft:   #FFF6DC;
+  --pink-soft:   #FCE4EF;
+  --orange-soft: #FDF0E4;
+  --lime-soft:   #EDF6E1;
+  --field:     #FFFFFF;
+  --sh-1: 0 6px 16px rgba(20,32,58,.10);
+  --font-display: 'Anton', Impact, sans-serif;
+  --font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-script: 'Caveat', cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy: #FFFFFF; --navy-2: #FFFFFF; --teal: #4CCBD8; --teal-dk: #4CCBD8;
+    --pink-dk: #FF6BA6; --cream: #0E1B2E; --cream-2: #15263F; --paper: #15263F;
+    --gold: #FFD24D; --plum: #B98BE0; --plum-lt: #C9A3EA;
+    --orange: #FF9452; --orange-dk: #FF9452; --lime: #A3D96B; --lime-dk: #A3D96B;
+    --orange-tx: #FF9452; --lime-tx: #A3D96B; --pink-tx: #FF6BA6;
+    --teal-soft: #13304A; --plum-soft: #241B3A; --gold-soft: #3A2F12;
+    --pink-soft: #3A1226; --orange-soft: #3A2415; --lime-soft: #1E2F16;
+    --ink: #EAF0F8; --muted: #AEBFD4; --line: #2A3E5C; --field: #0E1B2E;
+    --sh-1: 0 6px 16px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --navy: #FFFFFF; --navy-2: #FFFFFF; --teal: #4CCBD8; --teal-dk: #4CCBD8;
+  --pink-dk: #FF6BA6; --cream: #0E1B2E; --cream-2: #15263F; --paper: #15263F;
+  --gold: #FFD24D; --plum: #B98BE0; --plum-lt: #C9A3EA;
+    --orange: #FF9452; --orange-dk: #FF9452; --lime: #A3D96B; --lime-dk: #A3D96B;
+    --orange-tx: #FF9452; --lime-tx: #A3D96B; --pink-tx: #FF6BA6;
+    --teal-soft: #13304A; --plum-soft: #241B3A; --gold-soft: #3A2F12;
+    --pink-soft: #3A1226; --orange-soft: #3A2415; --lime-soft: #1E2F16;
+    --ink: #EAF0F8; --muted: #AEBFD4; --line: #2A3E5C; --field: #0E1B2E;
+  --sh-1: 0 6px 16px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 44rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  padding-block: 3rem 4rem;
+}
+
+.eyebrow {
+  font-family: var(--font-script);
+  font-size: 1.5rem;
+  color: var(--teal-dk);
+  margin: 0 0 .25rem;
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .014em;
+  line-height: 1;
+  font-size: clamp(2.5rem, 9vw, 4rem);
+  color: var(--navy);
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+.lede {
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin: 0 0 2.25rem;
+  max-width: 34rem;
+  text-wrap: pretty;
+}
+.pull {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  line-height: 1.1;
+  color: var(--teal-dk);
+  border-left: 5px solid var(--gold);
+  padding-left: 1rem;
+  margin: 0 0 2.25rem;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  font-size: 1.35rem;
+  color: var(--navy);
+  margin: 2.5rem 0 .75rem;
+}
+p { margin: 0 0 1rem; }
+
+.steps { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: .6rem; }
+.steps li { position: relative; padding-left: 1.45rem; }
+.steps li::before {
+  content: "";
+  position: absolute; left: 0; top: .62rem;
+  width: .7rem; height: .7rem;
+  border-radius: 999px; background: var(--teal);
+}
+.note { color: var(--muted); }
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  font-size: 1.05rem;
+  color: var(--navy);
+  margin: 1.75rem 0 .5rem;
+}
+.ask {
+  background: var(--cream-2);
+  border-left: 5px solid var(--gold);
+  border-radius: 0 12px 12px 0;
+  padding: 1rem 1.25rem;
+  font-size: 1.1rem;
+  margin: 0 0 1.25rem;
+}
+
+/* Concept strip: original line art, three stages of one sign. */
+.concept {
+  list-style: none;
+  margin: 1rem 0 1.25rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 34rem) {
+  .concept { grid-template-columns: 1fr; gap: 1.25rem; max-width: 20rem; margin-inline: auto; }
+}
+.concept li {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: .9rem .9rem 1rem;
+  text-align: center;
+}
+.concept svg { width: 100%; height: auto; display: block; }
+.concept b {
+  display: block;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--navy);
+  margin: .6rem 0 .15rem;
+}
+.concept span { display: block; font-size: .9rem; color: var(--muted); line-height: 1.4; }
+
+/* Real work from our studio programs. */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 1rem 0 .75rem; }
+@media (max-width: 34rem) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  display: block;
+  background: var(--cream-2);
+}
+
+.when {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  margin: 1rem 0 0;
+  display: grid; gap: .3rem;
+}
+.when .date {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  font-size: 1.5rem;
+  color: var(--navy);
+  line-height: 1.1;
+}
+.when .meta { color: var(--muted); font-size: .95rem; }
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--sh-1);
+  padding: 1.75rem;
+  margin-top: 1rem;
+}
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 34rem) { .row { grid-template-columns: 1fr; } }
+.field { display: grid; gap: .35rem; margin-bottom: 1rem; min-width: 0; }
+label { font-weight: 700; font-size: .95rem; color: var(--navy); }
+label .opt { font-weight: 400; color: var(--muted); }
+input[type=text], input[type=email], input[type=tel], select {
+  font: inherit;
+  color: var(--ink);
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: .7rem .8rem;
+  min-height: 44px;
+  width: 100%;
+}
+input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--teal); outline-offset: 2px;
+}
+.check { display: grid; grid-template-columns: auto 1fr; gap: .65rem; align-items: start; margin: .25rem 0 1.25rem; }
+.check input { width: 1.15rem; height: 1.15rem; margin-top: .3rem; }
+.check label { font-weight: 400; color: var(--ink); }
+.hp { position: absolute; left: -9999px; }
+
+button {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1rem;
+  min-height: 48px;
+  padding: .6rem 1.75rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--pink-dk);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { filter: brightness(1.07); transform: translateY(-2px); }
+button:disabled { opacity: .6; cursor: default; }
+@media (prefers-reduced-motion: reduce) { button:hover:not(:disabled) { transform: none; } }
+
+.status { margin-top: 1rem; font-weight: 700; }
+.status.err { color: var(--pink-dk); }
+.status.ok { color: var(--teal-dk); }
+
+.done {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-top: 1rem;
+}
+.done h3 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  color: var(--navy);
+  margin: 0 0 .5rem;
+  font-size: 1.3rem;
+}
+.who { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1.5rem; }
+.lead-row { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.5rem; align-items: start; }
+@media (max-width: 34rem) { .lead-row { grid-template-columns: 1fr; gap: 1rem; } }
+.portrait {
+  width: 8.5rem; height: 8.5rem; max-width: 100%;
+  border-radius: 999px; display: block;
+  object-fit: cover;
+  box-shadow: var(--sh-1);
+}
+.lead-name {
+  font-family: var(--font-script);
+  font-size: 1.75rem;
+  color: var(--teal-dk);
+  margin: 0;
+  line-height: 1.1;
+}
+.lead-role {
+  font-weight: 700;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--muted);
+  margin: .15rem 0 .75rem;
+}
+a { color: var(--teal-dk); }
+.between { border-top: 1px solid var(--line); margin-top: 2.5rem; padding-top: 1.5rem; }
+.fb {
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .5rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid var(--teal-dk);
+  color: var(--teal-dk);
+}
+.fb:hover { background: var(--teal-dk); color: var(--paper); }
+
+.hero-art { background: var(--cream-2); border:1px solid var(--line); border-radius:16px; padding:1.25rem 1.4rem; margin:0 0 2rem; }
+.stat { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.25rem 0 0; }
+@media (max-width:34rem){ .stat{grid-template-columns:1fr;} }
+.stat b { font-family:var(--font-display); font-size:1.7rem; color:var(--navy); display:block; line-height:1; }
+.stat span { font-size:.9rem; color:var(--muted); }
+.flow { list-style:none; margin:1rem 0 0; padding:0; display:grid; gap:1rem; }
+.flow li { background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:1rem 1.2rem; }
+.flow b { display:block; font-family:var(--font-display); text-transform:uppercase; font-style:italic; letter-spacing:.028em; color:var(--teal-dk); font-size:1.05rem; }
+.pills { display:flex; flex-wrap:wrap; gap:.6rem; margin:.25rem 0 1rem; }
+.pills label { display:flex; align-items:center; gap:.5rem; border:1.5px solid var(--line); background:var(--field);
+  border-radius:999px; padding:.55rem 1rem; min-height:44px; font-weight:700; cursor:pointer; }
+.pills input { width:1.1rem; height:1.1rem; }
+.pills label:has(input:checked) { border-color:var(--teal-dk); background:var(--cream-2); }
+textarea { font:inherit; color:var(--ink); background:var(--field); border:1px solid var(--line);
+  border-radius:10px; padding:.7rem .8rem; width:100%; min-height:88px; }
+.hide { display:none; }
+</style>
+<style>
+.um-learn h2{font-family:var(--font-display,Anton,Impact,sans-serif);font-weight:400;text-transform:uppercase;font-style:italic;letter-spacing:.028em;font-size:1.35rem;color:var(--navy,#14203A);margin:2.5rem 0 .75rem}
+.um-path{background:var(--paper,#FFFFFF);border:1px solid var(--line,#E6DFD2);border-radius:16px;box-shadow:var(--sh-1,0 6px 16px rgba(20,32,58,.10));padding:1.5rem;margin-top:1rem}
+.um-path h3{font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--navy,#14203A);margin:0 0 .25rem;font-size:1.2rem}
+.um-path .um-who{color:var(--muted,#5C6575);font-size:.95rem;margin:0 0 1rem}
+.um-nums{list-style:none;margin:0;padding:0;display:grid;gap:.9rem;counter-reset:umnum}
+.um-nums>li{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
+.um-nums>li::before{counter-increment:umnum;content:counter(umnum);font-family:var(--font-display,Anton,Impact,sans-serif);font-size:1.1rem;line-height:1;color:#fff;background:var(--teal-dk,#0D7280);width:2rem;height:2rem;border-radius:999px;display:grid;place-items:center}
+.um-nums b{display:block;font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--teal-dk,#0D7280);font-size:1rem}
+.um-nums p{margin:.15rem 0 0}
+.um-links{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.6rem}
+.um-links a{display:block;background:var(--cream-2,#F6F2EA);border:1px solid var(--line,#E6DFD2);border-radius:12px;padding:.8rem 1rem;text-decoration:none;color:var(--ink,#1B2333);font-weight:700}
+.um-links a:hover{border-color:var(--teal,#12909E)}
+.um-links a span{display:block;font-weight:400;font-size:.9rem;color:var(--muted,#5C6575)}
+.um-go{display:inline-flex;align-items:center;min-height:48px;padding:.6rem 1.75rem;border-radius:999px;background:var(--pink-dk,#E01A76);color:#fff;font-weight:800;text-decoration:none;margin-top:.5rem}
+.um-go:hover{filter:brightness(1.07)}
+.um-go.alt{background:var(--teal-dk,#0D7280)}
+.um-prompt{background:var(--cream-2,#F6F2EA);border-left:5px solid var(--gold,#FFC629);border-radius:0 12px 12px 0;padding:1rem 1.2rem;margin:.5rem 0 0}
+.um-prompt b{font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--navy,#14203A);display:block;font-size:.95rem}
+.um-note{color:var(--muted,#5C6575)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .um-links a{color:#EAF0F8}}
+
+/* ---- Unmasking 2026 update: prompt hero, participate selector, slider, FAQs ---- */
+.um-kicker{font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:var(--teal-dk,#0D7280);margin:0 0 .4rem}
+.um-hero-prompt{display:grid;grid-template-columns:1fr 11rem;gap:1.5rem;align-items:center;background:var(--paper,#FFFFFF);border:1px solid var(--line,#E6DFD2);border-radius:16px;box-shadow:var(--sh-1,0 6px 16px rgba(20,32,58,.10));padding:1.5rem;margin:0 0 2.25rem}
+@media (max-width:34rem){.um-hero-prompt{grid-template-columns:1fr}.um-hero-prompt .um-hero-art{max-width:12rem;margin-inline:auto}}
+.um-hero-prompt .um-q{font-family:var(--font-display,Anton,Impact,sans-serif);font-weight:400;text-transform:uppercase;font-style:italic;letter-spacing:.028em;font-size:clamp(1.25rem,4.6vw,1.7rem);line-height:1.15;color:var(--navy,#14203A);margin:0 0 .6rem;text-wrap:balance}
+.um-hero-prompt .um-sub{margin:0;color:var(--ink,#1B2333)}
+.um-hero-prompt svg{width:100%;height:auto;display:block}
+
+.um-disc{margin:1.1rem 0 0}
+.um-disc>summary{display:inline-flex;align-items:center;gap:.55rem;min-height:44px;padding:.5rem 1.25rem;border-radius:999px;border:2px solid var(--teal-dk,#0D7280);color:var(--teal-dk,#0D7280);font-weight:800;cursor:pointer;list-style:none}
+.um-disc>summary::-webkit-details-marker{display:none}
+.um-disc>summary::after{content:"+";font-family:var(--font-display,Anton,Impact,sans-serif);font-size:1.15rem;line-height:1}
+.um-disc[open]>summary::after{content:"\2013"}
+.um-disc>summary:hover{background:var(--cream-2,#F6F2EA)}
+.um-ideas{list-style:none;margin:.9rem 0 0;padding:0;display:grid;gap:.5rem}
+.um-ideas li{background:var(--cream-2,#F6F2EA);border:1px solid var(--line,#E6DFD2);border-radius:12px;padding:.7rem 1rem}
+
+.um-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1rem;padding:0}
+.um-tabs button{background:var(--field,#fff);color:var(--ink,#1B2333);border:1.5px solid var(--line,#E6DFD2);font-weight:700;font-size:.95rem;padding:.5rem 1.1rem;min-height:44px;border-radius:999px}
+.um-tabs button[aria-selected="true"]{background:var(--teal-dk,#0D7280);border-color:var(--teal-dk,#0D7280);color:#fff}
+.um-tabs button:hover:not(:disabled){transform:none;filter:none;border-color:var(--teal,#12909E)}
+.um-tabs button[aria-selected="true"]:hover{border-color:var(--teal-dk,#0D7280)}
+.um-panel{background:var(--paper,#FFFFFF);border:1px solid var(--line,#E6DFD2);border-radius:16px;box-shadow:var(--sh-1,0 6px 16px rgba(20,32,58,.10));padding:1.4rem;margin-bottom:1rem}
+.um-panel:last-child{margin-bottom:0}
+.um-panel h3{margin-top:0}
+.um-panel [hidden]{display:none}
+
+.um-ba{margin:1.25rem 0 0}
+.um-ba-stage{position:relative;border:1px solid var(--line,#E6DFD2);border-radius:14px;overflow:hidden;background:var(--paper,#FFFFFF);aspect-ratio:3/2}
+.um-ba-stage>svg{position:absolute;inset:0;width:100%;height:100%}
+.um-ba-top{clip-path:inset(0 calc(100% - var(--um-pos,50%)) 0 0)}
+.um-ba-divider{position:absolute;top:0;bottom:0;left:var(--um-pos,50%);width:3px;margin-left:-1.5px;background:var(--gold,#FFC629);pointer-events:none}
+.um-ba input[type=range]{width:100%;margin:.9rem 0 .25rem;min-height:44px;accent-color:var(--teal-dk,#0D7280)}
+.um-ba-labels{display:flex;justify-content:space-between;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted,#5C6575)}
+.um-static{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:1.25rem}
+.um-static figure{margin:0;background:var(--paper,#FFFFFF);border:1px solid var(--line,#E6DFD2);border-radius:14px;padding:.8rem}
+.um-static svg{width:100%;height:auto;display:block}
+.um-static figcaption{font-size:.85rem;color:var(--muted,#5C6575);margin-top:.5rem;text-align:center}
+
+.um-faq{display:grid;gap:.6rem;margin-top:1rem}
+.um-faq details{background:var(--paper,#FFFFFF);border:1px solid var(--line,#E6DFD2);border-radius:12px}
+.um-faq summary{cursor:pointer;font-weight:800;color:var(--navy,#14203A);padding:.85rem 1rem;min-height:44px;list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.um-faq summary::-webkit-details-marker{display:none}
+.um-faq summary::after{content:"+";font-family:var(--font-display,Anton,Impact,sans-serif);color:var(--teal-dk,#0D7280);font-size:1.25rem;line-height:1}
+.um-faq details[open] summary::after{content:"\2013"}
+.um-faq details>div{padding:0 1rem 1rem}
+.um-faq details>div p:last-child{margin-bottom:0}
+
+.um-article{display:grid;grid-template-columns:4.75rem 1fr;gap:1.1rem;align-items:start;background:var(--cream-2,#F6F2EA);border:1px solid var(--line,#E6DFD2);border-radius:16px;padding:1.3rem;margin-top:1.25rem}
+@media (max-width:34rem){.um-article{grid-template-columns:1fr}.um-article svg{max-width:4.75rem}}
+.um-article svg{width:100%;height:auto;display:block}
+.um-article h3{margin:0 0 .15rem}
+.um-article .um-by{font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted,#5C6575);margin:0 0 .5rem}
+
+.um-future{border:2px dashed var(--line,#E6DFD2);border-radius:16px;padding:1.4rem;margin-top:1rem;background:var(--paper,#FFFFFF)}
+.um-tag{display:inline-block;font-weight:800;font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;color:var(--navy,#14203A);background:var(--gold,#FFC629);border-radius:999px;padding:.25rem .7rem;margin:0 0 .6rem}
+
+.um-join{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--paper,#FFFFFF);border-top:1px solid var(--line,#E6DFD2);padding:.6rem 1rem;padding-bottom:calc(.6rem + env(safe-area-inset-bottom,0px));display:none;justify-content:center;box-shadow:0 -4px 14px rgba(20,32,58,.12)}
+.um-join a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;width:100%;max-width:26rem;border-radius:999px;background:var(--pink-dk,#E01A76);color:#fff;font-weight:800;text-decoration:none}
+@media (max-width:48rem){.um-join.on{display:flex}body.um-has-join{padding-bottom:5.5rem}}
+@media print{.um-join{display:none}}
+
+/* ---- Accent rotation. Mirrors the card-set rotation in styles.css:
+   plum, teal, orange, pink, lime. Decorative only, never carries meaning. ---- */
+.concept li:nth-child(1){border-top:5px solid var(--plum)}
+.concept li:nth-child(2){border-top:5px solid var(--teal)}
+.concept li:nth-child(3){border-top:5px solid var(--orange)}
+.concept li:nth-child(1) b{color:var(--plum)}
+.concept li:nth-child(2) b{color:var(--teal-dk)}
+.concept li:nth-child(3) b{color:var(--orange-tx)}
+
+.flow li:nth-child(1){border-left:5px solid var(--plum);background:var(--plum-soft)}
+.flow li:nth-child(2){border-left:5px solid var(--teal);background:var(--teal-soft)}
+.flow li:nth-child(3){border-left:5px solid var(--orange);background:var(--orange-soft)}
+.flow li:nth-child(4){border-left:5px solid var(--pink-dk);background:var(--pink-soft)}
+.flow li:nth-child(1) b{color:var(--plum)}
+.flow li:nth-child(3) b{color:var(--orange-tx)}
+.flow li:nth-child(4) b{color:var(--pink-tx)}
+
+.um-ex-grid li:nth-child(1) figure{border-top:6px solid var(--plum)}
+.um-ex-grid li:nth-child(2) figure{border-top:6px solid var(--teal)}
+.um-ex-grid li:nth-child(3) figure{border-top:6px solid var(--orange)}
+.um-ex-grid li:nth-child(4) figure{border-top:6px solid var(--pink-dk)}
+.um-ex-grid li:nth-child(5) figure{border-top:6px solid var(--lime)}
+.um-ex-grid li:nth-child(1) figcaption b{color:var(--plum)}
+.um-ex-grid li:nth-child(3) figcaption b{color:var(--orange-tx)}
+.um-ex-grid li:nth-child(4) figcaption b{color:var(--pink-tx)}
+.um-ex-grid li:nth-child(5) figcaption b{color:var(--lime-tx)}
+
+#pane-create{border-top:6px solid var(--plum)}
+#pane-group{border-top:6px solid var(--teal)}
+#pane-signs{border-top:6px solid var(--orange)}
+#pane-volunteer{border-top:6px solid var(--pink-dk)}
+#pane-support{border-top:6px solid var(--lime)}
+#pane-create h3{color:var(--plum)}
+#pane-group h3{color:var(--teal-dk)}
+#pane-signs h3{color:var(--orange-tx)}
+#pane-volunteer h3{color:var(--pink-tx)}
+#pane-support h3{color:var(--lime-tx)}
+
+.um-faq details:nth-child(6n+1){border-left:5px solid var(--plum)}
+.um-faq details:nth-child(6n+2){border-left:5px solid var(--teal)}
+.um-faq details:nth-child(6n+3){border-left:5px solid var(--orange)}
+.um-faq details:nth-child(6n+4){border-left:5px solid var(--pink-dk)}
+.um-faq details:nth-child(6n+5){border-left:5px solid var(--lime)}
+.um-faq details:nth-child(6n+6){border-left:5px solid var(--plum-lt)}
+.um-faq details:nth-child(6n+1) summary::after{color:var(--plum)}
+.um-faq details:nth-child(6n+3) summary::after{color:var(--orange-tx)}
+.um-faq details:nth-child(6n+4) summary::after{color:var(--pink-tx)}
+.um-faq details:nth-child(6n+5) summary::after{color:var(--lime-tx)}
+
+.um-path:nth-of-type(odd) .um-nums>li::before{background:var(--plum)}
+.um-path:nth-of-type(even) .um-nums>li::before{background:var(--teal-dk)}
+
+/* A little paint energy behind the prompt, in brand colors. */
+.um-hero-prompt{position:relative;overflow:hidden}
+.um-hero-prompt::before{
+  content:"";position:absolute;inset:auto auto -3.5rem -3.5rem;width:11rem;height:11rem;
+  border-radius:50%;background:var(--gold);opacity:.18;pointer-events:none;
+}
+.um-hero-prompt::after{
+  content:"";position:absolute;inset:-3rem -3rem auto auto;width:9rem;height:9rem;
+  border-radius:50%;background:var(--teal);opacity:.14;pointer-events:none;
+}
+.um-hero-prompt>*{position:relative;z-index:1}
+@media (max-width:34rem){.um-hero-prompt::before,.um-hero-prompt::after{display:none}}
+
+
+/* ---- Example panels gallery ---- */
+.um-ex{margin:1rem 0 0}
+.um-ex-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem;margin:1rem 0 0;padding:0;list-style:none}
+.um-ex-grid li{margin:0}
+.um-ex figure{margin:0;background:var(--paper,#FFFFFF);border:1px solid var(--line,#E6DFD2);border-radius:14px;overflow:hidden;height:100%;display:flex;flex-direction:column}
+.um-ex img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover;background:var(--cream-2,#F6F2EA)}
+.um-ex figcaption{padding:.85rem 1rem;font-size:.92rem;color:var(--ink,#1B2333);flex:1}
+.um-ex figcaption b{display:block;font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--teal-dk,#0D7280);font-size:.95rem;margin-bottom:.15rem}
+.um-ex-note{background:var(--cream-2,#F6F2EA);border-left:5px solid var(--gold,#FFC629);border-radius:0 12px 12px 0;padding:.9rem 1.1rem;margin:1rem 0 0}
+</style>
+<style>
+.ax-deadline{background:var(--navy);color:#fff;border-radius:16px;padding:1.5rem;margin:0 0 2.25rem}
+.ax-deadline .um-kicker{color:var(--gold)}
+.ax-deadline .d{font-family:var(--font-display);text-transform:uppercase;font-style:italic;letter-spacing:.028em;font-size:clamp(1.3rem,4.4vw,1.8rem);line-height:1.15;margin:0 0 .4rem}
+.ax-deadline p{margin:0;color:#D8E0ED}
+.ax-path{border-radius:16px;padding:1.3rem;border:1px solid var(--line);background:var(--paper);height:100%}
+.ax-paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem;margin:1rem 0 0;padding:0;list-style:none}
+.ax-paths li{margin:0}
+.ax-path h3{margin:.25rem 0 .35rem}
+.ax-path .n{font-family:var(--font-display);font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.ax-paths li:nth-child(1) .ax-path{border-top:6px solid var(--plum)}
+.ax-paths li:nth-child(2) .ax-path{border-top:6px solid var(--teal)}
+.ax-paths li:nth-child(3) .ax-path{border-top:6px solid var(--orange)}
+.ax-paths li:nth-child(1) h3{color:var(--plum)}
+.ax-paths li:nth-child(2) h3{color:var(--teal-dk)}
+.ax-paths li:nth-child(3) h3{color:var(--orange-tx)}
+.ax-dates{width:100%;border-collapse:collapse;margin:1rem 0 0}
+.ax-dates th,.ax-dates td{text-align:left;padding:.7rem .8rem;border-bottom:1px solid var(--line);vertical-align:top}
+.ax-dates th{font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:800}
+.ax-dates td:first-child{font-weight:800;color:var(--navy);white-space:nowrap}
+@media (max-width:34rem){.ax-dates td:first-child{white-space:normal}}
+</style></head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow">An artist residency</p>
+  <h1>Ausome Expressions</h1>
+
+  <p class="lede">A free ten-week residency for thirty young people in the Metro East. You study masking, you make work about it, and you build the public showcase that closes it.</p>
+
+  <div class="ax-deadline">
+    <p class="um-kicker">Applications</p>
+    <p class="d">December 15, 2026 to January 15, 2027</p>
+    <p>This is a cohort with a fixed start. Applications close January 15 and the residency begins January 23. There is no joining partway through.</p>
+  </div>
+
+  <div class="hero-art">
+    <p style="margin:0">Want to make art for the showcase without joining the cohort? That is a separate, open invitation with its own deadline, and you can take part any time before March 8, 2027. See <a href="/unmasking">Unmasking in the MetroEast</a>.</p>
+  </div>
+
+  <h2>What it is</h2>
+  <p>Ausome Expressions is the artist residency inside Unmasking in the MetroEast. Thirty young people meet ten Saturdays, study what masking is and what it costs, and answer it in their own work.</p>
+  <p>The cohort also builds the showcase itself: the work on the walls, the layout of the room, and the running of the day. The whole Metro East is invited to that showcase, and what they walk into is what this cohort made.</p>
+  <p>The program is open to everyone. Participants do not need to be autistic or neurodivergent to take part. That is deliberate. Acceptance is built by people making something together, not by an audience being lectured at.</p>
+
+  <h2>The three pathways</h2>
+  <p>You pick one. Ten people in each.</p>
+  <ul class="ax-paths">
+    <li><div class="ax-path">
+      <span class="n">Ten places</span>
+      <h3>Visual and Written</h3>
+      <p>Drawing, painting, collage, mixed media, poetry, essays, spoken word, storytelling.</p>
+    </div></li>
+    <li><div class="ax-path">
+      <span class="n">Ten places</span>
+      <h3>Music and Dance</h3>
+      <p>Composing, playing, singing, choreography, movement.</p>
+    </div></li>
+    <li><div class="ax-path">
+      <span class="n">Ten places</span>
+      <h3>Design and Production</h3>
+      <p>Building the showcase space, then scheduling and running the event itself. For people who would rather use tools than perform. The finished piece is the room working and the day going well, which is a real discipline and a real career.</p>
+    </div></li>
+  </ul>
+
+  <h2>What a Saturday looks like</h2>
+  <p>Three hours, noon to 3. Each session opens with the week&rsquo;s subject: a person with autism, their life and work, and the traits the world tends to misread. The rest is studio time, building on that subject in your own pathway.</p>
+  <p>A pathway leader works alongside your group and a teaching artist moves between all three. Work accumulates across the ten weeks, so by late March each participant has something finished and ready to show.</p>
+
+  <h2>What you get</h2>
+  <ul class="steps">
+    <li><strong>About 30 documented service hours</strong> across the ten Saturdays, which counts toward school and scholarship service requirements.</li>
+    <li><strong>No cost.</strong> No tuition and no materials fee.</li>
+    <li><strong>Your work shown publicly</strong> on April 3, in a room you helped build.</li>
+    <li><strong>The Arc of Illinois conference, covered,</strong> in the Chicago area, for anyone who attends at least 9 of the 10 sessions.</li>
+  </ul>
+
+  <h2>Dates</h2>
+  <table class="ax-dates">
+    <tr><th>When</th><th>What</th></tr>
+    <tr><td>Dec 15 to Jan 15</td><td>Applications open</td></tr>
+    <tr><td>January 23</td><td>First Saturday session</td></tr>
+    <tr><td>Through March 27</td><td>Ten Saturdays, noon to 3</td></tr>
+    <tr><td>April 2</td><td>Install day</td></tr>
+    <tr><td>April 3</td><td>Showcase, 10am to 2pm, free and open to everyone</td></tr>
+  </table>
+
+  <h2>Who it is for</h2>
+  <ul class="steps">
+    <li>Young people in Madison and St. Clair Counties</li>
+    <li>No art training required and no prior experience with SIP needed</li>
+    <li>Autistic, neurodivergent, and neurotypical participants together, on purpose</li>
+  </ul>
+  <p class="note">Accommodations and adapted tools are available, just ask. The space is sensory-friendly with a quiet area available throughout every session.</p>
+
+  <h2>Access</h2>
+  <ul class="steps">
+    <li><strong>Transportation support is available.</strong> Transportation is the barrier families name first, so we budget for it rather than treating it as someone else&rsquo;s problem.</li>
+    <li><strong>Light snacks at every session.</strong> Participants bring their own lunch.</li>
+  </ul>
+
+  <div class="when">
+    <span class="date">Where</span>
+    <span class="meta">A Special Place Campus, 424 Lebanon Avenue, Belleville, IL 62220</span>
+  </div>
+
+  <div class="between">
+    <h2>Apply or ask</h2>
+    <p>Applications open December 15, 2026. To apply, or to ask whether this is a fit before then, email <a href="mailto:unmasking@sipartsfoundation.org?subject=Ausome%20Expressions%20residency">unmasking@sipartsfoundation.org</a>. We answer every message.</p>
+    <p><a class="um-go" href="mailto:unmasking@sipartsfoundation.org?subject=Ausome%20Expressions%20residency">Email about the residency</a></p>
+
+    <h2>Not the cohort?</h2>
+    <p>Anyone in the Metro East can still make a panel for the April 3 showcase without joining the residency. It is free, there is no application, and panel requests stay open until March 8, 2027.</p>
+    <p><a class="um-go alt" href="/unmasking">Unmasking in the MetroEast</a></p>
+
+    <p class="note">Ausome Expressions is a cohort of SIP&rsquo;s MetroEast Career Academy and a program of SIP Arts Foundation, a 501(c)(3) nonprofit serving people with disabilities and their families across Southern Illinois.</p>
+  </div>
+
+</main>
+</body>
+</html>
