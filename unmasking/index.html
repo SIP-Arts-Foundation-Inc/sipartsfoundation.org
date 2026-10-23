@@ -442,7 +442,7 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
 @media (max-width:48rem){.um-join.on{display:flex}body.um-has-join{padding-bottom:5.5rem}}
 @media print{.um-join{display:none}}
 
-/* ===== Y2K meets SIP: paint splatter, sparkles, gloss ===== */
+/* ===== Paint splatter, in the brand colors ===== */
 /* decorative splatter bleeds past the column on purpose; same guard styles.css uses */
 html,body{max-width:100%;overflow-x:hidden}
 .sp-hero{overflow:visible}
@@ -463,42 +463,9 @@ html,body{max-width:100%;overflow-x:hidden}
 .um-hero-prompt .sp-e{top:-2.5rem;right:-2rem;width:8rem;height:8rem;color:var(--lime);opacity:.22;transform:rotate(40deg)}
 @media (max-width:34rem){.um-hero-prompt .sp-d,.um-hero-prompt .sp-e{display:none}}
 
-/* Y2K four-point sparkle before each section heading */
-h2::before{
-  content:"";display:inline-block;width:.62em;height:.62em;margin-right:.44em;
-  vertical-align:.02em;background:var(--gold);
-  clip-path:polygon(50% 0%,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0% 50%,40% 40%);
-}
-.ax-deadline .d::before,.um-hero-prompt .um-q::before{content:none}
-h2:nth-of-type(3n+2)::before{background:var(--teal)}
-h2:nth-of-type(3n)::before{background:var(--pink-dk)}
 
-/* Glossy Y2K pill buttons, brand gradient with a top highlight */
-.um-go,button[type=submit],#submit{
-  background-image:linear-gradient(180deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,0) 52%),
-                   linear-gradient(115deg,var(--pink-dk) 0%,#A8135C 100%);
-  box-shadow:0 3px 0 rgba(0,0,0,.16), 0 8px 18px rgba(20,32,58,.22), inset 0 1px 0 rgba(255,255,255,.45);
-  border:0;
-}
-.um-go.alt{
-  background-image:linear-gradient(180deg,rgba(255,255,255,.32) 0%,rgba(255,255,255,0) 52%),
-                   linear-gradient(115deg,var(--teal) 0%,var(--teal-dk) 100%);
-}
-.um-go:active,#submit:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.4)}
-@media (prefers-reduced-motion:reduce){.um-go:active,#submit:active{transform:none}}
 
-/* Sticker cards: chunky edge, hard offset shadow */
-.um-panel,.um-path,.ax-path,.um-ex figure,.concept li,.card,.um-article{
-  box-shadow:4px 4px 0 var(--line), 0 10px 22px rgba(20,32,58,.07);
-}
-.um-ex figure{border-width:2px}
 
-/* Gradient swash under the page title */
-h1{position:relative}
-h1::after{
-  content:"";display:block;height:.42rem;width:min(16rem,62%);margin-top:.55rem;border-radius:999px;
-  background:linear-gradient(90deg,var(--teal) 0%,var(--plum) 48%,var(--pink-dk) 100%);
-}
 
 
 /* ---- Accent rotation. Mirrors the card-set rotation in styles.css:
@@ -522,11 +489,9 @@ h1::after{
 .um-ex-grid li:nth-child(2) figure{border-top:6px solid var(--teal)}
 .um-ex-grid li:nth-child(3) figure{border-top:6px solid var(--orange)}
 .um-ex-grid li:nth-child(4) figure{border-top:6px solid var(--pink-dk)}
-.um-ex-grid li:nth-child(5) figure{border-top:6px solid var(--lime)}
 .um-ex-grid li:nth-child(1) figcaption b{color:var(--plum)}
 .um-ex-grid li:nth-child(3) figcaption b{color:var(--orange-tx)}
 .um-ex-grid li:nth-child(4) figcaption b{color:var(--pink-tx)}
-.um-ex-grid li:nth-child(5) figcaption b{color:var(--lime-tx)}
 
 #pane-create{border-top:6px solid var(--plum)}
 #pane-group{border-top:6px solid var(--teal)}
@@ -639,39 +604,33 @@ h1::after{
 
   <section class="um-ex" aria-labelledby="examples-h">
     <h2 id="examples-h">What an answer can look like</h2>
-    <p>Most people land on a two-sided panel: what the world sees on one side, what is actually going on on the other. You do not have to do it that way. These five show the range.</p>
+    <p>Most people land on a two-sided panel: what the world sees on one side, what is actually going on on the other. You do not have to do it that way. These four show the range.</p>
 
     <p class="um-ex-note"><strong>These are illustrations, not participant work.</strong> They were made to show what is possible before the project opens. No panel here was created by a participant, and nothing on this page is anyone&rsquo;s real submission.</p>
 
     <ul class="um-ex-grid">
       <li><figure>
-        <img src="/unmasking/examples/example-gamer.jpg" width="1200" height="900" loading="lazy" decoding="async"
-             alt="A yard sign split in two. The left half is grey and dim: a boy in a black hoodie sits cross-legged holding a game controller, under the words They see a gamer. The right half is bright blue sky over a colorful block world where the same boy and other builders stack towers together, under the words I see worlds I can build.">
-        <figcaption><b>They see a gamer</b>The same person, two readings. Painted in detail, with the quiet side kept deliberately grey.</figcaption>
-      </figure></li>
-
-      <li><figure>
-        <img src="/unmasking/examples/example-quiet.jpg" width="1200" height="900" loading="lazy" decoding="async"
-             alt="A yard sign split in two. The left half is pale grey with a girl in a plain sweatshirt, a sleeping cat and a book behind her, under the words They see quiet. The right half is a deep blue night sky crowded with planets, stars, a rocket, a dinosaur and mountains, under the words I have a universe of ideas.">
-        <figcaption><b>They see quiet</b>Being read as shy on the outside while a lot is happening on the inside.</figcaption>
-      </figure></li>
-
-      <li><figure>
-        <img src="/unmasking/examples/example-song.jpg" width="1200" height="900" loading="lazy" decoding="async"
-             alt="A yard sign split in two. The left half is dark blue: a figure with closed eyes and a zipper across the mouth, under the words They hear silence. The right half is warm orange and gold, filled with a guitar, swirling brushstrokes and music notes, under the words Inside, I am a song.">
-        <figcaption><b>They hear silence</b>No faces or detail needed. Color and one object carry the whole idea.</figcaption>
+        <img src="/unmasking/examples/example-this-is-me.jpg" width="1200" height="900" loading="lazy" decoding="async"
+             alt="A white yard sign drawn in bright marker. A large red heart holds a green dinosaur, a purple music note and a yellow star, with colorful spirals in the corners, under the words This is me and I have big ideas.">
+        <figcaption><b>This is me</b>No split, no explaining. Just the things that are actually yours, drawn in marker.</figcaption>
       </figure></li>
 
       <li><figure>
         <img src="/unmasking/examples/example-be-kind.jpg" width="1200" height="900" loading="lazy" decoding="async"
              alt="A white yard sign with two hand-drawn faces in marker. A yellow smiling face labeled I look happy, a blue frowning face with a tear labeled Sometimes I feel sad, and a small red heart above the words Be kind.">
-        <figcaption><b>I look happy</b>Two circles and a heart. This is a complete answer and took one marker.</figcaption>
+        <figcaption><b>I look happy</b>Two circles and a heart. A complete answer that took one marker.</figcaption>
       </figure></li>
 
       <li><figure>
-        <img src="/unmasking/examples/example-this-is-me.jpg" width="1200" height="900" loading="lazy" decoding="async"
-             alt="A white yard sign drawn in bright marker. A large red heart holds a green dinosaur, a purple music note and a yellow star, with colorful spirals in the corners, under the words This is me and I have big ideas.">
-        <figcaption><b>This is me</b>No split, no explaining. Just the things that are actually yours.</figcaption>
+        <img src="/unmasking/examples/example-gamer.jpg" width="1200" height="900" loading="lazy" decoding="async"
+             alt="A yard sign split in two. The left half is grey and dim: a boy in a black hoodie sits cross-legged holding a game controller, under the words They see a gamer. The right half is bright blue sky over a colorful block world where the same boy and other builders stack towers together, under the words I see worlds I can build.">
+        <figcaption><b>They see a gamer</b>The same person, two readings. The outside kept grey, the inside in full color.</figcaption>
+      </figure></li>
+
+      <li><figure>
+        <img src="/unmasking/examples/example-song.jpg" width="1200" height="900" loading="lazy" decoding="async"
+             alt="A yard sign split in two. The left half is dark blue: a figure with closed eyes and a zipper across the mouth, under the words They hear silence. The right half is warm orange and gold, filled with a guitar, swirling brushstrokes and music notes, under the words Inside, I am a song.">
+        <figcaption><b>They hear silence</b>No faces needed. Color and one object carry the whole idea.</figcaption>
       </figure></li>
     </ul>
   </section>
