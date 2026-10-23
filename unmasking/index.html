@@ -414,6 +414,16 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
 .um-join a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;width:100%;max-width:26rem;border-radius:999px;background:var(--pink-dk,#BC004A);color:#fff;font-weight:800;text-decoration:none}
 @media (max-width:48rem){.um-join.on{display:flex}body.um-has-join{padding-bottom:5.5rem}}
 @media print{.um-join{display:none}}
+
+/* ---- Example panels gallery ---- */
+.um-ex{margin:1rem 0 0}
+.um-ex-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem;margin:1rem 0 0;padding:0;list-style:none}
+.um-ex-grid li{margin:0}
+.um-ex figure{margin:0;background:var(--paper,#FDFBF5);border:1px solid var(--line,#E3DAC7);border-radius:14px;overflow:hidden;height:100%;display:flex;flex-direction:column}
+.um-ex img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover;background:var(--cream-2,#F3ECDD)}
+.um-ex figcaption{padding:.85rem 1rem;font-size:.92rem;color:var(--ink,#14243D);flex:1}
+.um-ex figcaption b{display:block;font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--teal-dk,#0A7C87);font-size:.95rem;margin-bottom:.15rem}
+.um-ex-note{background:var(--cream-2,#F3ECDD);border-left:5px solid var(--gold,#FFD126);border-radius:0 12px 12px 0;padding:.9rem 1.1rem;margin:1rem 0 0}
 </style></head>
 <body>
 <main class="wrap">
@@ -465,6 +475,45 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
         <path d="M108 30 H120 M106 42 H116" stroke="var(--muted)" stroke-width="3" stroke-linecap="round" opacity=".6"/>
       </svg>
     </div>
+  </section>
+
+  <section class="um-ex" aria-labelledby="examples-h">
+    <h2 id="examples-h">What an answer can look like</h2>
+    <p>Most people land on a two-sided panel: what the world sees on one side, what is actually going on on the other. You do not have to do it that way. These five show the range.</p>
+
+    <p class="um-ex-note"><strong>These are illustrations, not participant work.</strong> They were made to show what is possible before the project opens. No panel here was created by a participant, and nothing on this page is anyone&rsquo;s real submission.</p>
+
+    <ul class="um-ex-grid">
+      <li><figure>
+        <img src="/unmasking/examples/example-gamer.jpg" width="1200" height="900" loading="lazy" decoding="async"
+             alt="A yard sign split in two. The left half is grey and dim: a boy in a black hoodie sits cross-legged holding a game controller, under the words They see a gamer. The right half is bright blue sky over a colorful block world where the same boy and other builders stack towers together, under the words I see worlds I can build.">
+        <figcaption><b>They see a gamer</b>The same person, two readings. Painted in detail, with the quiet side kept deliberately grey.</figcaption>
+      </figure></li>
+
+      <li><figure>
+        <img src="/unmasking/examples/example-quiet.jpg" width="1200" height="900" loading="lazy" decoding="async"
+             alt="A yard sign split in two. The left half is pale grey with a girl in a plain sweatshirt, a sleeping cat and a book behind her, under the words They see quiet. The right half is a deep blue night sky crowded with planets, stars, a rocket, a dinosaur and mountains, under the words I have a universe of ideas.">
+        <figcaption><b>They see quiet</b>Being read as shy on the outside while a lot is happening on the inside.</figcaption>
+      </figure></li>
+
+      <li><figure>
+        <img src="/unmasking/examples/example-song.jpg" width="1200" height="900" loading="lazy" decoding="async"
+             alt="A yard sign split in two. The left half is dark blue: a figure with closed eyes and a zipper across the mouth, under the words They hear silence. The right half is warm orange and gold, filled with a guitar, swirling brushstrokes and music notes, under the words Inside, I am a song.">
+        <figcaption><b>They hear silence</b>No faces or detail needed. Color and one object carry the whole idea.</figcaption>
+      </figure></li>
+
+      <li><figure>
+        <img src="/unmasking/examples/example-be-kind.jpg" width="1200" height="900" loading="lazy" decoding="async"
+             alt="A white yard sign with two hand-drawn faces in marker. A yellow smiling face labeled I look happy, a blue frowning face with a tear labeled Sometimes I feel sad, and a small red heart above the words Be kind.">
+        <figcaption><b>I look happy</b>Two circles and a heart. This is a complete answer and took one marker.</figcaption>
+      </figure></li>
+
+      <li><figure>
+        <img src="/unmasking/examples/example-this-is-me.jpg" width="1200" height="900" loading="lazy" decoding="async"
+             alt="A white yard sign drawn in bright marker. A large red heart holds a green dinosaur, a purple music note and a yellow star, with colorful spirals in the corners, under the words This is me and I have big ideas.">
+        <figcaption><b>This is me</b>No split, no explaining. Just the things that are actually yours.</figcaption>
+      </figure></li>
+    </ul>
   </section>
 
   <div class="hero-art">
@@ -783,7 +832,7 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
     <h3 style="margin-top:0">Participant work will appear here</h3>
     <p>There are no participant pieces to show yet, and we are not going to invent any. When panels come back, this section fills with real work from real people in the Metro East.</p>
     <p><strong>How a piece gets published.</strong> The second survey asks two optional questions: one sentence about your piece, and the name you want on it. That name defaults to <em>Anonymous</em>. Nothing is published without permission, and anonymous is a full and ordinary choice, not a lesser one.</p>
-    <p class="note" style="margin-bottom:0">The images above are finished work from SIP Arts Foundation studio programs, shown as examples of what is possible. They are not panels from this project.</p>
+    <p class="note" style="margin-bottom:0">Everything shown on this page so far is either an illustration or finished work from SIP Arts Foundation studio programs. None of it is a panel from this project.</p>
   </div>
 
   <h2>Who can take part</h2>
