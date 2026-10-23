@@ -352,6 +352,68 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
 .um-prompt b{font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--navy,#0B2C5C);display:block;font-size:.95rem}
 .um-note{color:var(--muted,#4C5C74)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .um-links a{color:#EAF0F8}}
+
+/* ---- Unmasking 2026 update: prompt hero, participate selector, slider, FAQs ---- */
+.um-kicker{font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:var(--teal-dk,#0A7C87);margin:0 0 .4rem}
+.um-hero-prompt{display:grid;grid-template-columns:1fr 11rem;gap:1.5rem;align-items:center;background:var(--paper,#FDFBF5);border:1px solid var(--line,#E3DAC7);border-radius:16px;box-shadow:var(--sh-1,0 6px 16px rgba(11,44,92,.10));padding:1.5rem;margin:0 0 2.25rem}
+@media (max-width:34rem){.um-hero-prompt{grid-template-columns:1fr}.um-hero-prompt .um-hero-art{max-width:12rem;margin-inline:auto}}
+.um-hero-prompt .um-q{font-family:var(--font-display,Anton,Impact,sans-serif);font-weight:400;text-transform:uppercase;font-style:italic;letter-spacing:.028em;font-size:clamp(1.25rem,4.6vw,1.7rem);line-height:1.15;color:var(--navy,#0B2C5C);margin:0 0 .6rem;text-wrap:balance}
+.um-hero-prompt .um-sub{margin:0;color:var(--ink,#14243D)}
+.um-hero-prompt svg{width:100%;height:auto;display:block}
+
+.um-disc{margin:1.1rem 0 0}
+.um-disc>summary{display:inline-flex;align-items:center;gap:.55rem;min-height:44px;padding:.5rem 1.25rem;border-radius:999px;border:2px solid var(--teal-dk,#0A7C87);color:var(--teal-dk,#0A7C87);font-weight:800;cursor:pointer;list-style:none}
+.um-disc>summary::-webkit-details-marker{display:none}
+.um-disc>summary::after{content:"+";font-family:var(--font-display,Anton,Impact,sans-serif);font-size:1.15rem;line-height:1}
+.um-disc[open]>summary::after{content:"\2013"}
+.um-disc>summary:hover{background:var(--cream-2,#F3ECDD)}
+.um-ideas{list-style:none;margin:.9rem 0 0;padding:0;display:grid;gap:.5rem}
+.um-ideas li{background:var(--cream-2,#F3ECDD);border:1px solid var(--line,#E3DAC7);border-radius:12px;padding:.7rem 1rem}
+
+.um-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1rem;padding:0}
+.um-tabs button{background:var(--field,#fff);color:var(--ink,#14243D);border:1.5px solid var(--line,#E3DAC7);font-weight:700;font-size:.95rem;padding:.5rem 1.1rem;min-height:44px;border-radius:999px}
+.um-tabs button[aria-selected="true"]{background:var(--teal-dk,#0A7C87);border-color:var(--teal-dk,#0A7C87);color:#fff}
+.um-tabs button:hover:not(:disabled){transform:none;filter:none;border-color:var(--teal,#0E9AA7)}
+.um-tabs button[aria-selected="true"]:hover{border-color:var(--teal-dk,#0A7C87)}
+.um-panel{background:var(--paper,#FDFBF5);border:1px solid var(--line,#E3DAC7);border-radius:16px;box-shadow:var(--sh-1,0 6px 16px rgba(11,44,92,.10));padding:1.4rem;margin-bottom:1rem}
+.um-panel:last-child{margin-bottom:0}
+.um-panel h3{margin-top:0}
+.um-panel [hidden]{display:none}
+
+.um-ba{margin:1.25rem 0 0}
+.um-ba-stage{position:relative;border:1px solid var(--line,#E3DAC7);border-radius:14px;overflow:hidden;background:var(--paper,#FDFBF5);aspect-ratio:3/2}
+.um-ba-stage>svg{position:absolute;inset:0;width:100%;height:100%}
+.um-ba-top{clip-path:inset(0 calc(100% - var(--um-pos,50%)) 0 0)}
+.um-ba-divider{position:absolute;top:0;bottom:0;left:var(--um-pos,50%);width:3px;margin-left:-1.5px;background:var(--gold,#FFD126);pointer-events:none}
+.um-ba input[type=range]{width:100%;margin:.9rem 0 .25rem;min-height:44px;accent-color:var(--teal-dk,#0A7C87)}
+.um-ba-labels{display:flex;justify-content:space-between;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted,#4C5C74)}
+.um-static{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:1.25rem}
+.um-static figure{margin:0;background:var(--paper,#FDFBF5);border:1px solid var(--line,#E3DAC7);border-radius:14px;padding:.8rem}
+.um-static svg{width:100%;height:auto;display:block}
+.um-static figcaption{font-size:.85rem;color:var(--muted,#4C5C74);margin-top:.5rem;text-align:center}
+
+.um-faq{display:grid;gap:.6rem;margin-top:1rem}
+.um-faq details{background:var(--paper,#FDFBF5);border:1px solid var(--line,#E3DAC7);border-radius:12px}
+.um-faq summary{cursor:pointer;font-weight:800;color:var(--navy,#0B2C5C);padding:.85rem 1rem;min-height:44px;list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.um-faq summary::-webkit-details-marker{display:none}
+.um-faq summary::after{content:"+";font-family:var(--font-display,Anton,Impact,sans-serif);color:var(--teal-dk,#0A7C87);font-size:1.25rem;line-height:1}
+.um-faq details[open] summary::after{content:"\2013"}
+.um-faq details>div{padding:0 1rem 1rem}
+.um-faq details>div p:last-child{margin-bottom:0}
+
+.um-article{display:grid;grid-template-columns:4.75rem 1fr;gap:1.1rem;align-items:start;background:var(--cream-2,#F3ECDD);border:1px solid var(--line,#E3DAC7);border-radius:16px;padding:1.3rem;margin-top:1.25rem}
+@media (max-width:34rem){.um-article{grid-template-columns:1fr}.um-article svg{max-width:4.75rem}}
+.um-article svg{width:100%;height:auto;display:block}
+.um-article h3{margin:0 0 .15rem}
+.um-article .um-by{font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted,#4C5C74);margin:0 0 .5rem}
+
+.um-future{border:2px dashed var(--line,#E3DAC7);border-radius:16px;padding:1.4rem;margin-top:1rem;background:var(--paper,#FDFBF5)}
+.um-tag{display:inline-block;font-weight:800;font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;color:var(--navy,#0B2C5C);background:var(--gold,#FFD126);border-radius:999px;padding:.25rem .7rem;margin:0 0 .6rem}
+
+.um-join{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--paper,#FDFBF5);border-top:1px solid var(--line,#E3DAC7);padding:.6rem 1rem;padding-bottom:calc(.6rem + env(safe-area-inset-bottom,0px));display:none;justify-content:center;box-shadow:0 -4px 14px rgba(11,44,92,.12)}
+.um-join a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;width:100%;max-width:26rem;border-radius:999px;background:var(--pink-dk,#BC004A);color:#fff;font-weight:800;text-decoration:none}
+@media (max-width:48rem){.um-join.on{display:flex}body.um-has-join{padding-bottom:5.5rem}}
+@media print{.um-join{display:none}}
 </style></head>
 <body>
 <main class="wrap">
@@ -359,9 +421,10 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
   <p class="eyebrow">A community art project</p>
   <h1>Unmasking in the MetroEast</h1>
 <!-- cms:start unmasking -->
-<p><strong>Unmasking in the MetroEast is a community education project about autism acceptance, built around one word: masking.</strong></p>
-<p>Everyone who takes part learns what masking is first, then answers it in their own work. As <a href="https://aane.org/autism-info-faqs/library/masking-a-guide/">AANE</a> explains it: "Masking, also called camouflaging, is something many Autistic people do to fit in with societal expectations. It means changing, hiding, or copying behaviors to blend into neurotypical environments."</p>
-<p>The panels are political yard signs, the ones candidates used to present the best possible version of themselves, collected before they reach the landfill, cleaned, and handed back blank. What you make on yours is your expression of unmasking.</p>
+<p><strong>Unmasking in the MetroEast is a community art and education project built around one word: masking.</strong></p>
+<p>Masking means hiding, changing, or holding back parts of ourselves to fit expectations, avoid judgment, or feel safe. Almost everyone does some version of it. For many autistic people it runs constantly, and it costs more than people outside can see. As <a href="https://aane.org/autism-info-faqs/library/masking-a-guide/">AANE</a> explains it: "Masking, also called camouflaging, is something many Autistic people do to fit in with societal expectations. It means changing, hiding, or copying behaviors to blend into neurotypical environments."</p>
+<p>Autistic masking is where this project starts. It is not where it stops. Anyone who has held part of themselves back has something true to put on a panel, and these experiences are not the same weight or the same shape. This project makes room for all of them without flattening any of them.</p>
+<p>The panels are political yard signs, the ones candidates used to present the best possible version of themselves, collected before they reach the landfill, cleaned, and handed back blank. What you make on yours is yours.</p>
 <p>Every piece is displayed at our free public showcase on April 3, 2027, held in celebration of World Autism Awareness Day.</p>
 <!-- cms:end unmasking -->
 
@@ -369,6 +432,40 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
   <p class="lede">After every election, thousands of yard signs come down and go straight to the landfill. We are collecting them instead, cleaning them, and handing them back to our neighbors as free art panels.</p>
 
   <p class="pull">What divided a yard can decorate a wall.</p>
+
+  <section class="um-hero-prompt" aria-labelledby="prompt-h">
+    <div>
+      <p class="um-kicker">The prompt</p>
+      <h2 class="um-q" id="prompt-h">What do you show the world&mdash;and what do you wish the world could see?</h2>
+      <p class="um-sub">Transform a yard sign using colors, symbols, textures, or words to express what unmasking means to you. Share only what feels comfortable.</p>
+      <details class="um-disc">
+        <summary>Need inspiration?</summary>
+        <p class="um-note" style="margin:.9rem 0 0">Optional starting points. The prompt above is the one that matters, and nothing here is collected or submitted anywhere.</p>
+        <ul class="um-ideas">
+          <li>Something people misunderstand about me&hellip;</li>
+          <li>A part of myself I hold back&hellip;</li>
+          <li>I feel accepted when&hellip;</li>
+          <li>If I felt free to be myself&hellip;</li>
+        </ul>
+      </details>
+    </div>
+    <div class="um-hero-art">
+      <svg viewBox="0 0 200 200" role="img" aria-label="A yard sign panel painted with color and shape, with a plain navy mask lifting up and away from it.">
+        <line x1="12" y1="182" x2="188" y2="182" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M72 128 V180 M128 128 V180 M72 148 H128" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <rect x="22" y="40" width="156" height="90" rx="3" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+        <path d="M22 108 Q60 74 100 102 T178 86 V127 a3 3 0 0 1-3 3 H25 a3 3 0 0 1-3-3 Z" fill="var(--teal)" opacity=".85"/>
+        <circle cx="56" cy="68" r="15" fill="var(--pink-dk)" opacity=".85"/>
+        <path d="M112 86 L132 50 L152 86 Z" fill="var(--gold)"/>
+        <g transform="rotate(-18 148 28)">
+          <ellipse cx="148" cy="28" rx="28" ry="17" fill="var(--navy)"/>
+          <ellipse cx="139" cy="25" rx="5" ry="3.4" fill="var(--paper)"/>
+          <ellipse cx="157" cy="25" rx="5" ry="3.4" fill="var(--paper)"/>
+        </g>
+        <path d="M108 30 H120 M106 42 H116" stroke="var(--muted)" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+      </svg>
+    </div>
+  </section>
 
   <div class="hero-art">
     <p style="margin:0">Corrugated plastic signs are not accepted in most curbside recycling. They are layered plastic with wire stakes, so they sit in a landfill for decades. Every sign you hand us is one less in the ground and one more blank canvas in a child's hands.</p>
@@ -380,7 +477,7 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
   </div>
 
   <h2>What we are actually doing</h2>
-  <p>A sign that spent the fall telling your neighbors how to vote becomes a blank panel, and then becomes a piece of art about what it costs to hide who you are.</p>
+  <p>A sign that spent the fall telling your neighbors how to vote becomes a blank panel, and then becomes your answer to the prompt above. Three stages, one sign.</p>
   <ul class="concept">
     <li>
       <svg viewBox="0 0 200 200" role="img" aria-label="A weathered plastic campaign yard sign on a wire stake.">
@@ -426,9 +523,87 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
         <path d="M112 30 H124 M110 42 H120" stroke="var(--muted)" stroke-width="3" stroke-linecap="round" opacity=".6"/>
       </svg>
       <b>Step three</b>
-      <span>You answer the theme on it. The mask comes off.</span>
+      <span>You answer the prompt on it: what you show, and what you wish was seen.</span>
     </li>
   </ul>
+
+  <h3>See one sign change</h3>
+  <p class="note">Drag the handle, or use the arrow keys, to move between the two stages. Both stages are also shown side by side below.</p>
+  <div class="um-ba">
+    <div class="um-ba-stage">
+      <svg aria-hidden="true" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="var(--cream-2)"/>
+  <line x1="24" y1="178" x2="276" y2="178" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M122 132 V176 M178 132 V176 M122 150 H178" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <rect x="74" y="34" width="152" height="98" rx="3" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+  <path d="M74 110 Q112 76 150 104 T226 88 V129 a3 3 0 0 1-3 3 H77 a3 3 0 0 1-3-3 Z" fill="var(--teal)" opacity=".85"/>
+  <circle cx="108" cy="64" r="16" fill="var(--pink-dk)" opacity=".85"/>
+  <path d="M164 88 L186 48 L208 88 Z" fill="var(--gold)"/>
+  <g transform="rotate(-18 206 30)">
+    <ellipse cx="206" cy="30" rx="26" ry="16" fill="var(--navy)"/>
+    <ellipse cx="198" cy="27" rx="4.6" ry="3.2" fill="var(--paper)"/>
+    <ellipse cx="214" cy="27" rx="4.6" ry="3.2" fill="var(--paper)"/>
+  </g>
+  <path d="M160 32 H172 M158 44 H168" stroke="var(--muted)" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+</svg>
+      <div class="um-ba-top"><svg aria-hidden="true" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="var(--cream-2)"/>
+  <line x1="24" y1="178" x2="276" y2="178" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M122 132 V176 M178 132 V176 M122 150 H178" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <rect x="74" y="34" width="152" height="98" rx="3" fill="var(--navy)"/>
+  <rect x="74" y="94" width="152" height="15" fill="var(--gold)"/>
+  <rect x="92" y="52" width="104" height="13" rx="2" fill="var(--cream)" opacity=".92"/>
+  <rect x="92" y="72" width="68" height="10" rx="2" fill="var(--cream)" opacity=".7"/>
+  <rect x="92" y="116" width="86" height="8" rx="2" fill="var(--cream)" opacity=".55"/>
+  <path d="M74 70 Q120 80 168 66 T226 76" stroke="var(--cream)" stroke-width="1.5" fill="none" opacity=".28"/>
+  <circle cx="96" cy="126" r="3" fill="var(--muted)" opacity=".5"/>
+  <circle cx="210" cy="46" r="2.5" fill="var(--muted)" opacity=".45"/>
+</svg></div>
+      <div class="um-ba-divider" aria-hidden="true"></div>
+    </div>
+    <label for="baRange" style="font-weight:700;font-size:.9rem;color:var(--navy);display:block;margin-top:.9rem">Reveal the finished panel</label>
+    <input type="range" id="baRange" min="0" max="100" value="50" step="1"
+           aria-describedby="baHint">
+    <div class="um-ba-labels"><span>Discarded sign</span><span>Finished artwork</span></div>
+    <p class="note" id="baHint" style="margin-top:.5rem">Illustration, not a photograph. The finished panel shown is an example of what a panel can look like, not a participant's work.</p>
+  </div>
+
+  <div class="um-static">
+    <figure>
+      <svg viewBox="0 0 300 200" role="img" aria-label="A weathered navy and gold campaign yard sign on a wire stake, mud-flecked and faded.">
+  <rect width="300" height="200" fill="var(--cream-2)"/>
+  <line x1="24" y1="178" x2="276" y2="178" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M122 132 V176 M178 132 V176 M122 150 H178" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <rect x="74" y="34" width="152" height="98" rx="3" fill="var(--navy)"/>
+  <rect x="74" y="94" width="152" height="15" fill="var(--gold)"/>
+  <rect x="92" y="52" width="104" height="13" rx="2" fill="var(--cream)" opacity=".92"/>
+  <rect x="92" y="72" width="68" height="10" rx="2" fill="var(--cream)" opacity=".7"/>
+  <rect x="92" y="116" width="86" height="8" rx="2" fill="var(--cream)" opacity=".55"/>
+  <path d="M74 70 Q120 80 168 66 T226 76" stroke="var(--cream)" stroke-width="1.5" fill="none" opacity=".28"/>
+  <circle cx="96" cy="126" r="3" fill="var(--muted)" opacity=".5"/>
+  <circle cx="210" cy="46" r="2.5" fill="var(--muted)" opacity=".45"/>
+</svg>
+      <figcaption><strong>Before.</strong> A discarded campaign sign, headed for the landfill.</figcaption>
+    </figure>
+    <figure>
+      <svg viewBox="0 0 300 200" role="img" aria-label="The same sign, cleaned and painted: a teal wave, a pink circle, a gold triangle, and a navy mask lifting away from the panel.">
+  <rect width="300" height="200" fill="var(--cream-2)"/>
+  <line x1="24" y1="178" x2="276" y2="178" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M122 132 V176 M178 132 V176 M122 150 H178" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <rect x="74" y="34" width="152" height="98" rx="3" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+  <path d="M74 110 Q112 76 150 104 T226 88 V129 a3 3 0 0 1-3 3 H77 a3 3 0 0 1-3-3 Z" fill="var(--teal)" opacity=".85"/>
+  <circle cx="108" cy="64" r="16" fill="var(--pink-dk)" opacity=".85"/>
+  <path d="M164 88 L186 48 L208 88 Z" fill="var(--gold)"/>
+  <g transform="rotate(-18 206 30)">
+    <ellipse cx="206" cy="30" rx="26" ry="16" fill="var(--navy)"/>
+    <ellipse cx="198" cy="27" rx="4.6" ry="3.2" fill="var(--paper)"/>
+    <ellipse cx="214" cy="27" rx="4.6" ry="3.2" fill="var(--paper)"/>
+  </g>
+  <path d="M160 32 H172 M158 44 H168" stroke="var(--muted)" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+</svg>
+      <figcaption><strong>After.</strong> Cleaned, primed, and answered. Example illustration.</figcaption>
+    </figure>
+  </div>
 
   <h2>How it works</h2>
   <ol class="flow">
@@ -437,6 +612,72 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
     <li><b>The community creates</b>Families, students, classrooms, church groups, and community organizations take panels for free and make art about what it costs to hide who you are, and what it feels like to stop.</li>
     <li><b>We show the work</b>Every panel comes back together for a free public showcase on April 3, 2027.</li>
   </ol>
+
+  <h2 id="participate">Find your way to participate</h2>
+  <p>Five ways in. Pick the one that sounds like you.</p>
+
+  <div class="um-pick">
+    <div class="um-tabs" role="tablist" aria-label="Ways to participate" id="umTabs" hidden>
+      <button type="button" role="tab" id="tab-create" aria-controls="pane-create" aria-selected="true">Create artwork</button>
+      <button type="button" role="tab" id="tab-group" aria-controls="pane-group" aria-selected="false" tabindex="-1">Bring a group</button>
+      <button type="button" role="tab" id="tab-signs" aria-controls="pane-signs" aria-selected="false" tabindex="-1">Donate signs</button>
+      <button type="button" role="tab" id="tab-volunteer" aria-controls="pane-volunteer" aria-selected="false" tabindex="-1">Volunteer</button>
+      <button type="button" role="tab" id="tab-support" aria-controls="pane-support" aria-selected="false" tabindex="-1">Support the project</button>
+    </div>
+
+    <div class="um-panel" id="pane-create" role="tabpanel" aria-labelledby="tab-create" tabindex="0">
+      <h3>Create artwork</h3>
+      <p>For individuals, families, and artists of any age or skill level. Four steps, start to finish, and every part of it is free.</p>
+      <ul class="steps">
+        <li>Take the first survey and get your participant code.</li>
+        <li>Read or watch one thing about masking. One is enough.</li>
+        <li>Make your panel, answering the prompt at the top of this page.</li>
+        <li>Bring it back with the second survey by March 15, 2027.</li>
+      </ul>
+      <p><a class="um-go" href="/um/pre">Start the first survey</a></p>
+      <p class="note">Need a panel? Ask in the notes box on <a href="#reg">the form below</a>, or email <a href="mailto:unmasking@sipartsfoundation.org">unmasking@sipartsfoundation.org</a>.</p>
+    </div>
+
+    <div class="um-panel" id="pane-group" role="tabpanel" aria-labelledby="tab-group" tabindex="0">
+      <h3>Bring a group</h3>
+      <p>For classroom teachers, scout troop leaders, church and youth leaders, club advisors, day programs, and libraries. Your group runs it in one session and reports once, together, instead of everyone filling out two surveys.</p>
+      <ul class="steps">
+        <li>Tell us how many panels you need and roughly how many people are taking part.</li>
+        <li>We send a group packet with your group code already printed on everything.</li>
+        <li>You run one session using the short lesson outline in the packet.</li>
+        <li>You submit one leader form with your group totals.</li>
+      </ul>
+      <p class="note">We collect no names and no personal information about anyone in your group.</p>
+      <p><a class="um-go" href="#reg">Request panels for a group</a></p>
+      <p class="note">Use the notes box on that form to tell us your group size, or email <a href="mailto:unmasking@sipartsfoundation.org">unmasking@sipartsfoundation.org</a> and we will set it up with you.</p>
+    </div>
+
+    <div class="um-panel" id="pane-signs" role="tabpanel" aria-labelledby="tab-signs" tabindex="0">
+      <h3>Donate signs</h3>
+      <p>Leftover or discarded yard signs, stakes included. Muddy, bent, or faded is fine. Any candidate, any issue, any year. Collection runs November 4 through December 31, 2026.</p>
+      <ul class="steps">
+        <li>Drop off at 424 Lebanon Avenue, Belleville, IL 62220.</li>
+        <li>Or ask for a pickup if you are clearing out a campaign office or have more than you can carry.</li>
+      </ul>
+      <p><a class="um-go" href="#reg">Donate or schedule a pickup</a></p>
+    </div>
+
+    <div class="um-panel" id="pane-volunteer" role="tabpanel" aria-labelledby="tab-volunteer" tabindex="0">
+      <h3>Volunteer</h3>
+      <p>The work between collection and the showcase is washing, priming, sorting, packing group kits, and setting up on April 3. Some of it is hands-on at the studio, some of it can be done from home.</p>
+      <p>There is no sign-up form for Unmasking volunteers yet, so email us and we will match you to what needs doing.</p>
+      <p><a class="um-go alt" href="mailto:unmasking@sipartsfoundation.org?subject=Volunteering%20for%20Unmasking%20in%20the%20MetroEast">Email the Unmasking team</a></p>
+      <p class="note">You can also see every open volunteer role at SIP on the <a href="/get-involved.html#volunteer">Get Involved page</a>.</p>
+    </div>
+
+    <div class="um-panel" id="pane-support" role="tabpanel" aria-labelledby="tab-support" tabindex="0">
+      <h3>Support the project</h3>
+      <p>Sponsorship covers primer, cleaning supplies, transport, and the public showcase. That is what keeps panels, pickup, and participation free for every family and classroom.</p>
+      <p>If your organization, church, business, or foundation wants to support Unmasking, or wants a copy of the project budget, email us and ask. We will send it.</p>
+      <p><a class="um-go alt" href="mailto:info@sipartsfoundation.org?subject=Supporting%20Unmasking%20in%20the%20MetroEast">Ask about sponsoring</a></p>
+      <p class="note">To give directly to SIP Arts Foundation, use the <a href="/get-involved.html#donate">donation page</a>.</p>
+    </div>
+  </div>
 
   <div class="um-learn">
 <h2 id="learn">Learn what masking is</h2>
@@ -481,13 +722,44 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
   </ol>
 </div>
 
+<div class="um-article">
+  <svg viewBox="0 0 80 100" role="img" aria-label="An open book with a small snowflake resting on the page.">
+    <rect x="4" y="14" width="72" height="72" rx="6" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+    <path d="M40 20 V80" stroke="var(--line)" stroke-width="2"/>
+    <path d="M12 30 H34 M12 40 H34 M12 50 H30" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
+    <path d="M46 30 H68 M46 40 H68 M46 50 H64" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
+    <g stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round">
+      <path d="M40 60 V78 M31.5 65 L48.5 73 M48.5 65 L31.5 73"/>
+    </g>
+  </svg>
+  <div>
+    <p class="um-kicker">Featured reading</p>
+    <h3>&ldquo;Conceal, Don&rsquo;t Feel&rdquo;: What Elsa Can Teach Us About Masking at Work</h3>
+    <p class="um-by">By Shauna Gholston</p>
+    <p>Explore masking at work through the familiar story of Elsa.</p>
+    <p style="margin:0"><a class="um-go alt" href="https://www.linkedin.com/pulse/conceal-dont-feel-what-elsa-can-teach-us-masking-work-gholston-m-ed-t9hjc" target="_blank" rel="noopener">Read the article on LinkedIn</a></p>
+  </div>
+</div>
+
 <p class="um-note">The three links above go to outside organizations. We share them because they explain masking well, and we check them regularly.</p>
-</div><h2>Why &ldquo;unmasking&rdquo;</h2>
-  <p>Masking is what a lot of autistic and disabled people do every day to seem acceptable: holding still, holding back, performing a version of themselves that costs them something to maintain. A yard sign is a mask too. It is the loudest, flattest version of what a person believes, planted on a lawn, speaking for a whole household.</p>
+</div>
+
+  <h2 id="ausome">How this connects to Ausome Expressions</h2>
+  <p>Unmasking in the MetroEast has two halves, and they are one effort rather than two separate projects.</p>
+  <ul class="flow" style="list-style:none">
+    <li><b>The community art initiative</b>Anyone in the Metro East can take a free panel, answer the prompt, and send it back. That is everything described above. No cohort, no commitment, no cost.</li>
+    <li><b>Ausome Expressions</b>A free artist residency cohort that meets ten Saturdays, noon to 3, from January through April 3, 2027. The cohort studies masking in depth and builds the April 3 showcase itself: the work on the walls, the layout of the room, and the running of the day.</li>
+  </ul>
+  <p>So the community makes the panels, and the cohort makes the show. Every panel that comes back, from a family at a kitchen table or a scout troop in one session, is displayed in the space the cohort designed.</p>
+  <p>Ausome Expressions is a cohort of SIP&rsquo;s MetroEast Career Academy. To join it, or to ask whether it is a fit, email <a href="mailto:unmasking@sipartsfoundation.org?subject=Ausome%20Expressions%20residency">unmasking@sipartsfoundation.org</a>.</p>
+
+  <h2>Why &ldquo;unmasking&rdquo;</h2>
+  <p>Masking is what a lot of autistic and disabled people do every day to seem acceptable: holding still, holding back, performing a version of themselves that costs them something to maintain. Plenty of people who are not autistic recognize some of that too, in a workplace, a classroom, or a family. The weight is not the same, and this project does not pretend it is. A yard sign is a mask too. It is the loudest, flattest version of what a person believes, planted on a lawn, speaking for a whole household.</p>
   <p>We take the flattest thing in the yard and hand it to someone who will put something true on it. Then we put all of it in one room, side by side, and let people look.</p>
 
   <h2>Why this is education, not decoration</h2>
   <p>Masking is one of the least understood parts of being autistic, and it is rarely taught anywhere. Every group that takes a panel learns what masking is first, then answers it in their own work. The art is how we know the learning landed.</p>
+  <p>Starting from autistic masking and letting everyone answer it is deliberate. Acceptance is built by people making something together, not by an audience being lectured at.</p>
   <ul class="steps">
     <li><strong>The learning goal:</strong> every participant can explain what masking is, why people do it, and what it costs.</li>
     <li><strong>How we know it worked:</strong> two short questions before participants start and two after they finish, so we can show what changed in people's understanding.</li>
@@ -503,6 +775,17 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
     <img src="https://sipartsfoundation.org/art-earth-day-mural.jpg" alt="A bright collaborative Earth Day mural made by a group in a SIP Arts Foundation studio program." loading="lazy">
   </div>
 
+  <h2>The showcase gallery</h2>
+  <p>On April 3, 2027, every panel that comes back is displayed together. After the showcase, this page becomes the place that work lives online.</p>
+
+  <div class="um-future">
+    <span class="um-tag">Not yet filled</span>
+    <h3 style="margin-top:0">Participant work will appear here</h3>
+    <p>There are no participant pieces to show yet, and we are not going to invent any. When panels come back, this section fills with real work from real people in the Metro East.</p>
+    <p><strong>How a piece gets published.</strong> The second survey asks two optional questions: one sentence about your piece, and the name you want on it. That name defaults to <em>Anonymous</em>. Nothing is published without permission, and anonymous is a full and ordinary choice, not a lesser one.</p>
+    <p class="note" style="margin-bottom:0">The images above are finished work from SIP Arts Foundation studio programs, shown as examples of what is possible. They are not panels from this project.</p>
+  </div>
+
   <h2>Who can take part</h2>
   <ul class="steps">
     <li>Families and individual artists of any age or skill level</li>
@@ -512,6 +795,59 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
     <li>Anyone who has a stack of signs in the garage</li>
   </ul>
   <p class="note">No art experience needed. No cost at any step. Accommodations and adapted tools are available, just ask.</p>
+
+  <h2>Questions people ask</h2>
+  <div class="um-faq">
+
+    <details>
+      <summary>Who can participate?</summary>
+      <div>
+        <p>Anyone in the Metro East. Families, individual artists of any age or skill level, classrooms, art teachers, school clubs, churches, scout troops, libraries, day programs, community groups, and campaigns clearing out signs.</p>
+        <p>You do not have to be autistic, disabled, or connected to SIP in any way. You do not need art experience. There is no cost at any step.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What materials do I need?</summary>
+      <div>
+        <p>We supply the panel, washed and primed and ready to work on. Everything after that is up to you: paint, marker, pencil, collage, fabric, paper, tape, words. Anything that sticks to a primed plastic panel will work.</p>
+        <p>Acrylic paint and paint markers hold best on this surface. If supplies are the thing standing in your way, say so when you ask for a panel and we will work it out.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I request panels?</summary>
+      <div>
+        <p>Use <a href="#reg">the form below</a> and say in the notes box how many panels you need and roughly how many people are taking part. Groups get a packet with a short lesson outline and a group code printed on everything.</p>
+        <p>You can also email <a href="mailto:unmasking@sipartsfoundation.org">unmasking@sipartsfoundation.org</a> and we will set it up with you directly.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I return finished artwork?</summary>
+      <div>
+        <p>Artwork is due <strong>March 15, 2027</strong>. Bring it to SIP Arts Foundation, 424 Lebanon Avenue, Belleville, IL 62220, with your participant code or group code written on the back.</p>
+        <p>Individuals fill out the <a href="/um/post">second survey</a> with the same code they got at the start. Group leaders fill out one leader form with their group totals instead.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What accessibility support is available?</summary>
+      <div>
+        <p>Adapted tools, grips, and seated work setups are available, and we will arrange what a participant needs rather than asking them to work around it. Ask when you request a panel.</p>
+        <p>The April 3 showcase is held in a sensory-friendly space with a quiet area available throughout. If you need something specific to take part or to attend, email <a href="mailto:unmasking@sipartsfoundation.org">unmasking@sipartsfoundation.org</a> and tell us what would help.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Do I have to share something personal?</summary>
+      <div>
+        <p>No. The prompt invites you to go as deep as you want and no further, and the instruction on it is deliberate: share only what feels comfortable.</p>
+        <p>An abstract panel, a pattern, a color study, or a single word is a complete answer. The optional sentence about your piece and the name on it are both optional, and the name defaults to <em>Anonymous</em>.</p>
+      </div>
+    </details>
+
+  </div>
 
   <h2>Donate your signs</h2>
   <p>Drop-off is the easiest way to get signs to us, and you are welcome during collection hours. If you are clearing out a campaign office or have more than you can carry, we will come get them.</p>
@@ -604,12 +940,102 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
   <h2>Fund or sponsor this project</h2>
   <p>Unmasking in the MetroEast is a program of SIP Arts Foundation, a 501(c)(3) nonprofit. Sponsorship covers primer, cleaning supplies, transport, and the public showcase, which is what keeps panels and participation free for every family and classroom. If your organization, church, business, or foundation wants to support it, or wants a copy of the project budget, email <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a>.</p>
 
-    <h2>Questions</h2>
-    <p>Email <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a> or <a href="mailto:neil@sipartsfoundation.org">neil@sipartsfoundation.org</a>. We answer every message.</p>
+    <h2>Get in touch</h2>
+    <p>Email the Unmasking team at <a href="mailto:unmasking@sipartsfoundation.org">unmasking@sipartsfoundation.org</a>, or reach <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a> or <a href="mailto:neil@sipartsfoundation.org">neil@sipartsfoundation.org</a>. We answer every message.</p>
     <p class="note">Unmasking in the MetroEast is a program of SIP Arts Foundation, a 501(c)(3) nonprofit serving people with disabilities and their families across Southern Illinois.</p>
   </div>
 
 </main>
+
+<div class="um-join" id="umJoin">
+  <a href="#participate">Join the movement</a>
+</div>
+
+<script>
+/* Unmasking page behaviour: participate tabs, before/after slider, sticky join bar.
+   Everything here is progressive enhancement. With JavaScript off, all five
+   participation panels are visible, the static before/after pair is visible,
+   and the inspiration list is a plain <details> the browser handles itself. */
+(function () {
+  'use strict';
+
+  /* ---- Participate selector -------------------------------------------- */
+  var tablist = document.getElementById('umTabs');
+  if (tablist) {
+    var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+    var panes = tabs.map(function (t) {
+      return document.getElementById(t.getAttribute('aria-controls'));
+    });
+
+    if (tabs.length && panes.every(Boolean)) {
+      tablist.hidden = false;
+
+      var select = function (i, focus) {
+        tabs.forEach(function (t, n) {
+          var on = n === i;
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          panes[n].hidden = !on;
+        });
+        if (focus) { tabs[i].focus(); }
+      };
+
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { select(i, false); });
+        t.addEventListener('keydown', function (e) {
+          var k = e.key, next = null;
+          if (k === 'ArrowRight' || k === 'ArrowDown') { next = (i + 1) % tabs.length; }
+          else if (k === 'ArrowLeft' || k === 'ArrowUp') { next = (i - 1 + tabs.length) % tabs.length; }
+          else if (k === 'Home') { next = 0; }
+          else if (k === 'End') { next = tabs.length - 1; }
+          if (next !== null) { e.preventDefault(); select(next, true); }
+        });
+      });
+
+      select(0, false);
+
+      /* A link to a hidden pane should open that pane. */
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest ? e.target.closest('a[href^="#pane-"]') : null;
+        if (!a) { return; }
+        var id = a.getAttribute('href').slice(1);
+        var i = panes.findIndex(function (pane) { return pane.id === id; });
+        if (i > -1) { select(i, true); }
+      });
+    }
+  }
+
+  /* ---- Before / after slider ------------------------------------------- */
+  var range = document.getElementById('baRange');
+  if (range) {
+    var stage = range.closest('.um-ba').querySelector('.um-ba-stage');
+    var paint = function () {
+      stage.style.setProperty('--um-pos', range.value + '%');
+    };
+    range.addEventListener('input', paint);
+    paint();
+  }
+
+  /* ---- Sticky join bar -------------------------------------------------- */
+  var join = document.getElementById('umJoin');
+  var target = document.getElementById('participate');
+  if (join && target) {
+    document.body.classList.add('um-has-join');
+    join.classList.add('on');
+
+    /* Get it out of the way once the reader has reached the choices. */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var past = entry.isIntersecting || entry.boundingClientRect.top < 0;
+          join.classList.toggle('on', !past);
+          document.body.classList.toggle('um-has-join', !past);
+        });
+      }, { rootMargin: '0px 0px -40% 0px' }).observe(target);
+    }
+  }
+})();
+</script>
 
 <script>
 (function () {
