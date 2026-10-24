@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0B2C5C">
+<title>County Ambassador | Southern Illinois Pathways</title>
+<meta name="description" content="Build your own County Ambassador role with Southern Illinois Pathways. Pick your county, pick what fits, share what you can. Serving nine Metro East Illinois counties.">
+<meta property="og:title" content="Become a County Ambassador">
+<meta property="og:description" content="Share a post from your couch or host a family meetup in your town. Both are real help.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sipartsfoundation.org/ambassador/">
+<link rel="canonical" href="https://sipartsfoundation.org/ambassador/">
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: single column, three numbered choices feeding a sticky live plan panel */
+:root{
+  --navy:#0B2C5C; --navy-2:#071F42; --teal:#0E9AA7; --teal-dk:#0A7C87;
+  --pink:#E4005A; --pink-dk:#BC004A; --gold:#FFD126;
+  --cream:#FAF6EC; --cream-2:#F3ECDD; --paper:#FDFBF5;
+  --ink:#14243D; --muted:#4C5C74; --line:#E3DAC7;
+  --font-display:'Anton',Impact,sans-serif;
+  --font-body:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-script:'Caveat',cursive;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font-body);line-height:1.55;font-size:16px}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0}
+h1,h2,h3{color:var(--navy);line-height:1.1;margin:0}
+.display{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.014em;font-weight:400}
+.script{font-family:var(--font-script);font-weight:700;color:var(--teal-dk)}
+header{background:var(--navy);color:#fff;padding-block:40px 36px}
+header .wrap{display:flex;flex-direction:column;gap:14px}
+header h1{color:#fff;font-size:clamp(34px,7vw,56px);text-wrap:balance}
+header h1 .hl{color:var(--gold)}
+header p{margin:0;max-width:60ch;color:#E8EEF7;font-size:17px}
+.kicker{font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--gold)}
+main{padding-block:32px 48px}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:20px}
+.step-hd{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--teal-dk);color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center}
+.step h2{font-size:20px}
+.hint{color:var(--muted);font-size:14px;margin:0 0 14px 42px}
+@media (max-width:520px){.hint{margin-left:0}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.chip{display:flex;align-items:center;justify-content:center;text-align:center;min-height:46px;padding:8px 10px;border:1px solid var(--line);background:var(--cream);border-radius:999px;font-weight:700;font-size:15px;cursor:pointer;min-width:0}
+.chip input{position:absolute;opacity:0;width:0;height:0}
+.chip:hover{border-color:var(--teal)}
+.chip:has(:checked){background:var(--navy);color:#fff;border-color:var(--navy)}
+.chip:has(:focus-visible){outline:3px solid var(--teal);outline-offset:2px}
+.tier{margin-top:18px}
+.tier-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.tier-hd h3{font-size:17px}
+.tag{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:3px 10px;border-radius:999px}
+.t-share{background:var(--cream-2);color:var(--navy)}
+.t-connect{background:var(--teal);color:var(--navy)}
+.t-host{background:var(--gold);color:var(--navy)}
+.tier p{margin:0 0 10px;color:var(--muted);font-size:14px}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:11px;align-items:flex-start;padding:11px 13px;border:1px solid var(--line);background:var(--cream);border-radius:10px;cursor:pointer;min-width:0}
+.opt:hover{border-color:var(--teal)}
+.opt:has(:checked){background:#fff;border-color:var(--teal-dk);box-shadow:inset 4px 0 0 var(--teal-dk)}
+.opt:has(:focus-visible){outline:3px solid var(--teal);outline-offset:2px}
+.opt input{margin:3px 0 0;width:18px;height:18px;flex:none;accent-color:var(--teal-dk)}
+.opt b{display:block;font-weight:700;font-size:15px}
+.opt span{display:block;color:var(--muted);font-size:13.5px}
+.plan{background:var(--navy);color:#fff;border-radius:14px;padding:22px;margin-top:26px}
+.plan h2{color:#fff;font-size:22px;margin-bottom:4px}
+.plan .lvl{font-family:var(--font-script);font-size:26px;color:var(--gold);line-height:1.2}
+.plan ul{margin:14px 0 0;padding-left:20px}
+.plan li{margin-bottom:6px;color:#EDF2F9}
+.plan .empty{color:#C9D6E8;margin:10px 0 0}
+.meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.22)}
+.meta div{min-width:0}
+.meta dt{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--gold);font-weight:800}
+.meta dd{margin:2px 0 0;font-weight:700}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{font-family:var(--font-body);font-weight:800;min-height:44px;padding:.5rem 1.4rem;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:0;cursor:pointer;font-size:15px}
+.btn-primary{background:var(--pink-dk);color:#fff}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55)}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.said{font-size:14px;color:var(--gold);margin:10px 0 0;font-weight:700}
+.next{background:var(--cream-2);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:20px}
+.next h2{font-size:19px;margin-bottom:10px}
+.next ol{margin:0;padding-left:20px}
+.next li{margin-bottom:7px}
+.contact{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:15px}
+.contact b{color:var(--navy)}
+.sel{user-select:all;font-weight:700;color:var(--teal-dk);overflow-wrap:anywhere}
+.cal{margin-top:20px}
+.cal h2{font-size:19px;margin-bottom:10px}
+.cal table{width:100%;border-collapse:collapse;font-size:14.5px}
+.cal thead th{background:var(--navy);color:#fff;text-transform:uppercase;letter-spacing:.06em;font-size:12px;text-align:left;padding:.55rem .7rem;font-weight:800}
+.cal td{padding:.55rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+.cal tbody tr:nth-child(even) td{background:var(--cream-2)}
+.scroll{overflow-x:auto}
+.why{background:var(--cream-2);border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:20px}
+.why h2{font-size:21px;margin-bottom:8px}
+.why p{margin:0 0 12px;max-width:62ch}
+.why p:last-child{margin-bottom:0}
+.why .pull{font-family:var(--font-script);font-size:27px;color:var(--teal-dk);line-height:1.25;margin:16px 0 0;border-left:5px solid var(--gold);padding-left:14px}
+.shirt{background:var(--navy);color:#fff;border-radius:14px;padding:22px;margin-top:20px}
+.shirt h2{color:#fff;font-size:21px;margin-bottom:4px}
+.shirt .sub{color:#C9D6E8;margin:6px 0 16px;max-width:60ch}
+.steps{display:grid;gap:10px;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.07);border-radius:10px;padding:13px 15px;min-width:0}
+.steps li::before{counter-increment:s;content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center}
+.steps b{display:block;font-size:15.5px}
+.steps span{display:block;color:#D6E2F0;font-size:14px}
+.unlock{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.22);font-family:var(--font-script);font-size:25px;color:var(--gold);line-height:1.25}
+.ladder{margin-top:20px}
+.ladder h2{font-size:19px;margin-bottom:10px}
+.ladder table{width:100%;border-collapse:collapse;font-size:14.5px}
+.ladder thead th{background:var(--teal-dk);color:#fff;text-transform:uppercase;letter-spacing:.06em;font-size:12px;text-align:left;padding:.55rem .7rem;font-weight:800}
+.ladder td{padding:.55rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+.ladder tbody tr:nth-child(even) td{background:var(--cream-2)}
+.ladder .now{font-weight:800;color:var(--pink-dk)}
+footer{background:var(--navy-2);color:#C9D6E8;padding-block:22px;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+footer b{color:#fff}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header>
+  <div class="wrap">
+    <p class="kicker">Southern Illinois Pathways &middot; SIP Arts Foundation</p>
+    <h1 class="display">Build your own <span class="hl">ambassador</span> role</h1>
+    <p>Pick your county, pick what sounds like you, and the page builds your role. Share a post from your couch or host a family meetup in your town. Both are real help. Nothing here is a contract.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="why">
+    <h2 class="display">Why we need you</h2>
+    <p>Southern Illinois Pathways covers nine counties. Our office is one building in Belleville. That math is the whole problem.</p>
+    <p>Families raising someone with a disability already spend their energy on appointments, paperwork and phone calls. They should not also have to drive an hour to find out what exists. Most of the support they need is already out there. They just never hear about it from anyone they know.</p>
+    <p>That is what an ambassador fixes. Not a program. A person. Somebody in their own town who already knows where the library is, which school sends the newsletter, and which group chat the parents actually read. One familiar name turns a flyer nobody opens into something a neighbor handed you.</p>
+    <p>We are not asking you to become an expert or run anything. We do the programs. You make sure your county knows they exist.</p>
+    <p class="pull">Nine counties. One building. The distance in between is where families get lost.</p>
+  </section>
+
+  <section class="step">
+    <div class="step-hd"><span class="num">1</span><h2>Where are you?</h2></div>
+    <p class="hint">Our office is in Belleville. Our mission covers all nine Metro East counties.</p>
+    <div class="grid" id="counties">
+      <label class="chip"><input type="radio" name="county" value="Madison" id="c-madison">Madison</label>
+      <label class="chip"><input type="radio" name="county" value="St. Clair" id="c-stclair">St. Clair</label>
+      <label class="chip"><input type="radio" name="county" value="Monroe" id="c-monroe">Monroe</label>
+      <label class="chip"><input type="radio" name="county" value="Clinton" id="c-clinton">Clinton</label>
+      <label class="chip"><input type="radio" name="county" value="Bond" id="c-bond">Bond</label>
+      <label class="chip"><input type="radio" name="county" value="Calhoun" id="c-calhoun">Calhoun</label>
+      <label class="chip"><input type="radio" name="county" value="Jersey" id="c-jersey">Jersey</label>
+      <label class="chip"><input type="radio" name="county" value="Macoupin" id="c-macoupin">Macoupin</label>
+      <label class="chip"><input type="radio" name="county" value="Jackson" id="c-jackson">Jackson</label>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="step-hd"><span class="num">2</span><h2>What sounds like you?</h2></div>
+    <p class="hint">Check anything that fits. One box is a real answer. So is nine.</p>
+
+    <div class="tier">
+      <div class="tier-hd"><h3>From wherever you are</h3><span class="tag t-share">Share</span></div>
+      <p>We write it. You pass it on. No meetings, no driving.</p>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" data-tier="1" data-plan="Share our event posts to your own social media" id="o1"><span><b>Share our posts</b><span>Forward what we send to your own page and groups</span></span></label>
+        <label class="opt"><input type="checkbox" data-tier="1" data-plan="Email our flyers to local parent and community groups" id="o2"><span><b>Email flyers to local groups</b><span>Parent groups, church bulletins, neighborhood lists</span></span></label>
+        <label class="opt"><input type="checkbox" data-tier="1" data-plan="Tell us what is happening in your county that families should know about" id="o3"><span><b>Be our ears in your county</b><span>Send us local events, needs and openings we would miss</span></span></label>
+        <label class="opt"><input type="checkbox" data-tier="1" data-plan="Help with data entry and tracking from home" id="o4"><span><b>Help from home with data</b><span>Entry, tracking and list cleanup on your own time</span></span></label>
+      </div>
+    </div>
+
+    <div class="tier">
+      <div class="tier-hd"><h3>Around your town</h3><span class="tag t-connect">Connect</span></div>
+      <p>Errands you are already running, with a stack of flyers in the car.</p>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" data-tier="2" data-plan="Drop flyers at local libraries, schools, clinics and churches" id="o5"><span><b>Drop off flyers locally</b><span>Libraries, schools, therapy offices, churches, rec centers</span></span></label>
+        <label class="opt"><input type="checkbox" data-tier="2" data-plan="Deliver Pathways Advocacy Binders to families in your county" id="o6"><span><b>Hand out advocacy binders</b><span>Get our binders into the hands of families near you</span></span></label>
+        <label class="opt"><input type="checkbox" data-tier="2" data-plan="Staff a resource table at community events in your area" id="o7"><span><b>Sit at a resource table</b><span>Community events, fairs, school nights. We bring the setup</span></span></label>
+        <label class="opt"><input type="checkbox" data-tier="2" data-plan="Help set up, run or tear down SIP events" id="o8"><span><b>Help at our events</b><span>Setup, teardown, art kits, gallery and exhibit help</span></span></label>
+      </div>
+    </div>
+
+    <div class="tier">
+      <div class="tier-hd"><h3>Bring families together</h3><span class="tag t-host">Host</span></div>
+      <p>You pick the date and the place. We bring materials, promotion and a staff contact.</p>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" data-tier="3" data-plan="Host a casual family meetup in your county" id="o9"><span><b>Host a family meetup</b><span>A park, a library room, a coffee shop. Low key on purpose</span></span></label>
+        <label class="opt"><input type="checkbox" data-tier="3" data-plan="Help organize a Southern Illinois Pathways event in your county" id="o10"><span><b>Bring an event to your town</b><span>Work with us to put a full event on your county calendar</span></span></label>
+        <label class="opt"><input type="checkbox" data-tier="3" data-plan="Be the listed local contact for families in your county" id="o11"><span><b>Be the local face</b><span>Your first name listed so families know who to ask</span></span></label>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="step-hd"><span class="num">3</span><h2>How often, honestly?</h2></div>
+    <p class="hint">Pick what you can keep. We would rather have you for a year at once a month than for six weeks at once a week.</p>
+    <div class="grid">
+      <label class="chip"><input type="radio" name="often" value="A few times a year" id="f1">A few times a year</label>
+      <label class="chip"><input type="radio" name="often" value="About once a month" id="f2">About once a month</label>
+      <label class="chip"><input type="radio" name="often" value="A couple times a month" id="f3">A couple times a month</label>
+      <label class="chip"><input type="radio" name="often" value="Weekly" id="f4">Weekly</label>
+    </div>
+  </section>
+
+  <section class="plan" aria-live="polite">
+    <h2 class="display">My ambassador plan</h2>
+    <p class="lvl" id="lvl">Start checking boxes above</p>
+    <p class="empty" id="empty">Whatever you pick becomes your role. Nothing you skip gets assigned to you later.</p>
+    <ul id="planlist" hidden></ul>
+    <div class="meta">
+      <div><dt>County</dt><dd id="m-county">Not picked yet</dd></div>
+      <div><dt>How often</dt><dd id="m-often">Not picked yet</dd></div>
+    </div>
+    <div class="btnrow">
+      <button class="btn btn-primary" id="copy" type="button">Copy my plan</button>
+      <button class="btn btn-ghost" id="clear" type="button">Start over</button>
+    </div>
+    <p class="said" id="said" hidden>Copied. Paste it into an email to us and you are done.</p>
+  </section>
+
+  <section class="next">
+    <h2 class="display">What happens next</h2>
+    <ol>
+      <li>Copy your plan and send it to us, or just tell us your county and we will call you.</li>
+      <li>You get a Welcome Kit with the wording, flyers and social posts already written.</li>
+      <li>We check in before each event. You say yes or pass. Passing is always fine.</li>
+    </ol>
+    <div class="contact">
+      <b>Send your plan to</b> <span class="sel">info@sipartsfoundation.org</span><br>
+      <b>Or call or text</b> <span class="sel">618-823-2423</span><br>
+      <b>SIP Arts Foundation</b>, 424 Lebanon Avenue, Belleville, IL 62220
+    </div>
+  </section>
+
+
+  <section class="shirt">
+    <h2 class="display">How to earn your shirt</h2>
+    <p class="sub">Your shirt is not a signup gift. It is a thank you for bringing people with you. Three steps, all from your phone.</p>
+    <ol class="steps">
+      <li><span><b>Announce it</b><span>Post your ambassador graphic and tag Southern Illinois Pathways so we can celebrate you</span></span></li>
+      <li><span><b>Bring your people</b><span>Ask your friends to like and follow our pages in that same post</span></span></li>
+      <li><span><b>Come inside</b><span>Join Pathways Family Circle, our private Facebook community for families</span></span></li>
+    </ol>
+    <p class="unlock">That is it. Your shirt comes with your county on it.</p>
+  </section>
+
+  <section class="ladder">
+    <h2 class="display">What you get, and when</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Stage</th><th>What you do</th><th>What you get</th></tr></thead>
+        <tbody>
+          <tr><td class="now">Day one</td><td>Say yes and pick your county</td><td>Your county frame, a sipaf.org email address, your name on this page</td></tr>
+          <tr><td>First post</td><td>Announce it and tag us</td><td>Your announcement badge and a public thank you from us</td></tr>
+          <tr><td>Shirt unlocked</td><td>All three steps above</td><td>Your ambassador shirt with your county on it, and your photo on your county card</td></tr>
+          <tr><td>Six months</td><td>Still sharing, still here</td><td>A printed name badge for events, and a letter of recommendation on request</td></tr>
+          <tr><td>One year</td><td>A full year in your county</td><td>Recognized by name at a public event, listed as a Founding Ambassador</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="cal">
+    <h2 class="display">What you would be sharing</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>When</th><th>What</th><th>Where</th></tr></thead>
+        <tbody>
+          <tr><td>Fri, Oct 30, 2026</td><td>Wonder Harvest festival, sensory friendly, 6 to 9 PM</td><td>424 Lebanon Ave, Belleville</td></tr>
+          <tr><td>Sat, Nov 21, 2026</td><td>Family Day Out, drop in, 1 to 3 PM</td><td>424 Lebanon Ave, Belleville</td></tr>
+          <tr><td>Jan 2027</td><td>PSA Clubs begin, starting at high school</td><td>Host high schools</td></tr>
+          <tr><td>Jan 23 to Mar 27, 2027</td><td>Ausome Expressions Artist Residency, ten Saturdays</td><td>424 Lebanon Ave, Belleville</td></tr>
+          <tr><td>Fri, Apr 3, 2027</td><td>Unmasking in the MetroEast, free public showcase</td><td>424 Lebanon Ave, Belleville</td></tr>
+          <tr><td>Year round</td><td>Pathways Advocacy Binder Workshops, four session series</td><td>Libraries across the region</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><b>Southern Illinois Pathways</b><span>A program of SIP Arts Foundation, Inc.</span><span>Serving neurodiversity and disability across nine Metro East counties</span><span style="margin-left:auto"><a href="https://www.interserver.net" style="color:#C9D6E8">Hosted by InterServer</a></span></div></footer>
+
+<script>
+(function(){
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.opt input'));
+  var lvl = document.getElementById('lvl');
+  var list = document.getElementById('planlist');
+  var empty = document.getElementById('empty');
+  var mc = document.getElementById('m-county');
+  var mo = document.getElementById('m-often');
+  var said = document.getElementById('said');
+
+  function county(){ var r = document.querySelector('input[name=county]:checked'); return r ? r.value : ''; }
+  function often(){ var r = document.querySelector('input[name=often]:checked'); return r ? r.value : ''; }
+
+  function render(){
+    var picked = boxes.filter(function(b){ return b.checked; });
+    var top = picked.reduce(function(m,b){ return Math.max(m, parseInt(b.dataset.tier,10)); }, 0);
+    var names = {1:'Share level', 2:'Connect level', 3:'Host level'};
+    lvl.textContent = top ? names[top] : 'Start checking boxes above';
+    list.innerHTML = '';
+    picked.forEach(function(b){
+      var li = document.createElement('li');
+      li.textContent = b.dataset.plan;
+      list.appendChild(li);
+    });
+    list.hidden = picked.length === 0;
+    empty.hidden = picked.length > 0;
+    mc.textContent = county() || 'Not picked yet';
+    mo.textContent = often() || 'Not picked yet';
+    said.hidden = true;
+  }
+
+  function planText(){
+    var picked = boxes.filter(function(b){ return b.checked; });
+    var lines = ['My Southern Illinois Pathways ambassador plan', ''];
+    lines.push('County: ' + (county() || 'not picked yet'));
+    lines.push('How often: ' + (often() || 'not picked yet'));
+    lines.push('Level: ' + lvl.textContent);
+    lines.push('');
+    lines.push('What I want to do:');
+    if (picked.length === 0) { lines.push('- still deciding'); }
+    picked.forEach(function(b){ lines.push('- ' + b.dataset.plan); });
+    return lines.join('\n');
+  }
+
+  document.addEventListener('change', function(e){
+    if (e.target.matches('.opt input, input[name=county], input[name=often]')) render();
+  });
+
+  document.getElementById('copy').addEventListener('click', function(){
+    var text = planText();
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly','');
+      ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); said.textContent = 'Copied. Paste it into an email to us and you are done.'; }
+      catch (err) { said.textContent = 'Select the text above and copy it, then email it to info@sipartsfoundation.org'; }
+      document.body.removeChild(ta); said.hidden = false;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){
+        said.textContent = 'Copied. Paste it into an email to us and you are done.';
+        said.hidden = false;
+      }).catch(fallback);
+    } else { fallback(); }
+  });
+
+  document.getElementById('clear').addEventListener('click', function(){
+    boxes.forEach(function(b){ b.checked = false; });
+    Array.prototype.forEach.call(document.querySelectorAll('input[name=county], input[name=often]'), function(r){ r.checked = false; });
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
