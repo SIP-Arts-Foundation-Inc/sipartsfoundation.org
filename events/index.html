@@ -439,7 +439,7 @@
       <div class="feat-card transition">
         <span class="feat-tag">SIP Arts Foundation &middot; Free</span>
         <h3>Family Day Out</h3>
-        <p class="feat-deadline">Saturday, October 24 and Saturday, November 21 &middot; 1:00 to 3:00 PM &middot; SIP Arts Foundation, 424 Lebanon Ave, Belleville</p>
+        <p class="feat-deadline">Saturday, November 21 &middot; 1:00 to 3:00 PM &middot; SIP Arts Foundation, 424 Lebanon Ave, Belleville</p>
         <p>Stop by anytime between 1:00 and 3:00 PM. Registering helps us plan, so we hope you will save your spot.</p>
         <a class="feat-btn" href="#events">Save your spot &#8594;</a>
       </div>
@@ -447,7 +447,7 @@
         <span class="feat-tag">Now enrolling &middot; Rolling admissions</span>
         <img src="/psa-logo.png" alt="PSA, Pathways Self-Advocates" style="display:block;max-width:180px;height:auto;margin:0 0 14px;">
         <h3>PSA: Pathways Self-Advocates</h3>
-        <p>Consider this a public service announcement. PSA is a social club built for neurodivergent young people and young people with disabilities, ages 14 to 26, and open to their siblings, friends, and peers. We have fun, we stay busy doing something around town, and we learn how to advocate for ourselves along the way. It is also a message to Southern Illinois: everyone has value, and everyone is worth the time it takes to understand them. Come as you are, join any time, no experience required.</p>
+        <p>Consider this a public service announcement. PSA is a social club built for neurodivergent young people and young people with disabilities, starting at high school, and open to their siblings, friends, and peers. We have fun, we stay busy doing something around town, and we learn how to advocate for ourselves along the way. It is also a message to Southern Illinois: everyone has value, and everyone is worth the time it takes to understand them. Come as you are, join any time, no experience required.</p>
         <a class="feat-btn" href="/selfadvocacy/">Join PSA &#8594;</a>
       </div>
     </div>
@@ -746,7 +746,7 @@ g.innerHTML=h;
       <div class="partner-card">
         <img class="partner-logo" src="/images/partners/asp2-steam-academy.png" alt="A Special Place 2 STEAM Academy logo">
         <h3>A Special Place 2 STEAM Academy</h3>
-        <p>A Belleville nonprofit school built around science, technology, engineering, arts, and math, serving young scholars in Southern Illinois. Southern Illinois Pathways shares the building with them at 424 Lebanon Ave in Belleville.</p>
+        <p>A Belleville nonprofit school built around science, technology, engineering, arts, and math, serving young scholars in Southern Illinois. Southern Illinois Pathways operates from the A Special Place campus at 424 Lebanon Ave in Belleville.</p>
         <p class="partner-note">Community partner. Enrollment and programs are managed directly by ASP2.</p>
         <a class="btn btn-outline" href="https://asp2steam.com" target="_blank" rel="noopener">Visit ASP2 STEAM Academy</a>
       </div>
@@ -959,7 +959,7 @@ function loadEvents() {
       // rebuild the schedule. Art studio dates are intentionally not listed.
       var shown = data.events.filter(function (ev) { return /family day out/i.test(ev.name || ''); });
       if (shown.length === 0) {
-        grid.insertAdjacentHTML('beforeend', '<div class="loading"><strong>Family Day Out</strong><br>Saturday, October 24 and Saturday, November 21, 1:00 to 3:00 PM<br>SIP Arts Foundation, 424 Lebanon Ave, Belleville<br>Stop by anytime! Call or text <a href="tel:+16188232423">618-823-2423</a> to save your spot.</div>');
+        grid.insertAdjacentHTML('beforeend', '<div class="loading"><strong>Family Day Out</strong><br>Saturday, November 21, 1:00 to 3:00 PM<br>SIP Arts Foundation, 424 Lebanon Ave, Belleville<br>Stop by anytime! Call or text <a href="tel:+16188232423">618-823-2423</a> to save your spot.</div>');
         return;
       }
       shown.forEach(function (ev) {
