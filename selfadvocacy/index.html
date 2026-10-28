@@ -190,20 +190,8 @@
             <input type="text" id="sa-age" placeholder="e.g. 16" required>
           </div>
           <div>
-            <label for="sa-county">County <span class="req">*</span></label>
-            <select id="sa-county" required>
-              <option value="" disabled selected>Choose a county</option>
-              <option>Madison</option>
-              <option>St. Clair</option>
-              <option>Monroe</option>
-              <option>Clinton</option>
-              <option>Bond</option>
-              <option>Calhoun</option>
-              <option>Jersey</option>
-              <option>Macoupin</option>
-              <option>Washington</option>
-              <option>Other / Outside the region</option>
-            </select>
+            <label for="sa-zip">ZIP Code <span class="req">*</span></label>
+            <input type="text" id="sa-zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="e.g. 62220" required>
           </div>
         </div>
 
@@ -298,7 +286,8 @@
   btn.addEventListener('click', function () {
     var name = document.getElementById('sa-name').value.trim();
     var age = document.getElementById('sa-age').value.trim();
-    var county = document.getElementById('sa-county').value;
+    var zip = document.getElementById('sa-zip').value.trim();
+    var county = window.SIPZipCounty ? window.SIPZipCounty.lookup(zip) : '';
     var role = getRadio('sarole');
     var guardian = document.getElementById('sa-guardian').value.trim();
     var email = document.getElementById('sa-email').value.trim();
@@ -311,7 +300,7 @@
     status.className = 'sa-status';
     status.textContent = '';
 
-    if (!name || !age || !county || !role || !email) {
+    if (!name || !age || !zip || !county || !role || !email) {
       status.className = 'sa-status error';
       status.textContent = 'Please fill in the required fields marked with an asterisk.';
       return;
@@ -335,7 +324,7 @@
       mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({
-        name: name, age: age, county: county, role: role,
+        name: name, age: age, zip: zip, county: county, role: role,
         guardian: guardian, email: email, phone: phone,
         format: format, why: why, heard: heard,
         consent: consent ? 'Yes' : 'No'
@@ -356,6 +345,7 @@
 })();
 </script>
 
+<script src="/assets/zip-county.js"></script>
 <script src="/sip-donate.js" defer></script>
 <script src="https://sipartsfoundation.org/stay-connected.js?v=0926b" defer></script>
 <style>#sip-review{display:flex;align-items:center;gap:14px;max-width:420px;margin:18px auto;padding:12px 16px;background:#fff;color:#16233f;border:1px solid #16233f26;border-radius:12px;font:500 15px/1.35 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;text-align:left;box-sizing:border-box}

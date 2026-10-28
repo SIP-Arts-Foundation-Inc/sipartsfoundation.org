@@ -653,18 +653,8 @@ g.innerHTML=h;
           <input type="tel" id="f-phone" autocomplete="tel" required>
         </div>
         <div class="form-row">
-          <label for="f-county">County <span class="req">*</span></label>
-          <select id="f-county" required>
-            <option value="">Select&hellip;</option>
-            <option>Madison</option>
-            <option>St. Clair</option>
-            <option>Monroe</option>
-            <option>Clinton</option>
-            <option>Bond</option>
-            <option>Macoupin</option>
-            <option>Jersey</option>
-            <option>Other</option>
-          </select>
+          <label for="f-zip">ZIP Code <span class="req">*</span></label>
+          <input type="text" id="f-zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="e.g. 62220" required>
         </div>
       </div>
 
@@ -1039,7 +1029,8 @@ function submitRegistration() {
     name: document.getElementById('f-name').value.trim(),
     email: document.getElementById('f-email').value.trim(),
     phone: document.getElementById('f-phone').value.trim(),
-    county: document.getElementById('f-county').value,
+    zip: document.getElementById('f-zip').value.trim(),
+    county: window.SIPZipCounty ? window.SIPZipCounty.lookup(document.getElementById('f-zip').value.trim()) : '',
     participantType: document.getElementById('f-type').value,
     childAge: document.getElementById('f-age').value,
     howHeard: document.getElementById('f-heard').value,
@@ -1051,7 +1042,7 @@ function submitRegistration() {
   if (!data.name) { showErr('Please enter your name.'); return; }
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) { showErr('Please enter a valid email address.'); return; }
   if (!data.phone) { showErr('Please enter your phone number.'); return; }
-  if (!data.county) { showErr('Please select your county.'); return; }
+  if (!window.SIPZipCounty || !window.SIPZipCounty.isValid(data.zip)) { showErr('Please enter your 5-digit ZIP code.'); return; }
   if (!data.participantType) { showErr('Please tell us your role (parent, caregiver, etc.).'); return; }
 
   btn.disabled = true;
@@ -1092,6 +1083,7 @@ function submitRegistration() {
 document.getElementById('f-submit').addEventListener('click', submitRegistration);
 loadEvents();
 </script>
+<script src="/assets/zip-county.js"></script>
 <script src="/sip-donate.js" defer></script>
 <script src="https://sipartsfoundation.org/stay-connected.js?v=0926b" defer></script>
 <style>#sip-review{display:flex;align-items:center;gap:14px;max-width:420px;margin:18px auto;padding:12px 16px;background:#fff;color:#16233f;border:1px solid #16233f26;border-radius:12px;font:500 15px/1.35 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;text-align:left;box-sizing:border-box}
