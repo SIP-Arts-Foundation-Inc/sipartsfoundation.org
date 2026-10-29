@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="/assets/zip-county.js"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <style>
 /* Layout: single centered column, cream ground, one paper card for the form.
@@ -557,8 +558,8 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
           <input type="tel" id="phone" name="phone" autocomplete="tel">
         </div>
         <div class="field">
-          <label for="city">City</label>
-          <input type="text" id="city" name="city" autocomplete="address-level2">
+          <label for="zip">ZIP code</label>
+          <input type="text" id="zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="e.g. 62220">
         </div>
       </div>
 
@@ -656,8 +657,8 @@ textarea { font:inherit; color:var(--ink); background:var(--field); border:1px s
       firstname: first,
       lastname: form.lastname.value.trim(),
       email: email,
-      city: form.city.value.trim(),
-      state: 'IL',
+      zip: form.zip.value.trim(),
+      county: window.SIPZipCounty ? window.SIPZipCounty.lookup(form.zip.value.trim()) : '',
       phone: form.phone.value.trim(),
       signcount: form.signcount.value,
       pickup_address: method() === 'pickup' ? form.pickup_address.value.trim() : '',
