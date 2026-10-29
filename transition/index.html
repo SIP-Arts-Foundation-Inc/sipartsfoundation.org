@@ -313,20 +313,8 @@ a { color: var(--teal-dk); }
 
       <div class="row">
         <div class="field">
-          <label for="county">County</label>
-          <select id="county" name="county" required>
-            <option value="">Select&hellip;</option>
-            <option>Madison</option>
-            <option>St. Clair</option>
-            <option>Monroe</option>
-            <option>Clinton</option>
-            <option>Bond</option>
-            <option>Calhoun</option>
-            <option>Jersey</option>
-            <option>Macoupin</option>
-            <option>Jackson</option>
-            <option>Other / Outside service area</option>
-          </select>
+          <label for="zip">ZIP Code</label>
+          <input id="zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="e.g. 62220" required>
         </div>
         <div class="field">
           <label for="phone">Phone <span class="opt">(optional)</span></label>
@@ -367,6 +355,7 @@ a { color: var(--teal-dk); }
   </div>
 
 </div>
+<script src="/assets/zip-county.js"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 (function () {
@@ -385,10 +374,11 @@ a { color: var(--teal-dk); }
 
     var first = form.firstname.value.trim();
     var email = form.email.value.trim();
-    var county = form.county.value;
+    var zip = form.zip.value.trim();
+    var county = window.SIPZipCounty ? window.SIPZipCounty.lookup(zip) : '';
     if (!first) { say('Please add your first name.', 'err'); form.firstname.focus(); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('Please check your email address.', 'err'); form.email.focus(); return; }
-    if (!county) { say('Please choose your county.', 'err'); form.county.focus(); return; }
+    if (!window.SIPZipCounty || !window.SIPZipCounty.isValid(zip)) { say('Please enter your 5-digit ZIP code.', 'err'); form.zip.focus(); return; }
 
     var qs = new URLSearchParams(location.search);
     var data = {
@@ -397,6 +387,7 @@ a { color: var(--teal-dk); }
       firstname: first,
       lastname: form.lastname.value.trim(),
       email: email,
+      zip: zip,
       county: county,
       phone: form.phone.value.trim(),
       newsletter: form.newsletter.checked ? '1' : '',
@@ -435,7 +426,7 @@ a { color: var(--teal-dk); }
       } else if (res && res.error === 'email') {
         say('Please check your email address.', 'err');
       } else if (res && res.error === 'county') {
-        say('Please choose your county.', 'err');
+        say('Please enter your 5-digit ZIP code.', 'err');
       } else {
         say('Something went wrong on our end. Email info@sipartsfoundation.org or call 618-823-2423 and we will register you.', 'err');
       }

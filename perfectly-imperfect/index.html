@@ -291,18 +291,13 @@ a { color: var(--teal-dk); }
 
       <div class="row">
         <div class="field">
-          <label for="city">City <span class="opt">(optional)</span></label>
-          <input id="city" name="city" type="text" autocomplete="address-level2">
+          <label for="zip">ZIP code <span class="opt">(optional)</span></label>
+          <input id="zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="e.g. 62220">
         </div>
         <div class="field">
-          <label for="state">State <span class="opt">(optional)</span></label>
-          <input id="state" name="state" type="text" autocomplete="address-level1">
+          <label for="phone">Phone <span class="opt">(optional)</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel">
         </div>
-      </div>
-
-      <div class="field">
-        <label for="phone">Phone <span class="opt">(optional)</span></label>
-        <input id="phone" name="phone" type="tel" autocomplete="tel">
       </div>
 
       <div class="check">
@@ -346,6 +341,7 @@ a { color: var(--teal-dk); }
 
 </div>
 
+<script src="/assets/zip-county.js"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 /* Evergreen by design. This page states that the group meets monthly and sends
@@ -417,8 +413,8 @@ var SESSIONS = [];
       firstname: first,
       lastname: form.lastname.value.trim(),
       email: email,
-      city: form.city.value.trim(),
-      state: form.state.value.trim(),
+      zip: form.zip.value.trim(),
+      county: window.SIPZipCounty ? window.SIPZipCounty.lookup(form.zip.value.trim()) : '',
       phone: form.phone.value.trim(),
       newsletter: form.newsletter.checked ? '1' : '',
       website: form.website.value,
