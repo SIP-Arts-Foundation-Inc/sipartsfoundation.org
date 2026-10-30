@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Volunteer Check-In and Hours | Southern Illinois Pathways</title>
+<meta name="description" content="Check in, check out, and log your volunteer hours with Southern Illinois Pathways.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito:wght@600;700;800&display=swap">
+<style>
+:root{
+  --navy:#16233f; --canvas:#f7f5f1; --line:#d9d4c8; --ink:#16233f; --muted:#526078;
+  --gold:#E3A72B; --green:#1f7a45; --err:#a3241b;
+  --display:Anton,Impact,sans-serif; --body:Nunito,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--canvas);color:var(--ink);font:600 16px/1.5 var(--body)}
+.wrap{max-width:560px;margin:0 auto;padding-block:0 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{background:var(--navy);color:var(--canvas)}
+header .wrap{padding-block:26px 22px}
+.eyebrow{margin:0;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:800}
+h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2rem,8vw,2.6rem);line-height:1;margin:.25em 0 .2em}
+header p{margin:0}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:20px 0 14px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px}
+.tabs button{font:800 .95rem var(--body);border:0;border-radius:999px;padding:10px 6px;background:transparent;color:var(--navy);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--navy);color:#fff}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+form{display:grid;gap:12px}
+label{display:grid;gap:4px;font-size:.92rem;font-weight:800}
+label small{font-weight:600;color:var(--muted)}
+input,textarea{font:600 1rem var(--body);padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);width:100%}
+textarea{min-height:70px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.two{grid-template-columns:1fr}}
+.go{font:800 1.05rem var(--body);border:0;border-radius:999px;padding:13px 18px;background:var(--navy);color:#fff;cursor:pointer}
+.go:hover{background:#0c1528}
+.go[disabled]{opacity:.55;cursor:not-allowed}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.msg{margin:0;padding:12px 14px;border-radius:10px;font-weight:800}
+.msg.ok{background:#e8f4ec;color:#0f5c33}
+.msg.err{background:#fbeaea;color:var(--err)}
+.note{color:var(--muted);font-size:.92rem;margin:14px 0 0}
+.status{margin:0 0 4px;color:var(--green);font-weight:800}
+footer{margin-top:24px;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Southern Illinois Pathways &middot; Volunteers</p>
+    <h1>Volunteer Check-In</h1>
+    <p>Check in when you arrive and check out when you leave. We add up your hours for you.</p>
+  </div>
+</header>
+<main class="wrap">
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" id="t-in" aria-selected="true">Check in</button>
+    <button type="button" role="tab" id="t-out" aria-selected="false">Check out</button>
+    <button type="button" role="tab" id="t-log" aria-selected="false">Log past hours</button>
+  </div>
+
+  <div class="card">
+    <form id="f-in" novalidate>
+      <label for="in-name">Your name<input id="in-name" name="name" autocomplete="name" required></label>
+      <label for="in-email">Email <small>(we send your approved hours here)</small><input id="in-email" name="email" type="email" autocomplete="email" required></label>
+      <label for="in-phone">Phone<input id="in-phone" name="phone" type="tel" autocomplete="tel"></label>
+      <label for="in-event">Event or program<input id="in-event" name="event" required></label>
+      <button class="go" type="submit">Check in</button>
+      <p class="msg" hidden></p>
+    </form>
+
+    <form id="f-out" novalidate hidden>
+      <p class="status" hidden></p>
+      <label for="out-email">The email you checked in with<input id="out-email" name="email" type="email" autocomplete="email" required></label>
+      <label for="out-notes">Anything to tell us? <small>(optional)</small><textarea id="out-notes" name="notes"></textarea></label>
+      <button class="go" type="submit">Check out</button>
+      <p class="msg" hidden></p>
+    </form>
+
+    <form id="f-log" novalidate hidden>
+      <label for="log-name">Your name<input id="log-name" name="name" autocomplete="name" required></label>
+      <label for="log-email">Email<input id="log-email" name="email" type="email" autocomplete="email" required></label>
+      <label for="log-event">Event or program<input id="log-event" name="event" required></label>
+      <div class="two">
+        <label for="log-date">Date<input id="log-date" name="date" type="date" required></label>
+        <label for="log-hours">Hours<input id="log-hours" name="hours" type="number" min="0.25" max="24" step="0.25" inputmode="decimal" required></label>
+      </div>
+      <label for="log-notes">What did you help with? <small>(optional)</small><textarea id="log-notes" name="notes"></textarea></label>
+      <button class="go" type="submit">Submit my hours</button>
+      <p class="msg" hidden></p>
+    </form>
+  </div>
+
+  <p class="note">Your hours go to Shauna for approval. Once approved, you get an email with your running total.</p>
+  <footer>Questions? Call or text Shauna at (618) 823-2423. Southern Illinois Pathways is a program of SIP Arts Foundation, Inc.</footer>
+</main>
+
+<script>
+(function(){
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbyNVibAatNrVIzvg0aeEyBCDqfbQa13q4LiiRI_q1Ei5hPMLFHYHZG35Hsrjp6AG5IdXA/exec";
+  var KEY = "sipVolunteer";
+
+  var tabs = {in:document.getElementById("t-in"), out:document.getElementById("t-out"), log:document.getElementById("t-log")};
+  var forms = {in:document.getElementById("f-in"), out:document.getElementById("f-out"), log:document.getElementById("f-log")};
+
+  function show(which){
+    Object.keys(tabs).forEach(function(k){
+      tabs[k].setAttribute("aria-selected", String(k === which));
+      forms[k].hidden = k !== which;
+    });
+    if(which === "out") checkOpen();
+  }
+  Object.keys(tabs).forEach(function(k){ tabs[k].addEventListener("click", function(){ show(k); }); });
+
+  function saved(){ try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ return {}; } }
+  function remember(d){ try { localStorage.setItem(KEY, JSON.stringify(d)); } catch(e){} }
+
+  var me = saved();
+  var params = new URLSearchParams(location.search);
+  var eventName = params.get("event") || "";
+  ["in","log"].forEach(function(k){
+    var f = forms[k];
+    if(me.name) f.elements["name"].value = me.name;
+    if(me.email) f.elements["email"].value = me.email;
+    if(eventName) f.elements["event"].value = eventName;
+  });
+  if(me.phone) forms.in.elements["phone"].value = me.phone;
+  if(me.email) forms.out.elements["email"].value = me.email;
+  try { forms.log.elements["date"].value = new Date().toLocaleDateString("en-CA"); } catch(e){}
+
+  function say(f, text, ok){
+    var m = f.querySelector(".msg");
+    m.textContent = text; m.className = "msg " + (ok ? "ok" : "err"); m.hidden = false;
+  }
+
+  function send(f, payload, label){
+    var btn = f.querySelector(".go");
+    btn.disabled = true; btn.textContent = "Saving…";
+    return fetch(ENDPOINT, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(payload)})
+      .then(function(r){ return r.json(); })
+      .then(function(res){ say(f, (res && (res.msg || res.error)) || "That didn't save. Please try again.", res && res.ok); return res; })
+      .catch(function(){ say(f, "We couldn't reach the sign-in sheet. Please try again, or tell Chris at check-in.", false); })
+      .then(function(res){ btn.disabled = false; btn.textContent = label; return res; });
+  }
+
+  forms.in.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var E = forms.in.elements;
+    var d = {action:"checkin", name:E["name"].value.trim(), email:E["email"].value.trim(), phone:E["phone"].value.trim(), event:E["event"].value.trim()};
+    if(!d.name || !d.email || !d.event){ say(forms.in, "Please fill in your name, email, and event.", false); return; }
+    remember({name:d.name, email:d.email, phone:d.phone});
+    forms.out.elements["email"].value = d.email;
+    send(forms.in, d, "Check in");
+  });
+
+  forms.out.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var E = forms.out.elements;
+    var d = {action:"checkout", email:E["email"].value.trim(), notes:E["notes"].value.trim()};
+    if(!d.email){ say(forms.out, "Please enter the email you checked in with.", false); return; }
+    send(forms.out, d, "Check out").then(function(){ forms.out.querySelector(".status").hidden = true; });
+  });
+
+  forms.log.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var E = forms.log.elements;
+    var d = {action:"log", name:E["name"].value.trim(), email:E["email"].value.trim(), event:E["event"].value.trim(), date:E["date"].value, hours:E["hours"].value, notes:E["notes"].value.trim()};
+    if(!d.name || !d.email || !d.event || !d.date || !(Number(d.hours) > 0)){ say(forms.log, "Please fill in your name, email, event, date, and hours.", false); return; }
+    remember({name:d.name, email:d.email, phone:me.phone || ""});
+    send(forms.log, d, "Submit my hours").then(function(res){ if(res && res.ok){ E["hours"].value = ""; E["notes"].value = ""; } });
+  });
+
+  function checkOpen(){
+    var email = forms.out.elements["email"].value.trim();
+    var st = forms.out.querySelector(".status");
+    if(!email) return;
+    fetch(ENDPOINT, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify({action:"status", email:email})}).then(function(r){ return r.json(); }).then(function(res){
+      if(res && res.open){ st.textContent = "You checked in for " + res.open.event + " at " + res.open.since + "."; st.hidden = false; }
+    }).catch(function(){});
+  }
+
+  if(me.email && params.get("tab") === "out") show("out");
+})();
+</script>
+</body>
+</html>
