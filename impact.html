@@ -47,8 +47,8 @@
 .ip-list{list-style:none;margin:0;padding:0}
 .ip-list li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #F0ECE5;font-size:.9rem}
 .ip-list li:last-child{border-bottom:0}
-.ip-list li span{color:var(--mut)}
-.ip-list li strong{text-align:right}
+.ip-list li span{color:var(--mut);flex:0 0 auto;white-space:nowrap}
+.ip-list li strong{text-align:right;min-width:0;overflow-wrap:anywhere}
 .ip-free{display:inline-block;margin-top:10px;background:#FFF6D6;border:1px solid #F3DF97;border-radius:99px;padding:5px 12px;font-size:.82rem;font-weight:700}
 .ip-time{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:16px}
 .ip-time div{background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:12px;padding:12px}
