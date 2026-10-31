@@ -1,9 +1,8 @@
 # Decap CMS configuration — SIP Arts Foundation
 #
 # Team members sign in at /admin with their own GitHub account and edit
-# only the words on the page they are responsible for. Saving sends the
-# change to Shauna for approval; nothing reaches the live site until she
-# publishes it.
+# the words on the page they are responsible for. Saving publishes
+# straight to the live site, and Shauna is emailed every change.
 
 backend:
   name: github
@@ -18,8 +17,7 @@ backend:
     uploadMedia: 'Upload {{path}}'
     deleteMedia: 'Delete {{path}}'
 
-# Every save becomes a pull request for review.
-publish_mode: editorial_workflow
+# Saves publish immediately. No approval queue.
 
 # Where uploaded images go.
 media_folder: 'uploads'
@@ -32,8 +30,8 @@ collections:
     label: 'Program pages'
     label_singular: 'program page'
     description: >-
-      Edit the words on your program page. Changes are submitted for
-      Shauna to approve before they go live.
+      Edit the words on your program page. Saving publishes it to the
+      live site within a few minutes.
     files:
       - name: 'unmasking'
         label: 'Unmasking in the MetroEast'
@@ -80,8 +78,8 @@ collections:
     label: 'Other pages'
     label_singular: 'page'
     description: >-
-      Edit the words on these pages. Changes are submitted for Shauna to
-      approve before they go live.
+      Edit the words on these pages. Saving publishes to the live site
+      within a few minutes.
     files:
       - name: 'events'
         label: 'Events page introduction'
