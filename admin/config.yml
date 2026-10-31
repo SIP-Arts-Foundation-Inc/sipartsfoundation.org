@@ -1,8 +1,9 @@
 # Decap CMS configuration — SIP Arts Foundation
 #
-# Ashlee and Michelle sign in at /admin with their own GitHub account.
-# Saving opens a pull request; nothing reaches the live site until
-# Shauna approves and merges it.
+# Team members sign in at /admin with their own GitHub account and edit
+# only the words on the page they are responsible for. Saving sends the
+# change to Shauna for approval; nothing reaches the live site until she
+# publishes it.
 
 backend:
   name: github
@@ -27,12 +28,12 @@ public_folder: '/uploads'
 locale: 'en'
 
 collections:
-  - name: 'pages'
-    label: 'Website pages'
-    label_singular: 'page'
+  - name: 'programs'
+    label: 'Program pages'
+    label_singular: 'program page'
     description: >-
-      Edit the text on a page. Changes are submitted for Shauna to
-      approve before they go live.
+      Edit the words on your program page. Changes are submitted for
+      Shauna to approve before they go live.
     files:
       - name: 'unmasking'
         label: 'Unmasking in the MetroEast'
@@ -41,6 +42,53 @@ collections:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'intro', label: 'Opening paragraph', widget: 'text', required: false }
           - { name: 'body', label: 'Page content', widget: 'markdown' }
+
+      - name: 'studio'
+        label: 'Pathways to Expression (studio)'
+        file: 'content/studio.md'
+        fields:
+          - { name: 'title', label: 'Program name', widget: 'string' }
+          - { name: 'body', label: 'Opening description', widget: 'markdown' }
+
+      - name: 'psa'
+        label: 'Pathways Self-Advocates'
+        file: 'content/psa.md'
+        fields:
+          - { name: 'title', label: 'Program name', widget: 'string' }
+          - { name: 'lede', label: 'Opening line at the top of the page', widget: 'text' }
+          - { name: 'body', label: 'About the group', widget: 'markdown' }
+
+      - name: 'perfectly-imperfect'
+        label: 'Perfectly Imperfect Arts'
+        file: 'content/perfectly-imperfect.md'
+        fields:
+          - { name: 'title', label: 'Program name', widget: 'string' }
+          - { name: 'lede', label: 'Opening line', widget: 'text' }
+          - { name: 'pull', label: 'Highlighted sentence', widget: 'text' }
+          - { name: 'body', label: 'About the group', widget: 'markdown' }
+
+      - name: 'transition'
+        label: 'Life After High School (transition)'
+        file: 'content/transition.md'
+        fields:
+          - { name: 'title', label: 'Page title', widget: 'string' }
+          - { name: 'lede', label: 'Opening line', widget: 'text' }
+          - { name: 'pull', label: 'Highlighted sentence', widget: 'text' }
+          - { name: 'body', label: 'About these sessions', widget: 'markdown' }
+
+  - name: 'pages'
+    label: 'Other pages'
+    label_singular: 'page'
+    description: >-
+      Edit the words on these pages. Changes are submitted for Shauna to
+      approve before they go live.
+    files:
+      - name: 'events'
+        label: 'Events page introduction'
+        file: 'content/events.md'
+        fields:
+          - { name: 'title', label: 'Section heading note', widget: 'string' }
+          - { name: 'body', label: 'Introduction above the event list', widget: 'markdown' }
 
       - name: 'survey'
         label: 'Caregiver survey page'
@@ -57,21 +105,3 @@ collections:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'intro', label: 'Opening paragraph', widget: 'text', required: false }
           - { name: 'body', label: 'Page content', widget: 'markdown' }
-
-  - name: 'events'
-    label: 'Events'
-    label_singular: 'event'
-    folder: 'content/events'
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    description: >-
-      Add or update an event. Include the date, time, location and how
-      people register.
-    fields:
-      - { name: 'title', label: 'Event name', widget: 'string' }
-      - { name: 'date', label: 'Date', widget: 'datetime' }
-      - { name: 'location', label: 'Location', widget: 'string', required: false }
-      - { name: 'registration_url', label: 'Registration link', widget: 'string', required: false }
-      - { name: 'image', label: 'Image', widget: 'image', required: false }
-      - { name: 'summary', label: 'Short summary', widget: 'text', required: false }
-      - { name: 'body', label: 'Full description', widget: 'markdown' }
