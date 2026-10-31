@@ -21,11 +21,59 @@ import html as html_mod
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / 'content'
 
-# Which markdown file drives which page region.
+# Which markdown file drives which page, and which marked regions it fills.
+#
+# Each region names a marker (<!-- cms:start NAME --> ... <!-- cms:end NAME -->),
+# the field in the markdown file that fills it, and optional attributes to put
+# on every paragraph so the page keeps its existing styling.
 PAGES = {
-    'unmasking': ROOT / 'unmasking' / 'index.html',
-    'survey':    ROOT / 'survey' / 'index.html',
-    'signin':    ROOT / 'signin' / 'index.html',
+    'unmasking': {
+        'path': ROOT / 'unmasking' / 'index.html',
+        'set_h1': True,
+        'regions': [{'marker': 'unmasking', 'field': 'body', 'intro': True}],
+    },
+    'survey': {
+        'path': ROOT / 'survey' / 'index.html',
+        'set_h1': True,
+        'regions': [{'marker': 'survey', 'field': 'body', 'intro': True}],
+    },
+    'signin': {
+        'path': ROOT / 'signin' / 'index.html',
+        'set_h1': True,
+        'regions': [{'marker': 'signin', 'field': 'body', 'intro': True}],
+    },
+    'studio': {
+        'path': ROOT / 'studio.html',
+        'regions': [{'marker': 'studio-intro', 'field': 'body'}],
+    },
+    'psa': {
+        'path': ROOT / 'selfadvocacy' / 'index.html',
+        'regions': [
+            {'marker': 'psa-lede', 'field': 'lede', 'p_attrs': ' class="sa-lede"'},
+            {'marker': 'psa-about', 'field': 'body'},
+        ],
+    },
+    'perfectly-imperfect': {
+        'path': ROOT / 'perfectly-imperfect' / 'index.html',
+        'regions': [
+            {'marker': 'pi-lede', 'field': 'lede', 'p_attrs': ' class="lede"'},
+            {'marker': 'pi-pull', 'field': 'pull', 'p_attrs': ' class="pull"'},
+            {'marker': 'pi-body', 'field': 'body'},
+        ],
+    },
+    'transition': {
+        'path': ROOT / 'transition' / 'index.html',
+        'regions': [
+            {'marker': 'transition-lede', 'field': 'lede', 'p_attrs': ' class="lede"'},
+            {'marker': 'transition-pull', 'field': 'pull', 'p_attrs': ' class="pull"'},
+            {'marker': 'transition-body', 'field': 'body'},
+        ],
+    },
+    'events': {
+        'path': ROOT / 'events' / 'index.html',
+        'regions': [{'marker': 'events-intro', 'field': 'body',
+                     'p_attrs': ' class="section-lead"'}],
+    },
 }
 
 
@@ -44,7 +92,7 @@ def split_front_matter(text):
     return meta, body
 
 
-def md_to_html(md):
+def md_to_html(md, p_attrs=''):
     """Small, predictable Markdown subset. No surprises in output."""
     out, lines = [], md.replace('\r\n', '\n').split('\n')
     i, n = 0, len(lines)
@@ -52,7 +100,7 @@ def md_to_html(md):
 
     def flush_para():
         if para:
-            out.append('<p>' + inline(' '.join(para).strip()) + '</p>')
+            out.append(f'<p{p_attrs}>' + inline(' '.join(para).strip()) + '</p>')
             para.clear()
 
     def flush_list():
@@ -93,7 +141,8 @@ def md_to_html(md):
     return '\n'.join(out)
 
 
-def render(name, path, check=False):
+def render(name, conf, check=False):
+    path = conf['path']
     md_file = CONTENT / f'{name}.md'
     if not md_file.exists():
         return f'skip {name}: no content/{name}.md'
@@ -101,35 +150,42 @@ def render(name, path, check=False):
         return f'SKIP {name}: {path} missing'
 
     meta, body = split_front_matter(md_file.read_text(encoding='utf-8'))
-    rendered = md_to_html(body)
-    if meta.get('intro'):
-        rendered = f'<p class="lead">{html_mod.escape(meta["intro"])}</p>\n' + rendered
+    page = original = path.read_text(encoding='utf-8', errors='surrogateescape')
 
-    page = path.read_text(encoding='utf-8', errors='surrogateescape')
-    pattern = re.compile(
-        rf'(<!--\s*cms:start\s+{re.escape(name)}\s*-->)(.*?)(<!--\s*cms:end\s+{re.escape(name)}\s*-->)',
-        re.S)
-    if not pattern.search(page):
-        return f'SKIP {name}: no cms:start/{name} markers in {path.relative_to(ROOT)}'
+    for region in conf['regions']:
+        marker = region['marker']
+        field = region.get('field', 'body')
+        text = body if field == 'body' else (meta.get(field) or '')
+        rendered = md_to_html(text, region.get('p_attrs', ''))
+        if region.get('intro') and meta.get('intro'):
+            rendered = (f'<p class="lead">{html_mod.escape(meta["intro"])}</p>\n'
+                        + rendered)
 
-    updated = pattern.sub(lambda m: m.group(1) + '\n' + rendered + '\n' + m.group(3), page)
+        pattern = re.compile(
+            rf'(<!--\s*cms:start\s+{re.escape(marker)}\s*-->)(.*?)'
+            rf'(<!--\s*cms:end\s+{re.escape(marker)}\s*-->)', re.S)
+        if not pattern.search(page):
+            return (f'SKIP {name}: no cms:start/{marker} markers in '
+                    f'{path.relative_to(ROOT)}')
+        page = pattern.sub(lambda m: m.group(1) + '\n' + rendered + '\n' + m.group(3),
+                           page)
 
-    if meta.get('title'):
-        updated = re.sub(r'(<h1\b[^>]*>)(.*?)(</h1>)',
-                         lambda m: m.group(1) + html_mod.escape(meta['title']) + m.group(3),
-                         updated, count=1, flags=re.S)
+    if conf.get('set_h1') and meta.get('title'):
+        page = re.sub(r'(<h1\b[^>]*>)(.*?)(</h1>)',
+                      lambda m: m.group(1) + html_mod.escape(meta['title']) + m.group(3),
+                      page, count=1, flags=re.S)
 
-    if updated == page:
+    if page == original:
         return f'ok   {name}: already current'
     if check:
         return f'DIFF {name}: would update {path.relative_to(ROOT)}'
-    path.write_text(updated, encoding='utf-8', errors='surrogateescape')
+    path.write_text(page, encoding='utf-8', errors='surrogateescape')
     return f'ok   {name}: updated {path.relative_to(ROOT)}'
 
 
 if __name__ == '__main__':
     check = '--check' in sys.argv
-    results = [render(n, p, check) for n, p in PAGES.items()]
+    results = [render(n, c, check) for n, c in PAGES.items()]
     for r in results:
         print(r)
     if any(r.startswith('SKIP') for r in results):
