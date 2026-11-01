@@ -1,0 +1,7 @@
+# The website editor reads config.yml over HTTP. Some servers label .yml
+# files as a generic download (application/octet-stream), and then the
+# editor refuses to load. Label them as plain text instead.
+<IfModule mod_mime.c>
+  RemoveType .yml .yaml
+  AddType text/yaml .yml .yaml
+</IfModule>
