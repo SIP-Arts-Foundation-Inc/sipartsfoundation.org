@@ -30,7 +30,26 @@ PAGES = {
     'unmasking': {
         'path': ROOT / 'unmasking' / 'index.html',
         'set_h1': True,
-        'regions': [{'marker': 'unmasking', 'field': 'body', 'intro': True}],
+        'regions': [
+            {'marker': 'unmasking', 'field': 'body', 'intro': True},
+            {'marker': 'um-lede', 'field': 'lede', 'p_attrs': ' class="lede"'},
+            {'marker': 'um-pull', 'field': 'pull', 'p_attrs': ' class="pull"'},
+            {'marker': 'um-landfill', 'field': 'landfill',
+             'p_attrs': ' style="margin:0"'},
+            {'marker': 'um-doing', 'field': 'doing'},
+            {'marker': 'um-flow', 'field': 'flow',
+             'wrap': {'tag': 'ol', 'class': 'flow', 'bold_first': True}},
+            {'marker': 'um-why', 'field': 'why'},
+            {'marker': 'um-education', 'field': 'education',
+             'wrap': {'tag': 'ul', 'class': 'steps'}},
+            {'marker': 'um-whocan', 'field': 'whocan',
+             'wrap': {'tag': 'ul', 'class': 'steps'}},
+            {'marker': 'um-whocan-note', 'field': 'whocan_note',
+             'p_attrs': ' class="note"'},
+            {'marker': 'um-donate', 'field': 'donate'},
+            {'marker': 'um-sponsor', 'field': 'sponsor'},
+            {'marker': 'um-questions', 'field': 'questions'},
+        ],
     },
     'survey': {
         'path': ROOT / 'survey' / 'index.html',
@@ -78,21 +97,53 @@ PAGES = {
 
 
 def split_front_matter(text):
-    """Return (metadata dict, body string)."""
+    """Return (metadata dict, body string).
+
+    Understands the YAML the CMS writes: plain scalars, quoted scalars, and
+    block scalars (| |- > >-) for fields that run to several lines.
+    """
     meta, body = {}, text
-    if text.startswith('---'):
-        end = text.find('\n---', 3)
-        if end != -1:
-            raw = text[3:end]
-            body = text[end + 4:].lstrip('\n')
-            for line in raw.splitlines():
-                if ':' in line:
-                    k, v = line.split(':', 1)
-                    meta[k.strip()] = v.strip().strip('"').strip("'")
+    if not text.startswith('---'):
+        return meta, body
+    end = text.find('\n---', 3)
+    if end == -1:
+        return meta, body
+    raw = text[3:end]
+    body = text[end + 4:].lstrip('\n')
+
+    lines = raw.splitlines()
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        i += 1
+        if not line.strip() or line.lstrip().startswith('#') or ':' not in line:
+            continue
+        key, value = line.split(':', 1)
+        key, value = key.strip(), value.strip()
+        if value[:1] in ('|', '>'):
+            fold = value[0] == '>'
+            block = []
+            while i < len(lines) and (not lines[i].strip() or lines[i][:1] in (' ', '\t')):
+                block.append(lines[i])
+                i += 1
+            while block and not block[-1].strip():
+                block.pop()
+            indents = [len(b) - len(b.lstrip()) for b in block if b.strip()]
+            pad = min(indents) if indents else 0
+            text_block = '\n'.join(b[pad:] if len(b) >= pad else b for b in block)
+            if fold:
+                paras = text_block.split('\n\n')
+                text_block = '\n\n'.join(' '.join(x.split()) for x in paras)
+            meta[key] = text_block
+        else:
+            if len(value) > 1 and value[0] == value[-1] and value[0] in ('"', "'"):
+                value = value[1:-1]
+                value = value.replace('\\n', '\n').replace('\\"', '"')
+            meta[key] = value
     return meta, body
 
 
-def md_to_html(md, p_attrs=''):
+def md_to_html(md, p_attrs='', wrap=None):
     """Small, predictable Markdown subset. No surprises in output."""
     out, lines = [], md.replace('\r\n', '\n').split('\n')
     i, n = 0, len(lines)
@@ -106,7 +157,19 @@ def md_to_html(md, p_attrs=''):
     def flush_list():
         nonlocal in_list
         if list_items:
-            out.append('<ul>' + ''.join(f'<li>{inline(x)}</li>' for x in list_items) + '</ul>')
+            tag = (wrap or {}).get('tag', 'ul')
+            cls = (wrap or {}).get('class')
+            bold_first = (wrap or {}).get('bold_first')
+            opener = f'<{tag} class="{cls}">' if cls else f'<{tag}>'
+            items = []
+            for x in list_items:
+                if bold_first:
+                    m = re.match(r'\*\*([^*]+)\*\*\s?(.*)$', x, re.S)
+                    if m:
+                        items.append(f'<li><b>{inline(m.group(1))}</b>{inline(m.group(2))}</li>')
+                        continue
+                items.append(f'<li>{inline(x)}</li>')
+            out.append(opener + ''.join(items) + f'</{tag}>')
             list_items.clear()
         in_list = False
 
@@ -156,7 +219,7 @@ def render(name, conf, check=False):
         marker = region['marker']
         field = region.get('field', 'body')
         text = body if field == 'body' else (meta.get(field) or '')
-        rendered = md_to_html(text, region.get('p_attrs', ''))
+        rendered = md_to_html(text, region.get('p_attrs', ''), region.get('wrap'))
         if region.get('intro') and meta.get('intro'):
             rendered = (f'<p class="lead">{html_mod.escape(meta["intro"])}</p>\n'
                         + rendered)

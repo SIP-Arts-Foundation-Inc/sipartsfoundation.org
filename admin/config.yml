@@ -39,7 +39,19 @@ collections:
         fields:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'intro', label: 'Opening paragraph', widget: 'text', required: false }
-          - { name: 'body', label: 'Page content', widget: 'markdown' }
+          - { name: 'body', label: 'Opening section, under the title', widget: 'markdown' }
+          - { name: 'lede', label: 'Yard sign line, the large text', widget: 'text' }
+          - { name: 'pull', label: 'Highlighted sentence', widget: 'text' }
+          - { name: 'landfill', label: 'Landfill paragraph, in the tinted box', widget: 'text' }
+          - { name: 'doing', label: 'What we are actually doing', widget: 'text' }
+          - { name: 'flow', label: 'How it works, four steps. Start each with **the step name**', widget: 'markdown' }
+          - { name: 'why', label: 'Why unmasking', widget: 'markdown' }
+          - { name: 'education', label: 'Why this is education, not decoration', widget: 'markdown' }
+          - { name: 'whocan', label: 'Who can take part, the list', widget: 'markdown' }
+          - { name: 'whocan_note', label: 'Who can take part, the note underneath', widget: 'text' }
+          - { name: 'donate', label: 'Donate your signs', widget: 'text' }
+          - { name: 'sponsor', label: 'Fund or sponsor this project', widget: 'text' }
+          - { name: 'questions', label: 'Questions', widget: 'text' }
 
       - name: 'studio'
         label: 'Pathways to Expression (studio)'
