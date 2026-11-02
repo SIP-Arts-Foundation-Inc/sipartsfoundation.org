@@ -69,9 +69,9 @@ a{color:var(--navy)}
       <label for="street">Street address <small>(used only to find your district, never saved)</small><input id="street" autocomplete="street-address" required></label>
       <div class="two">
         <label for="city">City<input id="city" autocomplete="address-level2" required></label>
-        <label for="zip">ZIP code<input id="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" required></label>
+        <label for="zip">ZIP code<input id="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" required></label>
       </div>
-      <label for="story">Add a sentence about your family <small>(optional, it makes your message stronger)</small><textarea id="story"></textarea></label>
+      <label for="story">Add a sentence about your family <small>(optional, it makes your message stronger)</small><textarea id="story" maxlength="400"></textarea></label>
       <button class="go" type="submit">Find my legislators</button>
       <p class="msg" id="findmsg" hidden></p>
     </form>
@@ -79,6 +79,7 @@ a{color:var(--navy)}
 
   <div class="card" id="results" hidden>
     <h2>2. Send your message</h2>
+    <p class="note" id="matched" style="margin-top:0"></p>
     <div id="legs"></div>
     <label class="check"><input type="checkbox" id="countme" checked> Send a copy to Southern Illinois Pathways so we can count how many voices reach each office</label>
     <div class="actions">
@@ -120,7 +121,7 @@ a{color:var(--navy)}
     return new Promise(function(resolve, reject){
       var cb = 'sipgeo' + Date.now();
       var s = document.createElement('script');
-      var timer = setTimeout(function(){ cleanup(); reject(new Error('timeout')); }, 15000);
+      var timer = setTimeout(function(){ cleanup(); reject(new Error('timeout')); }, 20000);
       function cleanup(){ clearTimeout(timer); delete window[cb]; s.remove(); }
       window[cb] = function(data){ cleanup(); resolve(data); };
       s.onerror = function(){ cleanup(); reject(new Error('network')); };
@@ -168,6 +169,10 @@ a{color:var(--navy)}
         var a = document.createElement('a'); a.className = 'go alt'; a.style.marginTop = '8px'; a.style.display = 'block';
         a.textContent = 'Email ' + l.title + ' ' + l.last; a.href = mailto([l]);
         div.appendChild(a);
+      } else {
+        var ne = document.createElement('span'); ne.style.display = 'block'; ne.style.marginTop = '6px';
+        ne.textContent = 'This office does not list a public email. Please call, or copy the message below.';
+        div.appendChild(ne);
       }
       box.appendChild(div);
     });
@@ -179,9 +184,10 @@ a{color:var(--navy)}
   }
 
   $('countme').addEventListener('change', render);
+  ['name','story'].forEach(function(id){ $(id).addEventListener('input', function(){ if (found.length) render(); }); });
   $('copy').addEventListener('click', function(){
     var text = 'Subject: ' + campaign.subject + '\n\n' + letterFor(found);
-    (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(function(){ $('copied').hidden = false; }, function(){ $('copied').hidden = true; });
+    (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(function(){ $('copied').textContent = 'Copied. Paste it into an email or a legislator\'s contact form.'; $('copied').hidden = false; }, function(){ $('copied').textContent = 'Your browser blocked copying. Please select the message below and copy it.'; $('copied').hidden = false; });
   });
 
   $('find').addEventListener('submit', function(e){
@@ -189,12 +195,16 @@ a{color:var(--navy)}
     var msg = $('findmsg'); msg.hidden = true; msg.className = 'msg';
     var need = ['name','street','city','zip'].filter(function(id){ return !$(id).value.trim(); });
     if (need.length){ msg.classList.add('err'); return show(msg, 'Please fill in your name and full address.'); }
+    if (!/^\d{5}$/.test($('zip').value.trim())){ msg.classList.add('err'); return show(msg, 'Please enter a 5-digit ZIP code.'); }
     var btn = this.querySelector('button'); btn.disabled = true; btn.textContent = 'Looking up your district...';
     var address = $('street').value.trim() + ', ' + $('city').value.trim() + ', IL ' + $('zip').value.trim();
     geocode(address).then(function(data){
       var m = data && data.result && data.result.addressMatches;
       if (!m || !m.length) throw new Error('nomatch');
-      var g = m[0].geographies;
+      var hit = m[0], comp = hit.addressComponents || {};
+      if (comp.state !== 'IL') throw new Error('notil');
+      if (comp.zip && comp.zip !== $('zip').value.trim()) throw new Error('nomatch');
+      var g = hit.geographies;
       var up = districtFrom(g, 'Upper'), low = districtFrom(g, 'Lower');
       found = [];
       if (campaign.targets.indexOf('upper') !== -1 && up && legs.upper[up]){
@@ -204,10 +214,12 @@ a{color:var(--navy)}
         var r = legs.lower[low]; found.push({title:'Representative', chamber:'Illinois House', district:low, name:r.name, last:lastName(r.name), email:r.email, phone:r.phone});
       }
       if (!found.length) throw new Error('nolegs');
+      $('matched').textContent = 'Address found: ' + hit.matchedAddress;
       render(); $('results').hidden = false; $('results').scrollIntoView({behavior:'smooth'});
     }).catch(function(err){
       msg.classList.add('err');
       show(msg, err.message === 'nomatch' ? 'We could not find that address. Please check the street and ZIP code and try again.' :
+        err.message === 'notil' ? 'This page finds Illinois legislators, and that address does not look like it is in Illinois. Please check it and try again.' :
         'Something went wrong looking up your district. Please try again, or email info@sipartsfoundation.org and we will help.');
     }).then(function(){ btn.disabled = false; btn.textContent = 'Find my legislators'; });
   });
