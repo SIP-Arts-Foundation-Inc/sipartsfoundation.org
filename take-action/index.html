@@ -100,16 +100,17 @@ a{color:var(--navy)}
 <script>
 (function(){
   var COUNT_EMAIL = 'info@sipartsfoundation.org';
-  var campaign, legs, found = [], supporter = false, sigAddr = '';
+  var campaign, legs, area, found = [], supporter = false, sigAddr = '';
   var CONSTITUENT = 'I live in your district';
   var SUPPORTER = 'I live outside your district, but I care deeply about families in Southern Illinois';
   var $ = function(id){ return document.getElementById(id); };
 
   Promise.all([
     fetch('campaign.json',{cache:'no-cache'}).then(function(r){return r.json();}),
-    fetch('legislators.json',{cache:'no-cache'}).then(function(r){return r.json();})
+    fetch('legislators.json',{cache:'no-cache'}).then(function(r){return r.json();}),
+    fetch('service-area.json',{cache:'no-cache'}).then(function(r){return r.json();})
   ]).then(function(d){
-    campaign = d[0]; legs = d[1];
+    campaign = d[0]; legs = d[1]; area = d[2];
     $('month').textContent = '· ' + campaign.month;
     $('title').textContent = campaign.title;
     $('intro').textContent = campaign.intro;
@@ -145,10 +146,17 @@ a{color:var(--navy)}
     return t.replace(/\{connection\}/g, supporter ? SUPPORTER : CONSTITUENT).replace(/\{name\}/g, $('name').value.trim());
   }
 
-  // ZIPs outside Illinois (600-629) and Chicago-area ZIPs (600-608) use SIP's home districts.
-  function usesHomeDistricts(zip){
-    var n = parseInt(zip.slice(0, 3), 10);
-    return n < 600 || n > 629 || n <= 608;
+  // Readers outside SIP's nine counties are connected with SIP's home districts in Belleville.
+  function usesHomeDistricts(zip){ return area.zips.indexOf(zip) === -1; }
+  function countyFrom(geos){
+    for (var k in geos){ if (k === 'Counties' && geos[k][0]) return geos[k][0].BASENAME; }
+    return null;
+  }
+  function homeResults(){
+    supporter = true;
+    sigAddr = $('street').value.trim() + ', ' + $('city').value.trim() + ' ' + $('zip').value.trim();
+    addLegs(campaign.home_districts.upper, campaign.home_districts.lower);
+    showResults('Thank you for standing with Southern Illinois families. Because you live outside our area, we will connect you with the legislators who represent our home in Belleville.');
   }
 
   function addLegs(up, low){
@@ -227,12 +235,8 @@ a{color:var(--navy)}
     var zip = $('zip').value.trim();
     var done = function(){ btn.disabled = false; btn.textContent = 'Find my legislators'; };
     if (usesHomeDistricts(zip)){
-      supporter = true;
-      sigAddr = $('street').value.trim() + ', ' + $('city').value.trim() + ' ' + zip;
-      try {
-        addLegs(campaign.home_districts.upper, campaign.home_districts.lower);
-        showResults('Thank you for standing with Southern Illinois families. Because you live outside our area, we will connect you with the legislators who represent our home in Belleville.');
-      } catch (err) { msg.classList.add('err'); show(msg, 'Something went wrong. Please email info@sipartsfoundation.org and we will help.'); }
+      try { homeResults(); }
+      catch (err) { msg.classList.add('err'); show(msg, 'Something went wrong. Please email info@sipartsfoundation.org and we will help.'); }
       return done();
     }
     supporter = false;
@@ -244,6 +248,9 @@ a{color:var(--navy)}
       if (comp.state !== 'IL') throw new Error('notil');
       if (comp.zip && comp.zip !== $('zip').value.trim()) throw new Error('nomatch');
       var g = hit.geographies;
+      // A ZIP can cross county lines; check the actual county before using local legislators.
+      var county = countyFrom(g);
+      if (county && area.counties.indexOf(county) === -1){ homeResults(); return; }
       var up = districtFrom(g, 'Upper'), low = districtFrom(g, 'Lower');
       addLegs(up, low);
       sigAddr = $('street').value.trim() + ', ' + $('city').value.trim() + ', IL ' + zip;
