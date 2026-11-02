@@ -63,7 +63,7 @@ sponsor: Unmasking in the MetroEast is a program of SIP Arts Foundation, a
   [info@sipartsfoundation.org](mailto:info@sipartsfoundation.org).
 questions: Email [info@sipartsfoundation.org](mailto:info@sipartsfoundation.org)
   or [neil@sipartsfoundation.org](mailto:neil@sipartsfoundation.org). We answer
-  every message, usually within a day.
+  every message.
 ---
 
 **Unmasking in the MetroEast is a community education project about autism acceptance, built around one word: masking.**
