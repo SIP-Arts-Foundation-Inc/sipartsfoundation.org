@@ -27,7 +27,15 @@ function htmlResponse(body, status = 200) {
   });
 }
 
-/** Page shown inside the popup; hands the result to the CMS and closes. */
+/** Page shown inside the popup; hands the result to the CMS and closes.
+ *
+ * Decap's handshake has a strict order, and getting it wrong leaves the
+ * editor sitting on the loading screen forever:
+ *   1. this popup posts "authorizing:github" to the opener
+ *   2. only then does Decap attach its listener and echo the message back
+ *   3. this popup replies with the token
+ * Posting the token first means nobody is listening for it yet.
+ */
 function handshakePage(status, payload) {
   const message = `authorization:github:${status}:${JSON.stringify(payload)}`;
   return htmlResponse(`<!doctype html>
@@ -39,24 +47,37 @@ function handshakePage(status, payload) {
 (function () {
   var message = ${JSON.stringify(message)};
   var allowed = ${JSON.stringify(ALLOWED_ORIGINS)};
-  function send(origin) {
-    try { window.opener && window.opener.postMessage(message, origin); } catch (e) {}
+
+  if (!window.opener) {
+    document.body.textContent =
+      'Please close this window and start the sign in from the editor again.';
+    return;
   }
-  // Decap's handshake: it pings us, we answer, then it reads the token.
+
   function onMessage(e) {
+    if (e.data !== 'authorizing:github') return;
     if (allowed.indexOf(e.origin) === -1) return;
-    send(e.origin);
-    window.removeEventListener('message', onMessage);
-    setTimeout(function () { window.close(); }, 300);
+    window.removeEventListener('message', onMessage, false);
+    window.opener.postMessage(message, e.origin);
+    setTimeout(function () { window.close(); }, 500);
   }
+
   window.addEventListener('message', onMessage, false);
-  allowed.forEach(function (o) { send(o); });
-  setTimeout(function () { window.close(); }, 4000);
+
+  // Step 1: tell the editor we are ready. It answers, then we send the token.
+  window.opener.postMessage('authorizing:github', '*');
+
+  // If the editor never answers, say so rather than hanging silently.
+  setTimeout(function () {
+    document.body.textContent =
+      'The editor did not respond. Close this window and try signing in again.';
+  }, 15000);
 })();
 </script>
 </body>
 </html>`);
 }
+
 
 function randomState() {
   const bytes = crypto.getRandomValues(new Uint8Array(16));
