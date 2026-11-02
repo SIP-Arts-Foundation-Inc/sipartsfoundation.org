@@ -18,6 +18,9 @@ jobs:
       - name: Check out the approved site
         uses: actions/checkout@v4
 
+      - name: Make sure the YAML parser is available
+        run: python3 -c "import yaml" || pip install --quiet pyyaml
+
       - name: Render CMS content into the pages
         run: python3 tools/build.py
 

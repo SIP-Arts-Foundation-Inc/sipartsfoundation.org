@@ -99,8 +99,10 @@ PAGES = {
 def split_front_matter(text):
     """Return (metadata dict, body string).
 
-    Understands the YAML the CMS writes: plain scalars, quoted scalars, and
-    block scalars (| |- > >-) for fields that run to several lines.
+    The CMS writes this front matter, and it may use any of YAML's string
+    styles. Parse it with a real YAML parser when one is available so a
+    multi-line field is never silently truncated; the hand parser below is
+    only a fallback and understands plain, quoted and block scalars.
     """
     meta, body = {}, text
     if not text.startswith('---'):
@@ -110,6 +112,17 @@ def split_front_matter(text):
         return meta, body
     raw = text[3:end]
     body = text[end + 4:].lstrip('\n')
+
+    try:
+        import yaml
+    except ImportError:
+        yaml = None
+    if yaml is not None:
+        loaded = yaml.safe_load(raw)
+        if isinstance(loaded, dict):
+            return ({k: ('' if v is None else str(v)) for k, v in loaded.items()},
+                    body)
+        return meta, body
 
     lines = raw.splitlines()
     i = 0
