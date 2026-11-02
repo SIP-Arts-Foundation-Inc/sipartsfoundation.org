@@ -2,8 +2,15 @@
   "month": "November 2026",
   "title": "Families Need Help Finding Their Pathway",
   "intro": "Families across Southern Illinois are working hard to find disability services, and too many get lost along the way. Ask your state legislators to support wraparound disability services and resource navigation, so every family can find the help they need.",
-  "targets": ["upper", "lower"],
+  "targets": [
+    "upper",
+    "lower"
+  ],
   "subject": "Please support wraparound disability services and resource navigation",
-  "body": "I live in your district, and I am writing to ask you to support wraparound disability services and resource navigation for individuals with disabilities and their families in Southern Illinois.\n\nFamilies in our region often do not know where to start. Services are spread across many agencies, waitlists are long, and getting to appointments can be hard. When families have someone to help them find their pathway, they connect with the right supports sooner and stay connected.\n\nOrganizations like Southern Illinois Pathways are already helping families do this, and they need the state's partnership to reach everyone who needs them.\n\nThank you for your time and for your service to our community.",
-  "phone_script": "Hi, my name is {name} and I live in your district. I am calling to ask the legislator to support wraparound disability services and resource navigation for families in Southern Illinois. Families need help finding services, and this support makes a real difference. Thank you."
+  "body": "{connection}, and I am writing to ask you to support wraparound disability services and resource navigation for individuals with disabilities and their families in Southern Illinois.\n\nFamilies in our region often do not know where to start. Services are spread across many agencies, waitlists are long, and getting to appointments can be hard. When families have someone to help them find their pathway, they connect with the right supports sooner and stay connected.\n\nOrganizations like Southern Illinois Pathways are already helping families do this, and they need the state's partnership to reach everyone who needs them.\n\nThank you for your time and for your service to our community.",
+  "phone_script": "Hi, my name is {name} and {connection}. I am calling to ask the legislator to support wraparound disability services and resource navigation for families in Southern Illinois. Families need help finding services, and this support makes a real difference. Thank you.",
+  "home_districts": {
+    "upper": "57",
+    "lower": "113"
+  }
 }

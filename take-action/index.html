@@ -100,7 +100,9 @@ a{color:var(--navy)}
 <script>
 (function(){
   var COUNT_EMAIL = 'info@sipartsfoundation.org';
-  var campaign, legs, found = [];
+  var campaign, legs, found = [], supporter = false, sigAddr = '';
+  var CONSTITUENT = 'I live in your district';
+  var SUPPORTER = 'I live outside your district, but I care deeply about families in Southern Illinois';
   var $ = function(id){ return document.getElementById(id); };
 
   Promise.all([
@@ -139,15 +141,40 @@ a{color:var(--navy)}
     return null;
   }
 
+  function fill(t){
+    return t.replace(/\{connection\}/g, supporter ? SUPPORTER : CONSTITUENT).replace(/\{name\}/g, $('name').value.trim());
+  }
+
+  // ZIPs outside Illinois (600-629) and Chicago-area ZIPs (600-608) use SIP's home districts.
+  function usesHomeDistricts(zip){
+    var n = parseInt(zip.slice(0, 3), 10);
+    return n < 600 || n > 629 || n <= 608;
+  }
+
+  function addLegs(up, low){
+    found = [];
+    if (campaign.targets.indexOf('upper') !== -1 && up && legs.upper[up]){
+      var s = legs.upper[up]; found.push({title:'Senator', chamber:'Illinois Senate', district:up, name:s.name, last:lastName(s.name), email:s.email, phone:s.phone});
+    }
+    if (campaign.targets.indexOf('lower') !== -1 && low && legs.lower[low]){
+      var r = legs.lower[low]; found.push({title:'Representative', chamber:'Illinois House', district:low, name:r.name, last:lastName(r.name), email:r.email, phone:r.phone});
+    }
+    if (!found.length) throw new Error('nolegs');
+  }
+
+  function showResults(note){
+    $('matched').textContent = note;
+    render(); $('results').hidden = false; $('results').scrollIntoView({behavior:'smooth'});
+  }
+
   function letterFor(list){
     var name = $('name').value.trim();
     var story = $('story').value.trim();
     var greet = list.length === 1 ? 'Dear ' + list[0].title + ' ' + list[0].last + ',' :
       'Dear ' + list.map(function(l){ return l.title + ' ' + l.last; }).join(' and ') + ',';
-    var parts = campaign.body.split('\n\n');
+    var parts = fill(campaign.body).split('\n\n');
     if (story) parts.splice(1, 0, story);
-    var addr = $('street').value.trim() + ', ' + $('city').value.trim() + ', IL ' + $('zip').value.trim();
-    return greet + '\n\n' + parts.join('\n\n') + '\n\nSincerely,\n' + name + '\n' + addr;
+    return greet + '\n\n' + parts.join('\n\n') + '\n\nSincerely,\n' + name + '\n' + sigAddr;
   }
 
   function mailto(list){
@@ -180,7 +207,7 @@ a{color:var(--navy)}
     $('sendall').hidden = withEmail.length < 2;
     $('sendall').href = mailto(withEmail);
     $('preview').textContent = letterFor(found);
-    $('script').textContent = campaign.phone_script.replace('{name}', $('name').value.trim());
+    $('script').textContent = fill(campaign.phone_script);
   }
 
   $('countme').addEventListener('change', render);
@@ -197,7 +224,19 @@ a{color:var(--navy)}
     if (need.length){ msg.classList.add('err'); return show(msg, 'Please fill in your name and full address.'); }
     if (!/^\d{5}$/.test($('zip').value.trim())){ msg.classList.add('err'); return show(msg, 'Please enter a 5-digit ZIP code.'); }
     var btn = this.querySelector('button'); btn.disabled = true; btn.textContent = 'Looking up your district...';
-    var address = $('street').value.trim() + ', ' + $('city').value.trim() + ', IL ' + $('zip').value.trim();
+    var zip = $('zip').value.trim();
+    var done = function(){ btn.disabled = false; btn.textContent = 'Find my legislators'; };
+    if (usesHomeDistricts(zip)){
+      supporter = true;
+      sigAddr = $('street').value.trim() + ', ' + $('city').value.trim() + ' ' + zip;
+      try {
+        addLegs(campaign.home_districts.upper, campaign.home_districts.lower);
+        showResults('Thank you for standing with Southern Illinois families. Because you live outside our area, we will connect you with the legislators who represent our home in Belleville.');
+      } catch (err) { msg.classList.add('err'); show(msg, 'Something went wrong. Please email info@sipartsfoundation.org and we will help.'); }
+      return done();
+    }
+    supporter = false;
+    var address = $('street').value.trim() + ', ' + $('city').value.trim() + ', IL ' + zip;
     geocode(address).then(function(data){
       var m = data && data.result && data.result.addressMatches;
       if (!m || !m.length) throw new Error('nomatch');
@@ -206,22 +245,15 @@ a{color:var(--navy)}
       if (comp.zip && comp.zip !== $('zip').value.trim()) throw new Error('nomatch');
       var g = hit.geographies;
       var up = districtFrom(g, 'Upper'), low = districtFrom(g, 'Lower');
-      found = [];
-      if (campaign.targets.indexOf('upper') !== -1 && up && legs.upper[up]){
-        var s = legs.upper[up]; found.push({title:'Senator', chamber:'Illinois Senate', district:up, name:s.name, last:lastName(s.name), email:s.email, phone:s.phone});
-      }
-      if (campaign.targets.indexOf('lower') !== -1 && low && legs.lower[low]){
-        var r = legs.lower[low]; found.push({title:'Representative', chamber:'Illinois House', district:low, name:r.name, last:lastName(r.name), email:r.email, phone:r.phone});
-      }
-      if (!found.length) throw new Error('nolegs');
-      $('matched').textContent = 'Address found: ' + hit.matchedAddress;
-      render(); $('results').hidden = false; $('results').scrollIntoView({behavior:'smooth'});
+      addLegs(up, low);
+      sigAddr = $('street').value.trim() + ', ' + $('city').value.trim() + ', IL ' + zip;
+      showResults('Address found: ' + hit.matchedAddress);
     }).catch(function(err){
       msg.classList.add('err');
       show(msg, err.message === 'nomatch' ? 'We could not find that address. Please check the street and ZIP code and try again.' :
         err.message === 'notil' ? 'This page finds Illinois legislators, and that address does not look like it is in Illinois. Please check it and try again.' :
         'Something went wrong looking up your district. Please try again, or email info@sipartsfoundation.org and we will help.');
-    }).then(function(){ btn.disabled = false; btn.textContent = 'Find my legislators'; });
+    }).then(done);
   });
 })();
 </script>
