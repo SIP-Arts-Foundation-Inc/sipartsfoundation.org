@@ -1,0 +1,27 @@
+name: Check the website editor
+
+# Runs the end-to-end editor check after every deploy and once a day, so
+# a broken editor is caught here instead of by a volunteer. A failed run
+# emails the repository owner through GitHub's normal notifications.
+on:
+  workflow_run:
+    workflows: ["Deploy to InterServer"]
+    types: [completed]
+  schedule:
+    - cron: '11 17 * * *'   # daily, 11:11 AM Central
+  workflow_dispatch:
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the test
+        uses: actions/checkout@v4
+
+      - name: Install the browser the test drives
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Run the editor check
+        run: node tools/selftest.js
