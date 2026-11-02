@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Take Action | Southern Illinois Pathways</title>
+<meta name="description" content="Find your Illinois legislators and send them a message about disability services in Southern Illinois.">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito:wght@600;700;800&display=swap">
+<style>
+:root{
+  --navy:#16233f; --canvas:#f7f5f1; --line:#d9d4c8; --ink:#16233f; --muted:#526078;
+  --gold:#E3A72B; --green:#1f7a45; --err:#a3241b;
+  --display:Anton,Impact,sans-serif; --body:Nunito,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--canvas);color:var(--ink);font:600 16px/1.5 var(--body)}
+.wrap{max-width:620px;margin:0 auto;padding-block:0 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{background:var(--navy);color:var(--canvas)}
+header .wrap{padding-block:26px 22px}
+.eyebrow{margin:0;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:800}
+h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2rem,8vw,2.6rem);line-height:1.05;margin:.25em 0 .3em}
+h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:1.5rem;margin:0 0 10px}
+header p{margin:0}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:20px}
+form{display:grid;gap:12px}
+label{display:grid;gap:4px;font-size:.92rem;font-weight:800}
+label small{font-weight:600;color:var(--muted)}
+input,textarea{font:600 1rem var(--body);padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);width:100%}
+textarea{min-height:80px;resize:vertical}
+.two{display:grid;grid-template-columns:2fr 1fr;gap:10px}
+@media (max-width:420px){.two{grid-template-columns:1fr}}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:700}
+.check input{width:auto;margin-top:4px}
+.go{display:inline-block;text-align:center;text-decoration:none;font:800 1.05rem var(--body);border:0;border-radius:999px;padding:13px 18px;background:var(--navy);color:#fff;cursor:pointer}
+.go:hover{background:#0c1528}
+.go.alt{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.go[disabled]{opacity:.55;cursor:not-allowed}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.msg{margin:0;padding:12px 14px;border-radius:10px;font-weight:800}
+.msg.err{background:#fbeaea;color:var(--err)}
+.msg.ok{background:#e8f4ec;color:#0f5c33}
+.leg{border-top:1px solid var(--line);padding:12px 0}
+.leg:first-of-type{border-top:0}
+.leg b{display:block;font-size:1.05rem}
+.leg span{color:var(--muted);font-size:.92rem}
+.actions{display:grid;gap:10px;margin-top:14px}
+pre{white-space:pre-wrap;font:600 .95rem/1.5 var(--body);background:var(--canvas);border:1px solid var(--line);border-radius:10px;padding:12px;margin:0}
+.note{color:var(--muted);font-size:.9rem;margin:14px 0 0}
+a{color:var(--navy)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Southern Illinois Pathways &middot; Take Action <span id="month"></span></p>
+    <h1 id="title">Take Action</h1>
+    <p id="intro"></p>
+  </div>
+</header>
+<main class="wrap">
+  <div class="card">
+    <h2>1. Find your legislators</h2>
+    <form id="find" novalidate>
+      <label for="name">Your name<input id="name" autocomplete="name" required></label>
+      <label for="street">Street address <small>(used only to find your district, never saved)</small><input id="street" autocomplete="street-address" required></label>
+      <div class="two">
+        <label for="city">City<input id="city" autocomplete="address-level2" required></label>
+        <label for="zip">ZIP code<input id="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" required></label>
+      </div>
+      <label for="story">Add a sentence about your family <small>(optional, it makes your message stronger)</small><textarea id="story" maxlength="400"></textarea></label>
+      <button class="go" type="submit">Find my legislators</button>
+      <p class="msg" id="findmsg" hidden></p>
+    </form>
+  </div>
+
+  <div class="card" id="results" hidden>
+    <h2>2. Send your message</h2>
+    <p class="note" id="matched" style="margin-top:0"></p>
+    <div id="legs"></div>
+    <label class="check"><input type="checkbox" id="countme" checked> Send a copy to Southern Illinois Pathways so we can count how many voices reach each office</label>
+    <div class="actions">
+      <a class="go" id="sendall" href="#">Email all my legislators</a>
+      <button class="go alt" type="button" id="copy">Copy the message</button>
+    </div>
+    <p class="msg ok" id="copied" hidden>Copied. Paste it into an email or a legislator's contact form.</p>
+    <p class="note">Your message will open in your email app, ready to send. You can change anything before you send it.</p>
+    <h2 style="margin-top:18px">Your message</h2>
+    <pre id="preview"></pre>
+    <h2 style="margin-top:18px">Rather call?</h2>
+    <pre id="script"></pre>
+  </div>
+
+  <p class="note">This page helps you contact your Illinois state legislators. Southern Illinois Pathways is a program of SIP Arts Foundation, Inc., a nonpartisan 501(c)(3) nonprofit. Questions: <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a></p>
+</main>
+
+<script>
+(function(){
+  var COUNT_EMAIL = 'info@sipartsfoundation.org';
+  var campaign, legs, area, found = [], supporter = false, sigAddr = '';
+  var CONSTITUENT = 'I live in your district';
+  var SUPPORTER = 'I live outside your district, but I care deeply about families in Southern Illinois';
+  var $ = function(id){ return document.getElementById(id); };
+
+  Promise.all([
+    fetch('campaign.json',{cache:'no-cache'}).then(function(r){return r.json();}),
+    fetch('legislators.json',{cache:'no-cache'}).then(function(r){return r.json();}),
+    fetch('service-area.json',{cache:'no-cache'}).then(function(r){return r.json();})
+  ]).then(function(d){
+    campaign = d[0]; legs = d[1]; area = d[2];
+    $('month').textContent = '· ' + campaign.month;
+    $('title').textContent = campaign.title;
+    $('intro').textContent = campaign.intro;
+    document.title = campaign.title + ' | Southern Illinois Pathways';
+  });
+
+  function lastName(n){ return n.replace(/,?\s+(Jr\.?|Sr\.?|II|III|IV)$/,'').split(' ').pop(); }
+  function show(el, text){ el.textContent = text; el.hidden = false; }
+
+  function geocode(address){
+    return new Promise(function(resolve, reject){
+      var cb = 'sipgeo' + Date.now();
+      var s = document.createElement('script');
+      var timer = setTimeout(function(){ cleanup(); reject(new Error('timeout')); }, 20000);
+      function cleanup(){ clearTimeout(timer); delete window[cb]; s.remove(); }
+      window[cb] = function(data){ cleanup(); resolve(data); };
+      s.onerror = function(){ cleanup(); reject(new Error('network')); };
+      s.src = 'https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?benchmark=Public_AR_Current&vintage=Current_Current&layers=all&format=jsonp&callback=' + cb + '&address=' + encodeURIComponent(address);
+      document.body.appendChild(s);
+    });
+  }
+
+  function districtFrom(geos, word){
+    for (var k in geos){
+      if (k.indexOf('State Legislative Districts - ' + word) !== -1 && geos[k][0]){
+        return String(parseInt(geos[k][0].BASENAME || geos[k][0].SLDUST || geos[k][0].SLDLST, 10));
+      }
+    }
+    return null;
+  }
+
+  function fill(t){
+    return t.replace(/\{connection\}/g, supporter ? SUPPORTER : CONSTITUENT).replace(/\{name\}/g, $('name').value.trim());
+  }
+
+  // Readers outside SIP's nine counties are connected with SIP's home districts in Belleville.
+  function usesHomeDistricts(zip){ return area.zips.indexOf(zip) === -1; }
+  function countyFrom(geos){
+    for (var k in geos){ if (k === 'Counties' && geos[k][0]) return geos[k][0].BASENAME; }
+    return null;
+  }
+  function homeResults(){
+    supporter = true;
+    sigAddr = $('street').value.trim() + ', ' + $('city').value.trim() + ' ' + $('zip').value.trim();
+    addLegs(campaign.home_districts.upper, campaign.home_districts.lower);
+    showResults('Thank you for standing with Southern Illinois families. Because you live outside our area, we will connect you with the legislators who represent our home in Belleville.');
+  }
+
+  function addLegs(up, low){
+    found = [];
+    if (campaign.targets.indexOf('upper') !== -1 && up && legs.upper[up]){
+      var s = legs.upper[up]; found.push({title:'Senator', chamber:'Illinois Senate', district:up, name:s.name, last:lastName(s.name), email:s.email, phone:s.phone});
+    }
+    if (campaign.targets.indexOf('lower') !== -1 && low && legs.lower[low]){
+      var r = legs.lower[low]; found.push({title:'Representative', chamber:'Illinois House', district:low, name:r.name, last:lastName(r.name), email:r.email, phone:r.phone});
+    }
+    if (!found.length) throw new Error('nolegs');
+  }
+
+  function showResults(note){
+    $('matched').textContent = note;
+    render(); $('results').hidden = false; $('results').scrollIntoView({behavior:'smooth'});
+  }
+
+  function letterFor(list){
+    var name = $('name').value.trim();
+    var story = $('story').value.trim();
+    var greet = list.length === 1 ? 'Dear ' + list[0].title + ' ' + list[0].last + ',' :
+      'Dear ' + list.map(function(l){ return l.title + ' ' + l.last; }).join(' and ') + ',';
+    var parts = fill(campaign.body).split('\n\n');
+    if (story) parts.splice(1, 0, story);
+    return greet + '\n\n' + parts.join('\n\n') + '\n\nSincerely,\n' + name + '\n' + sigAddr;
+  }
+
+  function mailto(list){
+    var to = list.map(function(l){ return l.email; }).filter(Boolean).join(',');
+    var q = 'subject=' + encodeURIComponent(campaign.subject) + '&body=' + encodeURIComponent(letterFor(list));
+    if ($('countme').checked) q += '&bcc=' + encodeURIComponent(COUNT_EMAIL);
+    return 'mailto:' + to + '?' + q;
+  }
+
+  function render(){
+    var box = $('legs'); box.innerHTML = '';
+    found.forEach(function(l){
+      var div = document.createElement('div'); div.className = 'leg';
+      var b = document.createElement('b'); b.textContent = l.title + ' ' + l.name;
+      var sp = document.createElement('span');
+      sp.textContent = l.chamber + ' District ' + l.district + (l.phone ? ' · ' + l.phone : '');
+      div.appendChild(b); div.appendChild(sp);
+      if (l.email){
+        var a = document.createElement('a'); a.className = 'go alt'; a.style.marginTop = '8px'; a.style.display = 'block';
+        a.textContent = 'Email ' + l.title + ' ' + l.last; a.href = mailto([l]);
+        div.appendChild(a);
+      } else {
+        var ne = document.createElement('span'); ne.style.display = 'block'; ne.style.marginTop = '6px';
+        ne.textContent = 'This office does not list a public email. Please call, or copy the message below.';
+        div.appendChild(ne);
+      }
+      box.appendChild(div);
+    });
+    var withEmail = found.filter(function(l){ return l.email; });
+    $('sendall').hidden = withEmail.length < 2;
+    $('sendall').href = mailto(withEmail);
+    $('preview').textContent = letterFor(found);
+    $('script').textContent = fill(campaign.phone_script);
+  }
+
+  $('countme').addEventListener('change', render);
+  ['name','story'].forEach(function(id){ $(id).addEventListener('input', function(){ if (found.length) render(); }); });
+  $('copy').addEventListener('click', function(){
+    var text = 'Subject: ' + campaign.subject + '\n\n' + letterFor(found);
+    (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(function(){ $('copied').textContent = 'Copied. Paste it into an email or a legislator\'s contact form.'; $('copied').hidden = false; }, function(){ $('copied').textContent = 'Your browser blocked copying. Please select the message below and copy it.'; $('copied').hidden = false; });
+  });
+
+  $('find').addEventListener('submit', function(e){
+    e.preventDefault();
+    var msg = $('findmsg'); msg.hidden = true; msg.className = 'msg';
+    var need = ['name','street','city','zip'].filter(function(id){ return !$(id).value.trim(); });
+    if (need.length){ msg.classList.add('err'); return show(msg, 'Please fill in your name and full address.'); }
+    if (!/^\d{5}$/.test($('zip').value.trim())){ msg.classList.add('err'); return show(msg, 'Please enter a 5-digit ZIP code.'); }
+    var btn = this.querySelector('button'); btn.disabled = true; btn.textContent = 'Looking up your district...';
+    var zip = $('zip').value.trim();
+    var done = function(){ btn.disabled = false; btn.textContent = 'Find my legislators'; };
+    if (usesHomeDistricts(zip)){
+      try { homeResults(); }
+      catch (err) { msg.classList.add('err'); show(msg, 'Something went wrong. Please email info@sipartsfoundation.org and we will help.'); }
+      return done();
+    }
+    supporter = false;
+    var address = $('street').value.trim() + ', ' + $('city').value.trim() + ', IL ' + zip;
+    geocode(address).then(function(data){
+      var m = data && data.result && data.result.addressMatches;
+      if (!m || !m.length) throw new Error('nomatch');
+      var hit = m[0], comp = hit.addressComponents || {};
+      if (comp.state !== 'IL') throw new Error('notil');
+      if (comp.zip && comp.zip !== $('zip').value.trim()) throw new Error('nomatch');
+      var g = hit.geographies;
+      // A ZIP can cross county lines; check the actual county before using local legislators.
+      var county = countyFrom(g);
+      if (county && area.counties.indexOf(county) === -1){ homeResults(); return; }
+      var up = districtFrom(g, 'Upper'), low = districtFrom(g, 'Lower');
+      addLegs(up, low);
+      sigAddr = $('street').value.trim() + ', ' + $('city').value.trim() + ', IL ' + zip;
+      showResults('Address found: ' + hit.matchedAddress);
+    }).catch(function(err){
+      msg.classList.add('err');
+      show(msg, err.message === 'nomatch' ? 'We could not find that address. Please check the street and ZIP code and try again.' :
+        err.message === 'notil' ? 'This page finds Illinois legislators, and that address does not look like it is in Illinois. Please check it and try again.' :
+        'Something went wrong looking up your district. Please try again, or email info@sipartsfoundation.org and we will help.');
+    }).then(done);
+  });
+})();
+</script>
+</body>
+</html>
