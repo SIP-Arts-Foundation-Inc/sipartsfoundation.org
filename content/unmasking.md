@@ -59,7 +59,7 @@ sponsor: Unmasking in the MetroEast is a program of SIP Arts Foundation, a
   501(c)(3) nonprofit. Sponsorship covers transport and the public showcase,
   which is what keeps panels and participation free for every family and
   classroom. If your organization, church, business, or foundation wants to
-  support it, or wants a copy of the project budget, email
+  support it, email
   [info@sipartsfoundation.org](mailto:info@sipartsfoundation.org).
 questions: Email [info@sipartsfoundation.org](mailto:info@sipartsfoundation.org)
   or [neil@sipartsfoundation.org](mailto:neil@sipartsfoundation.org). We answer
