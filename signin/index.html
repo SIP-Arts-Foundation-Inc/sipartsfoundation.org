@@ -79,7 +79,41 @@
 
 <main id="main">
 
-<section class="si-hero">
+<style>
+  .si-hero {
+    padding-top: clamp(150px, 14vw, 190px) !important;
+    padding-bottom: clamp(40px, 6vw, 72px) !important;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .si-hero .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .si-hero .si-welcome {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+  .si-hero h1 {
+    font-size: clamp(2.25rem, 7vw, 3.75rem);
+    line-height: 1.1;
+    margin: 0 0 0.5rem;
+    overflow-wrap: break-word;
+  }
+  .si-hero p {
+    font-size: clamp(1rem, 3.5vw, 1.25rem);
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 36ch;
+  }
+</style>
+  <section class="si-hero">
   <div class="wrap">
     <div class="si-welcome">Welcome</div>
     <h1>Sign In</h1>
