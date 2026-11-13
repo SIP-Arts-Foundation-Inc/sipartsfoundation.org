@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Your Event to Our Calendar | SIP Arts Foundation</title>
+<meta name="description" content="Community organizations can ask Southern Illinois Pathways to list an upcoming event for Metro East families on our events calendar.">
+<link rel="canonical" href="https://sipartsfoundation.org/events/submit/">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<style>
+:root{--navy:#0B2C5C;--navy-2:#071F42;--teal:#0E9AA7;--teal-dk:#0A7C87;--pink:#E4005A;--gold:#FFD126;
+  --cream:#FAF6EC;--paper:#FDFBF5;--ink:#14243D;--muted:#4C5C74;--line:#E6DECB;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+.wrap{max-width:780px;margin:0 auto;padding:0 20px}
+a{color:var(--teal-dk)}
+header.site{background:#fff;border-bottom:1px solid var(--line);padding:16px 0}
+header.site .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+header.site img{height:46px;width:auto}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy)}
+.brand-name{font-weight:900;font-size:1.05rem;line-height:1.1}
+.brand-sub{font-size:.68rem;letter-spacing:.14em;color:var(--teal-dk);font-weight:800}
+.head-link{font-weight:800;font-size:.9rem;text-decoration:none}
+.hero{background:var(--navy);color:#fff;padding:34px 0}
+.hero p.eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:900}
+.hero h1{font-family:'Anton',Impact,sans-serif;font-weight:400;font-style:italic;text-transform:uppercase;
+  letter-spacing:.02em;font-size:clamp(1.9rem,5vw,2.9rem);line-height:1.02;margin:8px 0 10px}
+.hero p.lede{color:#D3E0F0;font-size:1.05rem;max-width:56ch}
+main{padding:28px 0 60px}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:24px}
+fieldset{border:none;margin-bottom:22px}
+legend{font-family:'Anton',Impact,sans-serif;font-weight:400;font-style:italic;text-transform:uppercase;
+  font-size:1.2rem;color:var(--navy);letter-spacing:.03em;margin-bottom:10px}
+.row{margin-bottom:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;font-weight:800;font-size:.95rem;margin-bottom:5px}
+.req{color:var(--pink)}
+.hint{display:block;font-weight:600;font-size:.84rem;color:var(--muted);margin-top:-2px;margin-bottom:5px}
+input,select,textarea{width:100%;font-family:inherit;font-size:1rem;font-weight:600;color:var(--ink);
+  background:var(--paper);border:1.5px solid var(--line);border-radius:11px;padding:11px 13px}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--gold);outline-offset:1px;background:#fff}
+textarea{min-height:104px;resize:vertical}
+.cf-turnstile{margin:6px 0 16px}
+.submit{background:var(--teal-dk);color:#fff;font-weight:900;font-size:1.05rem;border:none;border-radius:999px;
+  padding:14px 34px;cursor:pointer}
+.submit:hover{background:var(--teal)}
+.submit:disabled{opacity:.6;cursor:default}
+.status{margin-top:14px;font-weight:800;font-size:.98rem}
+.status.ok{color:#0A7C3F}
+.status.err{color:#B3003C}
+.note{background:var(--cream);border-radius:12px;padding:14px 16px;font-size:.95rem;font-weight:600;margin-bottom:22px}
+footer{background:var(--navy-2);color:#C9D8EC;text-align:center;padding:30px 0;font-size:.9rem}
+footer a{color:#fff}
+.foot-org{font-family:'Anton',Impact,sans-serif;font-style:italic;text-transform:uppercase;font-size:1.1rem;color:#fff;margin-bottom:6px}
+@media(max-width:620px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap inner">
+    <a class="brand" href="https://sipartsfoundation.org">
+      <img src="/sipartsfoundation-logo.png" alt="SIP Arts Foundation logo" onerror="this.style.display='none'">
+      <span>
+        <span class="brand-name">SIP Arts Foundation</span><br>
+        <span class="brand-sub">SOUTHERN ILLINOIS PATHWAYS</span>
+      </span>
+    </a>
+    <a class="head-link" href="/events/">&larr; Back to the calendar</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">For community organizations</p>
+    <h1>Add your event to our calendar</h1>
+    <p class="lede">Hosting something Metro East families with disabilities would want to know about? Tell us and we will consider it for our community calendar.</p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <p class="note">We read every request. If your event fits our families, we post it and email you the link. Listing an event is free, and it does not make your organization a partner of SIP Arts Foundation.</p>
+
+    <form class="card" id="evform" novalidate>
+      <fieldset>
+        <legend>Your event</legend>
+
+        <div class="row">
+          <label for="ev-name">Event name <span class="req">*</span></label>
+          <input type="text" id="ev-name" name="eventName" required>
+        </div>
+
+        <div class="two">
+          <div class="row">
+            <label for="ev-date">Date <span class="req">*</span></label>
+            <input type="date" id="ev-date" name="date" required>
+          </div>
+          <div class="row">
+            <label for="ev-time">Time <span class="req">*</span></label>
+            <span class="hint">For example, 1:00 to 3:00 PM</span>
+            <input type="text" id="ev-time" name="time" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="ev-place">Where <span class="req">*</span></label>
+          <span class="hint">A street address, or type Online</span>
+          <input type="text" id="ev-place" name="location" required>
+        </div>
+
+        <div class="two">
+          <div class="row">
+            <label for="ev-zip">ZIP code <span class="req">*</span></label>
+            <span class="hint">Five digits, so we know which county it is in. Use your own ZIP for an online event</span>
+            <input type="text" id="ev-zip" name="zip" inputmode="numeric" maxlength="5" required>
+          </div>
+          <div class="row">
+            <label for="ev-cost">Cost <span class="req">*</span></label>
+            <select id="ev-cost" name="cost" required>
+              <option value="">Choose one</option>
+              <option>Free</option>
+              <option>Free, donations welcome</option>
+              <option>There is a fee</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="ev-link">Link for details or registration</label>
+          <span class="hint">Where people sign up or read more. Leave empty if there is not one</span>
+          <input type="url" id="ev-link" name="url" placeholder="https://">
+        </div>
+
+        <div class="row">
+          <label for="ev-about">What should families know? <span class="req">*</span></label>
+          <span class="hint">Two or three sentences. Who it is for, what happens, anything that makes it welcoming, such as sensory friendly or wheelchair accessible</span>
+          <textarea id="ev-about" name="about" required></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Who to reach</legend>
+
+        <div class="two">
+          <div class="row">
+            <label for="ev-org">Organization <span class="req">*</span></label>
+            <input type="text" id="ev-org" name="organization" required>
+          </div>
+          <div class="row">
+            <label for="ev-contact">Your name <span class="req">*</span></label>
+            <input type="text" id="ev-contact" name="contactName" autocomplete="name" required>
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="row">
+            <label for="ev-email">Email <span class="req">*</span></label>
+            <input type="email" id="ev-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="row">
+            <label for="ev-phone">Phone</label>
+            <input type="tel" id="ev-phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFG1zN5i_gHrCd7s" data-size="auto"></div>
+
+      <button class="submit" id="ev-submit" type="submit">Send my event</button>
+      <div class="status" id="ev-status" role="status"></div>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-org">SIP Arts Foundation</div>
+    <div>Southern Illinois Pathways &bull; Serving all nine Metro East counties: Madison, St. Clair, Monroe, Clinton, Bond, Calhoun, Jersey, Macoupin &amp; Jackson</div>
+    <div style="margin-top:8px;">
+      <a href="https://sipartsfoundation.org">sipartsfoundation.org</a> &bull;
+      <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a>
+    </div>
+    <div style="margin-top:10px; font-size:.78rem;">&copy; 2026 SIP Arts Foundation, Inc.</div>
+    <p style="margin-top:10px;font-size:.78rem;opacity:.75">Hosted by <a href="https://www.interserver.net" target="_blank" rel="noopener" style="color:inherit">InterServer</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('evform');
+  var btn = document.getElementById('ev-submit');
+  var status = document.getElementById('ev-status');
+
+  function show(msg, cls) {
+    status.className = 'status' + (cls ? ' ' + cls : '');
+    status.textContent = msg;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    show('');
+
+    var data = {};
+    ['eventName','date','time','location','zip','cost','url','about','organization','contactName','email','phone']
+      .forEach(function (k) {
+        var el = form.querySelector('[name="' + k + '"]');
+        data[k] = el ? el.value.trim() : '';
+      });
+
+    if (!data.eventName) { return show('Please tell us the name of the event.', 'err'); }
+    if (!data.date) { return show('Please choose the date.', 'err'); }
+    if (!data.time) { return show('Please tell us the time.', 'err'); }
+    if (!data.location) { return show('Please tell us where it is, or type Online.', 'err'); }
+    if (!/^\d{5}$/.test(data.zip)) { return show('Please enter a five digit ZIP code.', 'err'); }
+    if (!data.cost) { return show('Please tell us whether it is free.', 'err'); }
+    if (!data.about) { return show('Please tell us what families should know.', 'err'); }
+    if (!data.organization) { return show('Please tell us your organization.', 'err'); }
+    if (!data.contactName) { return show('Please tell us your name.', 'err'); }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) { return show('Please enter a valid email address.', 'err'); }
+
+    var t = form.querySelector('[name="cf-turnstile-response"]');
+    data['cf-turnstile-response'] = t ? t.value : '';
+    if (!data['cf-turnstile-response']) {
+      return show('Please complete the "I am human" check above, then send again.', 'err');
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch('/api/events/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data)
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        btn.disabled = false;
+        btn.textContent = 'Send my event';
+        if (window.turnstile) { try { window.turnstile.reset(); } catch (err) {} }
+        if (res && res.ok) {
+          form.reset();
+          show('Thank you! Your event is with us. We will email ' + data.email + ' once we have had a look.', 'ok');
+        } else {
+          show((res && res.error) || 'Something went wrong. Please try again, or email info@sipartsfoundation.org.', 'err');
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Send my event';
+        if (window.turnstile) { try { window.turnstile.reset(); } catch (err) {} }
+        show('We could not send that. Please try again, or email info@sipartsfoundation.org.', 'err');
+      });
+  });
+})();
+</script>
+</body>
+</html>
