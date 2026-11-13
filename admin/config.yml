@@ -115,3 +115,41 @@ collections:
           - { name: 'title', label: 'Page title', widget: 'string' }
           - { name: 'intro', label: 'Opening paragraph', widget: 'text', required: false }
           - { name: 'body', label: 'Page content', widget: 'markdown' }
+
+  - name: 'events'
+    label: 'Events on the calendar'
+    label_singular: 'event'
+    description: >-
+      Add an event and it appears on the events calendar within a few
+      minutes. One entry per date. For something that repeats, add one
+      entry for each date so people can see every one.
+    folder: 'content/events'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    summary: '{{date}} · {{title}}'
+    sortable_fields: ['date', 'title']
+    view_filters:
+      - { label: 'Our events', field: 'kind', pattern: 'sip' }
+      - { label: 'Partner events', field: 'kind', pattern: 'partner' }
+    fields:
+      - { name: 'title', label: 'Event name', widget: 'string',
+          hint: 'What people will see on the calendar, for example Family Day Out' }
+      - { name: 'date', label: 'Date', widget: 'datetime',
+          date_format: 'YYYY-MM-DD', time_format: false, picker_utc: false,
+          hint: 'The day it happens' }
+      - { name: 'time', label: 'Time', widget: 'string', required: false,
+          hint: 'Written how you would say it, for example 1:00 to 3:00 PM' }
+      - { name: 'location', label: 'Where', widget: 'string', required: false,
+          default: '424 Lebanon Ave, Belleville',
+          hint: 'An address, or On Zoom' }
+      - name: 'kind'
+        label: 'Whose event'
+        widget: 'select'
+        default: 'sip'
+        options:
+          - { label: 'Our event', value: 'sip' }
+          - { label: 'Partner event', value: 'partner' }
+      - { name: 'url', label: 'Link', widget: 'string', required: false,
+          hint: 'Where the Register button goes, for example /unmasking/ or a full https link. Leave empty for no button' }
+      - { name: 'note', label: 'Short note', widget: 'text', required: false,
+          hint: 'One line shown when someone taps the event, for example Drop in anytime' }
