@@ -588,10 +588,15 @@
     var blob=(v+' '+(e.title||'')+' '+(e.description||'')+' '
       +((e.categories||[]).map(function(c){return c.name||'';}).join(' '))+' '
       +((e.tags||[]).map(function(t){return t.name||'';}).join(' '))).toLowerCase();
+    // Programs open only to another health system's own families
     if(/(advocate children|lurie|shirley ryan|ann & robert|ann and robert|northwestern medicine|rush university|university of chicago medicine|endeavor health|northshore)/.test(blob)) return false;
+    // The big statewide gatherings are worth the drive
+    if(/(speak up speak out|\bsuso\b|rev up|annual convention|annual conference|annual meeting|statewide conference|state convention|summit|leadership institute|advocacy day|capitol day)/.test(blob)) return true;
+    // Anything anyone can join from home
     if(/(virtual|online|webinar|zoom|teams|livestream|live stream|remote|web-based|seminario)/.test(blob)) return true;
-    if(!v.trim()) return true;
-    if(/(belleville|edwardsville|glen carbon|collinsville|granite city|alton|godfrey|wood river|fallon|swansea|fairview heights|shiloh|mascoutah|waterloo|columbia|troy|highland|greenville|carlyle|centralia|vernon|marion|carbondale|herrin|harrisburg|murphysboro|du quoin|salem|breese|jerseyville|carlinville|litchfield|louis|metro east|southern illinois|springfield|madison county|clair county|monroe county|jackson county)/.test(blob)) return true;
+    // Anything close enough to drive to
+    if(/(belleville|edwardsville|glen carbon|collinsville|granite city|alton|godfrey|wood river|o'fallon|swansea|fairview heights|shiloh|mascoutah|waterloo|columbia|troy|highland|greenville|carlyle|centralia|mount vernon|marion|carbondale|herrin|harrisburg|murphysboro|du quoin|salem|breese|jerseyville|carlinville|litchfield|st\. louis|saint louis|metro east|southern illinois|madison county|st\. clair county|monroe county|jackson county)/.test(blob)) return true;
+    // Not local, not online, not a statewide gathering
     return false;
   }
 
