@@ -259,9 +259,54 @@ def render(name, conf, check=False):
     return f'ok   {name}: updated {path.relative_to(ROOT)}'
 
 
+def build_events_json(check=False):
+    """Write events/events.json from the event files the CMS writes.
+
+    Every file in content/events/ is one event. The calendar on
+    events/index.html reads the JSON this produces, so adding an event
+    through /admin is all anyone has to do.
+    """
+    import json
+
+    folder = CONTENT / 'events'
+    out = ROOT / 'events' / 'events.json'
+    events = []
+    for path in sorted(folder.glob('*.md')) if folder.is_dir() else []:
+        meta, _ = split_front_matter(
+            path.read_text(encoding='utf-8', errors='surrogateescape'))
+        date = (meta.get('date') or '').strip()[:10]
+        title = (meta.get('title') or '').strip()
+        if not date or not title:
+            continue
+        kind = (meta.get('kind') or 'sip').strip().lower()
+        if kind not in ('sip', 'partner'):
+            kind = 'sip'
+        events.append({
+            'd': date,
+            't': title,
+            'tm': (meta.get('time') or '').strip(),
+            'p': (meta.get('location') or '').strip(),
+            'k': kind,
+            'u': (meta.get('url') or '').strip(),
+            'n': (meta.get('note') or '').strip(),
+        })
+    events.sort(key=lambda e: (e['d'], e['t']))
+    text = json.dumps(events, indent=1) + '\n'
+
+    current = out.read_text(encoding='utf-8') if out.exists() else None
+    if text == current:
+        return f'ok   events.json: already current ({len(events)} events)'
+    if check:
+        return f'DIFF events.json: would write {len(events)} events'
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(text, encoding='utf-8')
+    return f'ok   events.json: wrote {len(events)} events'
+
+
 if __name__ == '__main__':
     check = '--check' in sys.argv
     results = [render(n, c, check) for n, c in PAGES.items()]
+    results.append(build_events_json(check))
     for r in results:
         print(r)
     if any(r.startswith('SKIP') for r in results):
