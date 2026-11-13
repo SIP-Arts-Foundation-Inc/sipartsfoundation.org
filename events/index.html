@@ -526,12 +526,6 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 105.3 14l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/></svg>
         <input type="search" id="sc-q" placeholder="Search events" aria-label="Search events">
       </label>
-      <div class="sc-chips" role="group" aria-label="Filter events">
-        <button class="sc-chip" id="sc-c-all" aria-pressed="true">All</button>
-        <button class="sc-chip" id="sc-c-sip" aria-pressed="false"><span class="sc-dot sip"></span>Ours</button>
-        <button class="sc-chip" id="sc-c-partner" aria-pressed="false"><span class="sc-dot partner"></span>Partners</button>
-        <button class="sc-chip" id="sc-c-arc" aria-pressed="false"><span class="sc-dot arc"></span>The Arc</button>
-      </div>
       <div class="sc-views" role="group" aria-label="Choose a view">
         <button id="sc-v-list" aria-pressed="true">List</button>
         <button id="sc-v-month" aria-pressed="false">Month</button>
@@ -554,12 +548,7 @@
       </div>
     </div>
 
-    <div class="sc-legend">
-      <span><span class="sc-dot sip"></span>Our events</span>
-      <span><span class="sc-dot partner"></span>Partner events</span>
-      <span><span class="sc-dot arc"></span>The Arc of Illinois</span>
-    </div>
-    <p class="sc-foot">The Arc of Illinois events update on their own, showing online events and events near the Metro East. <a href="https://www.thearcofil.org/events/" target="_blank" rel="noopener">See every Arc event &#8599;</a></p>
+    <p class="sc-foot">As an affiliate of The Arc of Illinois, our calendar carries statewide trainings and gatherings alongside everything we host, online and near the Metro East. <a href="https://www.thearcofil.org/events/" target="_blank" rel="noopener">See the full statewide calendar &#8599;</a></p>
     <p class="sc-foot">Hosting something Metro East families should know about? <a href="/events/submit/"><strong>Ask us to add your event</strong></a>.</p>
   </div>
 
@@ -583,7 +572,7 @@
   var DAY3=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   var DAYF=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var PAGE=10;
-  var EVENTS=[], filter='all', view='list', query='', shown=PAGE;
+  var EVENTS=[], view='list', query='', shown=PAGE;
 
   function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
   var today=new Date(), todayISO=iso(today);
@@ -608,7 +597,6 @@
 
   function visible(){
     return EVENTS.filter(function(e){
-      if(filter!=='all'&&e.kind!==filter) return false;
       if(query && (e.title+' '+e.place).toLowerCase().indexOf(query)<0) return false;
       return true;
     });
@@ -713,14 +701,6 @@
   document.getElementById('sc-prev').onclick=function(){cur.setMonth(cur.getMonth()-1);renderMonth();};
   document.getElementById('sc-next').onclick=function(){cur.setMonth(cur.getMonth()+1);renderMonth();};
   document.getElementById('sc-q').addEventListener('input',function(){query=this.value.trim().toLowerCase();shown=PAGE;render();});
-  ['all','sip','partner','arc'].forEach(function(k){
-    document.getElementById('sc-c-'+k).onclick=function(){
-      filter=k; shown=PAGE;
-      ['all','sip','partner','arc'].forEach(function(j){
-        document.getElementById('sc-c-'+j).setAttribute('aria-pressed',String(j===k));});
-      render();
-    };
-  });
   document.getElementById('sc-v-list').onclick=function(){view='list';
     this.setAttribute('aria-pressed','true');document.getElementById('sc-v-month').setAttribute('aria-pressed','false');render();};
   document.getElementById('sc-v-month').onclick=function(){view='month';
