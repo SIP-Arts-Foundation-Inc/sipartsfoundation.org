@@ -23,7 +23,6 @@ const PAGES = {
   '/studio.html': 1,
   '/selfadvocacy/': 2,
   '/perfectly-imperfect/': 3,
-  '/transition/': 3,
   '/events/': 1,
   '/survey/': 1,
   '/signin/': 1,
