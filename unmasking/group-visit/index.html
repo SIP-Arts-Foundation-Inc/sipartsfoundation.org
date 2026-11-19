@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Group Visit | Unmasking in the MetroEast</title>
+<meta name="description" content="Agencies, schools, day programs and youth groups can request an in-person Unmasking session at SIP Arts Foundation in Belleville, IL." />
+<link rel="canonical" href="https://sipartsfoundation.org/unmasking/group-visit" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Request a Group Visit | Unmasking in the MetroEast" />
+<meta property="og:description" content="Bring your group to SIP Arts Foundation in Belleville to learn about masking and create on free yard sign panels." />
+<meta property="og:url" content="https://sipartsfoundation.org/unmasking/group-visit" />
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<style>
+/* Layout: single centered column, cream ground, one paper card for the form.
+   Tokens mirror SIP brand-tokens.css. Do not invent hex values. */
+:root {
+  --navy:      #0B2C5C;
+  --navy-2:    #071F42;
+  --teal:      #0E9AA7;
+  --teal-dk:   #0A7C87;
+  --pink-dk:   #BC004A;
+  --gold:      #FFD126;
+  --cream:     #FAF6EC;
+  --cream-2:   #F3ECDD;
+  --paper:     #FDFBF5;
+  --ink:       #14243D;
+  --muted:     #4C5C74;
+  --line:      #E3DAC7;
+  --field:     #FFFFFF;
+  --sh-1: 0 6px 16px rgba(11,44,92,.10);
+  --font-display: 'Anton', Impact, sans-serif;
+  --font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-script: 'Caveat', cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy: #FFFFFF; --navy-2: #FFFFFF; --teal: #4FD1DC; --teal-dk: #4FD1DC;
+    --pink-dk: #FF5C8F; --cream: #0E1B2E; --cream-2: #15263F; --paper: #15263F;
+    --ink: #EAF0F8; --muted: #AEBFD4; --line: #2A3E5C; --field: #0E1B2E;
+    --sh-1: 0 6px 16px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --navy: #FFFFFF; --navy-2: #FFFFFF; --teal: #4FD1DC; --teal-dk: #4FD1DC;
+  --pink-dk: #FF5C8F; --cream: #0E1B2E; --cream-2: #15263F; --paper: #15263F;
+  --ink: #EAF0F8; --muted: #AEBFD4; --line: #2A3E5C; --field: #0E1B2E;
+  --sh-1: 0 6px 16px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 44rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  padding-block: 3rem 4rem;
+}
+
+.eyebrow {
+  font-family: var(--font-script);
+  font-size: 1.5rem;
+  color: var(--teal-dk);
+  margin: 0 0 .25rem;
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .014em;
+  line-height: 1;
+  font-size: clamp(2.5rem, 9vw, 4rem);
+  color: var(--navy);
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+.lede {
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin: 0 0 2.25rem;
+  max-width: 34rem;
+  text-wrap: pretty;
+}
+.pull {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  line-height: 1.1;
+  color: var(--teal-dk);
+  border-left: 5px solid var(--gold);
+  padding-left: 1rem;
+  margin: 0 0 2.25rem;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  font-size: 1.35rem;
+  color: var(--navy);
+  margin: 2.5rem 0 .75rem;
+}
+p { margin: 0 0 1rem; }
+
+.steps { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: .6rem; }
+.steps li { position: relative; padding-left: 1.45rem; }
+.steps li::before {
+  content: "";
+  position: absolute; left: 0; top: .62rem;
+  width: .7rem; height: .7rem;
+  border-radius: 999px; background: var(--teal);
+}
+.note { color: var(--muted); }
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  font-size: 1.05rem;
+  color: var(--navy);
+  margin: 1.75rem 0 .5rem;
+}
+.ask {
+  background: var(--cream-2);
+  border-left: 5px solid var(--gold);
+  border-radius: 0 12px 12px 0;
+  padding: 1rem 1.25rem;
+  font-size: 1.1rem;
+  margin: 0 0 1.25rem;
+}
+
+/* Concept strip: original line art, three stages of one sign. */
+.concept {
+  list-style: none;
+  margin: 1rem 0 1.25rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 34rem) {
+  .concept { grid-template-columns: 1fr; gap: 1.25rem; max-width: 20rem; margin-inline: auto; }
+}
+.concept li {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: .9rem .9rem 1rem;
+  text-align: center;
+}
+.concept svg { width: 100%; height: auto; display: block; }
+.concept b {
+  display: block;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--navy);
+  margin: .6rem 0 .15rem;
+}
+.concept span { display: block; font-size: .9rem; color: var(--muted); line-height: 1.4; }
+
+/* Real work from our studio programs. */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 1rem 0 .75rem; }
+@media (max-width: 34rem) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  display: block;
+  background: var(--cream-2);
+}
+
+.when {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  margin: 1rem 0 0;
+  display: grid; gap: .3rem;
+}
+.when .date {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  font-size: 1.5rem;
+  color: var(--navy);
+  line-height: 1.1;
+}
+.when .meta { color: var(--muted); font-size: .95rem; }
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--sh-1);
+  padding: 1.75rem;
+  margin-top: 1rem;
+}
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 34rem) { .row { grid-template-columns: 1fr; } }
+.field { display: grid; gap: .35rem; margin-bottom: 1rem; min-width: 0; }
+label { font-weight: 700; font-size: .95rem; color: var(--navy); }
+label .opt { font-weight: 400; color: var(--muted); }
+input[type=text], input[type=email], input[type=tel], select {
+  font: inherit;
+  color: var(--ink);
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: .7rem .8rem;
+  min-height: 44px;
+  width: 100%;
+}
+input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--teal); outline-offset: 2px;
+}
+.check { display: grid; grid-template-columns: auto 1fr; gap: .65rem; align-items: start; margin: .25rem 0 1.25rem; }
+.check input { width: 1.15rem; height: 1.15rem; margin-top: .3rem; }
+.check label { font-weight: 400; color: var(--ink); }
+.hp { position: absolute; left: -9999px; }
+
+button {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1rem;
+  min-height: 48px;
+  padding: .6rem 1.75rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--pink-dk);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { filter: brightness(1.07); transform: translateY(-2px); }
+button:disabled { opacity: .6; cursor: default; }
+@media (prefers-reduced-motion: reduce) { button:hover:not(:disabled) { transform: none; } }
+
+.status { margin-top: 1rem; font-weight: 700; }
+.status.err { color: var(--pink-dk); }
+.status.ok { color: var(--teal-dk); }
+
+.done {
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-top: 1rem;
+}
+.done h3 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: .028em;
+  color: var(--navy);
+  margin: 0 0 .5rem;
+  font-size: 1.3rem;
+}
+.who { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1.5rem; }
+.lead-row { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.5rem; align-items: start; }
+@media (max-width: 34rem) { .lead-row { grid-template-columns: 1fr; gap: 1rem; } }
+.portrait {
+  width: 8.5rem; height: 8.5rem; max-width: 100%;
+  border-radius: 999px; display: block;
+  object-fit: cover;
+  box-shadow: var(--sh-1);
+}
+.lead-name {
+  font-family: var(--font-script);
+  font-size: 1.75rem;
+  color: var(--teal-dk);
+  margin: 0;
+  line-height: 1.1;
+}
+.lead-role {
+  font-weight: 700;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--muted);
+  margin: .15rem 0 .75rem;
+}
+a { color: var(--teal-dk); }
+.between { border-top: 1px solid var(--line); margin-top: 2.5rem; padding-top: 1.5rem; }
+.fb {
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .5rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid var(--teal-dk);
+  color: var(--teal-dk);
+}
+.fb:hover { background: var(--teal-dk); color: var(--paper); }
+
+.hero-art { background: var(--cream-2); border:1px solid var(--line); border-radius:16px; padding:1.25rem 1.4rem; margin:0 0 2rem; }
+.stat { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:1.25rem 0 0; }
+@media (max-width:34rem){ .stat{grid-template-columns:1fr;} }
+.stat b { font-family:var(--font-display); font-size:1.7rem; color:var(--navy); display:block; line-height:1; }
+.stat span { font-size:.9rem; color:var(--muted); }
+.flow { list-style:none; margin:1rem 0 0; padding:0; display:grid; gap:1rem; }
+.flow li { background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:1rem 1.2rem; }
+.flow b { display:block; font-family:var(--font-display); text-transform:uppercase; font-style:italic; letter-spacing:.028em; color:var(--teal-dk); font-size:1.05rem; }
+.pills { display:flex; flex-wrap:wrap; gap:.6rem; margin:.25rem 0 1rem; }
+.pills label { display:flex; align-items:center; gap:.5rem; border:1.5px solid var(--line); background:var(--field);
+  border-radius:999px; padding:.55rem 1rem; min-height:44px; font-weight:700; cursor:pointer; }
+.pills input { width:1.1rem; height:1.1rem; }
+.pills label:has(input:checked) { border-color:var(--teal-dk); background:var(--cream-2); }
+textarea { font:inherit; color:var(--ink); background:var(--field); border:1px solid var(--line);
+  border-radius:10px; padding:.7rem .8rem; width:100%; min-height:88px; }
+.hide { display:none; }
+</style>
+<style>
+.um-learn h2{font-family:var(--font-display,Anton,Impact,sans-serif);font-weight:400;text-transform:uppercase;font-style:italic;letter-spacing:.028em;font-size:1.35rem;color:var(--navy,#0B2C5C);margin:2.5rem 0 .75rem}
+.um-path{background:var(--paper,#FDFBF5);border:1px solid var(--line,#E3DAC7);border-radius:16px;box-shadow:var(--sh-1,0 6px 16px rgba(11,44,92,.10));padding:1.5rem;margin-top:1rem}
+.um-path h3{font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--navy,#0B2C5C);margin:0 0 .25rem;font-size:1.2rem}
+.um-path .um-who{color:var(--muted,#4C5C74);font-size:.95rem;margin:0 0 1rem}
+.um-nums{list-style:none;margin:0;padding:0;display:grid;gap:.9rem;counter-reset:umnum}
+.um-nums>li{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start}
+.um-nums>li::before{counter-increment:umnum;content:counter(umnum);font-family:var(--font-display,Anton,Impact,sans-serif);font-size:1.1rem;line-height:1;color:#fff;background:var(--teal-dk,#0A7C87);width:2rem;height:2rem;border-radius:999px;display:grid;place-items:center}
+.um-nums b{display:block;font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--teal-dk,#0A7C87);font-size:1rem}
+.um-nums p{margin:.15rem 0 0}
+.um-links{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.6rem}
+.um-links a{display:block;background:var(--cream-2,#F3ECDD);border:1px solid var(--line,#E3DAC7);border-radius:12px;padding:.8rem 1rem;text-decoration:none;color:var(--ink,#14243D);font-weight:700}
+.um-links a:hover{border-color:var(--teal,#0E9AA7)}
+.um-links a span{display:block;font-weight:400;font-size:.9rem;color:var(--muted,#4C5C74)}
+.um-go{display:inline-flex;align-items:center;min-height:48px;padding:.6rem 1.75rem;border-radius:999px;background:var(--pink-dk,#BC004A);color:#fff;font-weight:800;text-decoration:none;margin-top:.5rem}
+.um-go:hover{filter:brightness(1.07)}
+.um-go.alt{background:var(--teal-dk,#0A7C87)}
+.um-prompt{background:var(--cream-2,#F3ECDD);border-left:5px solid var(--gold,#FFD126);border-radius:0 12px 12px 0;padding:1rem 1.2rem;margin:.5rem 0 0}
+.um-prompt b{font-family:var(--font-display,Anton,Impact,sans-serif);text-transform:uppercase;font-style:italic;letter-spacing:.028em;color:var(--navy,#0B2C5C);display:block;font-size:.95rem}
+.um-note{color:var(--muted,#4C5C74)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .um-links a{color:#EAF0F8}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <p class="eyebrow"><a href="/unmasking/">Unmasking in the MetroEast</a></p>
+  <h1>Request a group visit</h1>
+
+  <p class="lede">Bring your group to SIP Arts Foundation in Belleville. Everyone learns what masking is first, then creates on a free yard sign panel. Finished pieces are displayed at our free public showcase on April 3, 2027, in celebration of World Autism Awareness Day.</p>
+
+  <p>Group visits are available on <strong>Tuesdays and Saturdays</strong>. Times are flexible. There is no cost to your group.</p>
+
+  <p class="pull">Submitting this form is a request, not a confirmed reservation. We will contact you to finalize your visit.</p>
+
+  <div class="card" id="formCard">
+    <form id="gv" novalidate>
+
+      <div class="field">
+        <label for="org">Organization or agency name</label>
+        <input type="text" id="org" name="org" autocomplete="organization" required>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="firstname">Contact first name</label>
+          <input type="text" id="firstname" name="firstname" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="lastname">Contact last name</label>
+          <input type="text" id="lastname" name="lastname" autocomplete="family-name" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="zip">ZIP code</label>
+          <input type="text" id="zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" placeholder="e.g. 62220" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="orgtype">Type of organization</label>
+        <select id="orgtype" name="orgtype">
+          <option value="Mental health provider">Mental health provider</option>
+          <option value="Disability service provider">Disability service provider</option>
+          <option value="School">School</option>
+          <option value="Youth group">Youth group</option>
+          <option value="Community organization">Community organization</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="participants">About how many participants?</label>
+          <select id="participants" name="participants" required>
+            <option value="1 to 10">1 to 10</option>
+            <option value="11 to 20">11 to 20</option>
+            <option value="21 to 30">21 to 30</option>
+            <option value="31 to 50">31 to 50</option>
+            <option value="More than 50">More than 50</option>
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ages">General age range <span class="opt">(optional)</span></label>
+          <input type="text" id="ages" name="ages" placeholder="e.g. 12 to 17, or adults">
+        </div>
+      </div>
+
+      <div class="field">
+        <span id="dayLabel" style="font-weight:700;font-size:.95rem;color:var(--navy)">Preferred day</span>
+        <div class="pills" role="radiogroup" aria-labelledby="dayLabel">
+          <label><input type="radio" name="day" value="Tuesday" checked> Tuesday</label>
+          <label><input type="radio" name="day" value="Saturday"> Saturday</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="date">Preferred date</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <div class="field">
+          <label for="time">Preferred time</label>
+          <select id="time" name="time" required>
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Flexible">Flexible</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="access">Accessibility or accommodation requests <span class="opt">(optional)</span></label>
+        <textarea id="access" name="access" placeholder="Wheelchair access, quiet space, sensory supports, interpreter, anything that helps us host your group well"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="notes">Additional questions or comments <span class="opt">(optional)</span></label>
+        <textarea id="notes" name="notes"></textarea>
+      </div>
+
+      <p class="note">Please do not include participant names, diagnoses, or any medical information on this form.</p>
+
+      <div class="check">
+        <input type="checkbox" id="newsletter" name="newsletter">
+        <label for="newsletter">Email our organization about future SIP Arts Foundation programs and announcements.</label>
+      </div>
+
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAFG1zN5i_gHrCd7s" data-size="auto"></div>
+
+      <p><button id="submit" type="submit">Send my request</button></p>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+
+  <div class="done" id="done" hidden>
+    <h3>Request received</h3>
+    <p>Thank you. We have your group's request and will contact you to confirm availability for your requested day and time.</p>
+    <p>Your visit is not scheduled until you hear back from us.</p>
+    <p class="note">Questions in the meantime? Write to <a href="mailto:info@sipartsfoundation.org">info@sipartsfoundation.org</a> or <a href="mailto:neil@sipartsfoundation.org">neil@sipartsfoundation.org</a>.</p>
+  </div>
+
+  <div class="between">
+    <h2>Would you rather run it at your own site?</h2>
+    <p>We also send free panels and a simple lesson packet to groups who want to do the activity in their own space. <a href="/unmasking/">Request panels on the Unmasking page</a>.</p>
+    <p class="note">SIP Arts Foundation, 424 Lebanon Avenue, Belleville, IL 62220. Unmasking in the MetroEast is a program of SIP Arts Foundation, a 501(c)(3) nonprofit serving people with disabilities and their families across Southern Illinois.</p>
+  </div>
+
+</main>
+
+<script>
+(function () {
+  var form = document.getElementById('gv');
+  var statusEl = document.getElementById('status');
+  var btn = document.getElementById('submit');
+
+  function day() {
+    var r = form.querySelector('input[name="day"]:checked');
+    return r ? r.value : 'Tuesday';
+  }
+  function say(msg, kind) {
+    statusEl.textContent = msg;
+    statusEl.className = 'status' + (kind ? ' ' + kind : '');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    say('');
+
+    var org = form.org.value.trim();
+    var first = form.firstname.value.trim();
+    var last = form.lastname.value.trim();
+    var email = form.email.value.trim();
+    var phone = form.phone.value.trim();
+    var zip = form.zip.value.trim();
+    var date = form.date.value;
+
+    if (!org) { say('Please add your organization name.', 'err'); form.org.focus(); return; }
+    if (!first) { say('Please add the contact first name.', 'err'); form.firstname.focus(); return; }
+    if (!last) { say('Please add the contact last name.', 'err'); form.lastname.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('Please check your email address.', 'err'); form.email.focus(); return; }
+    if (!phone) { say('Please add a phone number.', 'err'); form.phone.focus(); return; }
+    if (!/^[0-9]{5}$/.test(zip)) { say('Please add a five digit ZIP code.', 'err'); form.zip.focus(); return; }
+    if (!date) { say('Please choose a preferred date.', 'err'); form.date.focus(); return; }
+
+    var summary = [
+      'GROUP VISIT REQUEST (Unmasking, at the Belleville center)',
+      '',
+      'Organization: ' + org,
+      'Type: ' + form.orgtype.value,
+      'Contact: ' + first + ' ' + last,
+      'Phone: ' + phone,
+      'Participants: ' + form.participants.value,
+      'Age range: ' + (form.ages.value.trim() || 'not given'),
+      'Preferred day: ' + day(),
+      'Preferred date: ' + date,
+      'Preferred time: ' + form.time.value,
+      'Accessibility requests: ' + (form.access.value.trim() || 'none given'),
+      'Comments: ' + (form.notes.value.trim() || 'none'),
+      '',
+      'This is a request. Contact them to confirm.'
+    ].join('\n');
+
+    var qs = new URLSearchParams(location.search);
+    var data = {
+      program: 'unmasking',
+      firstname: first,
+      lastname: last,
+      email: email,
+      phone: phone,
+      zip: zip,
+      county: window.SIPZipCounty ? window.SIPZipCounty.lookup(zip) : '',
+      notes: summary,
+      newsletter: form.newsletter.checked ? '1' : '',
+      website: form.website.value,
+      utm_source: qs.get('utm_source') || 'website',
+      utm_medium: qs.get('utm_medium') || 'form',
+      utm_campaign: qs.get('utm_campaign') || 'unmasking-group-visit'
+    };
+    var t = form.querySelector('[name="cf-turnstile-response"]');
+    data['cf-turnstile-response'] = t ? t.value : '';
+
+    btn.disabled = true;
+    say('Sending...');
+
+    fetch('/api/outreach/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) {
+      return r.json().catch(function () { return { ok: false, error: 'network' }; });
+    }).then(function (res) {
+      if (res && res.ok) {
+        document.getElementById('formCard').hidden = true;
+        document.getElementById('done').hidden = false;
+        document.getElementById('done').scrollIntoView({ block: 'nearest' });
+        return;
+      }
+      btn.disabled = false;
+      if (res && res.error === 'verification') {
+        say('The security check did not go through. Please reload the page and try again.', 'err');
+        if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
+      } else {
+        say('Something went wrong on our end. Please try again, or email info@sipartsfoundation.org.', 'err');
+      }
+    }).catch(function () {
+      btn.disabled = false;
+      say('Could not reach the server. Please check your connection and try again.', 'err');
+    });
+  });
+})();
+</script>
+</body>
+</html>
