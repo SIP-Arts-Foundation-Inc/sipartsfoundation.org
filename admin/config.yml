@@ -60,14 +60,6 @@ collections:
           - { name: 'title', label: 'Program name', widget: 'string' }
           - { name: 'body', label: 'Opening description', widget: 'markdown' }
 
-      - name: 'psa'
-        label: 'Pathways Self-Advocates'
-        file: 'content/psa.md'
-        fields:
-          - { name: 'title', label: 'Program name', widget: 'string' }
-          - { name: 'lede', label: 'Opening line at the top of the page', widget: 'text' }
-          - { name: 'body', label: 'About the group', widget: 'markdown' }
-
       - name: 'perfectly-imperfect'
         label: 'Perfectly Imperfect Arts'
         file: 'content/perfectly-imperfect.md'
