@@ -65,13 +65,6 @@ PAGES = {
         'path': ROOT / 'studio.html',
         'regions': [{'marker': 'studio-intro', 'field': 'body'}],
     },
-    'psa': {
-        'path': ROOT / 'selfadvocacy' / 'index.html',
-        'regions': [
-            {'marker': 'psa-lede', 'field': 'lede', 'p_attrs': ' class="sa-lede"'},
-            {'marker': 'psa-about', 'field': 'body'},
-        ],
-    },
     'perfectly-imperfect': {
         'path': ROOT / 'perfectly-imperfect' / 'index.html',
         'regions': [

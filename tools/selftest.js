@@ -21,7 +21,7 @@ const WORKER = 'https://sip-decap-oauth.shauna-276.workers.dev';
 const PAGES = {
   '/unmasking/': 13,
   '/studio.html': 1,
-  '/selfadvocacy/': 2,
+  '/selfadvocacy/': 0,
   '/perfectly-imperfect/': 3,
   '/transition/': 3,
   '/events/': 1,
